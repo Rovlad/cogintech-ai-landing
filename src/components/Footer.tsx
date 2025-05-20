@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
@@ -22,22 +24,22 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Our Team</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">News</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Contact</a></li>
+              <li><Link to="/about-us" className="hover:text-cogintech-teal transition-colors">About Us</Link></li>
+              <li><Link to="/our-team" className="hover:text-cogintech-teal transition-colors">Our Team</Link></li>
+              <li><Link to="/careers" className="hover:text-cogintech-teal transition-colors">Careers</Link></li>
+              <li><Link to="/news" className="hover:text-cogintech-teal transition-colors">News</Link></li>
+              <li><Link to="/contact" className="hover:text-cogintech-teal transition-colors">Contact</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-white font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Technology</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-cogintech-teal transition-colors">Terms of Service</a></li>
+              <li><Link to="/case-studies" className="hover:text-cogintech-teal transition-colors">Case Studies</Link></li>
+              <li><Link to="/technology" className="hover:text-cogintech-teal transition-colors">Technology</Link></li>
+              <li><Link to="/blog" className="hover:text-cogintech-teal transition-colors">Blog</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-cogintech-teal transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service" className="hover:text-cogintech-teal transition-colors">Terms of Service</Link></li>
             </ul>
           </div>
         </div>

@@ -22,6 +22,10 @@ const ProblemStatement = () => {
     {
       title: "Inconsistent Reporting",
       description: "Varying formats and standards across reports make it difficult to compare results and identify trends over time."
+    },
+    {
+      title: "Limited Quality Control in Review",
+      description: "Typically, reports are reviewed only once by a single expert, which limits verification. Without layered, repeated checks, issues can slip through — compromising safety and increasing liability."
     }
   ];
 

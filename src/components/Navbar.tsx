@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -16,10 +15,6 @@ const Navbar = () => {
             alt="Cognitive Industrial Technologies Logo" 
             className="h-12 mr-2"
           />
-          <div className="hidden lg:block">
-            <span className="text-xl font-bold text-cogintech-blue">Cogintech</span>
-            <span className="ml-1 text-cogintech-teal font-medium">Ltd.</span>
-          </div>
         </div>
 
         {/* Desktop Navigation */}
