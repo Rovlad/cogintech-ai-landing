@@ -14,7 +14,7 @@ const Hero = () => {
           <div className="space-y-8 max-w-2xl">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="gradient-text">Reduce Integrity Management and Inspection Costs</span> by 30% with AI-Powered Analysis
+                <span className="gradient-text">Reduce Integrity Management and Inspection Costs</span> <p/>by 30% with <p/>AI-Powered Analysis
               </h1>
               <p className="text-xl text-foreground/80">
                 Accelerate report generation to <span className="font-semibold">24 hours</span> and improve accuracy to <span className="font-semibold">95%+</span> with our intelligent oil & gas equipment integrity analysis solution.
