@@ -30,7 +30,7 @@ const ProblemStatement = () => {
       <div className="container">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="section-title">
-            The <span className="text-cogintech-blue">Challenges</span> in Equipment Integrity Analysis
+            The <span className="text-cogintech-blue">Challenges</span> in Equipment Integrity Management
           </h2>
           <p className="text-lg text-foreground/80">
             Oil and gas companies face significant inefficiencies and risks in their current inspection processes.
