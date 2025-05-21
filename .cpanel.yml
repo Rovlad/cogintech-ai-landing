@@ -1,10 +1,14 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/v92793/public_html/landing       # ← полный путь
-    - cd $DEPLOYPATH && /bin/rm -rf *                        # очистить каталог
-    - cd $DEPLOYDIR                                          # $DEPLOYDIR = путь репо
-    - /opt/cpanel/ea-nodejs20/bin/npm ci --silent            # или bun install
-    - /opt/cpanel/ea-nodejs20/bin/npm run build              # создаёт dist/
-    - /usr/bin/rsync -az --delete dist/ $DEPLOYPATH/         # копируем билд
+    # каталоги
+    - export REPO=/home/v92793/repositories/cogintech-ai-landing
+    - export PUBLIC=/home/v92793/public_html/landing
+    # сборка
+    - /usr/bin/env npm --prefix $REPO ci --silent       # или bun install
+    - /usr/bin/env npm --prefix $REPO run build
+    # выкладка
+    - /usr/bin/mkdir -p $PUBLIC
+    - /usr/bin/rsync -az --delete $REPO/dist/ $PUBLIC/
+
 
