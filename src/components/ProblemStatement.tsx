@@ -55,8 +55,8 @@ const ProblemStatement = () => {
           ))}
         </div>
 
-        <div className="mt-16 max-w-3xl mx-auto text-center px-4 sm:px-0">
-          <div className="bg-cogintech-dark/5 rounded-lg p-6 border border-cogintech-blue/20">
+        <div className="mt-16 mx-0 sm:max-w-3xl sm:mx-auto text-center px-0 sm:px-0">
+          <div className="bg-cogintech-dark/5 rounded-lg p-6 border border-cogintech-blue/20 mx-0 w-full">
             <h3 className="text-xl font-semibold mb-3">The Result?</h3>
             <p className="text-lg">
               Companies are <span className="font-semibold text-cogintech-blue">overspending on analysis</span>, while 

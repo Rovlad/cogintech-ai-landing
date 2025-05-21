@@ -42,12 +42,12 @@ const Solution = () => {
             </div>
           </div>
           
-          <div className="relative px-4 sm:px-0">
-            <div className="bg-gradient-to-br from-cogintech-blue/10 to-cogintech-teal/10 rounded-lg p-4 sm:p-8">
+          <div className="relative px-0 w-full">
+            <div className="bg-gradient-to-br from-cogintech-blue/10 to-cogintech-teal/10 rounded-lg p-4 sm:p-8 w-full">
               <h3 className="text-2xl font-bold mb-6">Traditional vs. Cogintech AI</h3>
               
               <div className="space-y-6">
-                <div className="bg-white rounded-lg p-4 sm:p-5 border border-border">
+                <div className="bg-white rounded-lg p-4 sm:p-5 border border-border w-full">
                   <div className="text-lg font-semibold mb-2 text-red-500">Traditional Process:</div>
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -70,7 +70,7 @@ const Solution = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-white rounded-lg p-4 sm:p-5 border border-cogintech-teal">
+                <div className="bg-white rounded-lg p-4 sm:p-5 border border-cogintech-teal w-full">
                   <div className="text-lg font-semibold mb-2 text-cogintech-teal">Cogintech AI Process:</div>
                   <ul className="space-y-3">
                     <li className="flex items-start">
