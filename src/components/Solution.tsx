@@ -1,4 +1,6 @@
+
 import { CheckCircle, ChartBar, Database, FileText } from "lucide-react";
+
 const Solution = () => {
   const features = [{
     icon: <CheckCircle className="h-8 w-8 text-cogintech-teal" />,
@@ -17,10 +19,11 @@ const Solution = () => {
     title: "Predictive Insights",
     description: "Identify trends and predict future equipment issues before they become costly failures."
   }];
+
   return <section id="solution" className="section bg-white">
-      <div className="container">
+      <div className="container px-0 sm:px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <div className="px-4 sm:px-0">
             <h2 className="section-title">
               The <span className="gradient-text">Cogintech AI</span> Solution
             </h2>
@@ -39,12 +42,12 @@ const Solution = () => {
             </div>
           </div>
           
-          <div className="relative">
-            <div className="bg-gradient-to-br from-cogintech-blue/10 to-cogintech-teal/10 rounded-lg p-8">
+          <div className="relative px-4 sm:px-0">
+            <div className="bg-gradient-to-br from-cogintech-blue/10 to-cogintech-teal/10 rounded-lg p-4 sm:p-8">
               <h3 className="text-2xl font-bold mb-6">Traditional vs. Cogintech AI</h3>
               
               <div className="space-y-6">
-                <div className="bg-white rounded-lg p-5 border border-border">
+                <div className="bg-white rounded-lg p-4 sm:p-5 border border-border">
                   <div className="text-lg font-semibold mb-2 text-red-500">Traditional Process:</div>
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -67,7 +70,7 @@ const Solution = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-white rounded-lg p-5 border border-cogintech-teal">
+                <div className="bg-white rounded-lg p-4 sm:p-5 border border-cogintech-teal">
                   <div className="text-lg font-semibold mb-2 text-cogintech-teal">Cogintech AI Process:</div>
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -92,12 +95,13 @@ const Solution = () => {
               </div>
             </div>
             
-            {/* Decorative elements */}
-            <div className="absolute -top-6 -right-6 w-12 h-12 bg-cogintech-blue rounded-lg rotate-12"></div>
-            <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-cogintech-teal rounded-lg -rotate-12"></div>
+            {/* Hide decorative elements on mobile */}
+            <div className="absolute -top-6 -right-6 w-12 h-12 bg-cogintech-blue rounded-lg rotate-12 hidden sm:block"></div>
+            <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-cogintech-teal rounded-lg -rotate-12 hidden sm:block"></div>
           </div>
         </div>
       </div>
     </section>;
 };
+
 export default Solution;
