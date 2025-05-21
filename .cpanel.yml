@@ -7,7 +7,7 @@ deployment:
     # сборка
     - /usr/bin/env npm --prefix $REPO ci --silent       # или bun install
     - /usr/bin/env npm --prefix $REPO run build
-    # выкладка
+    # выкладка 
     - /usr/bin/mkdir -p $PUBLIC
     - /usr/bin/rsync -az --delete $REPO/dist/ $PUBLIC/
 
