@@ -20,8 +20,8 @@ const DemoSection = () => {
 
   return (
     <section id="demo" className="section bg-cogintech-dark text-white">
-      <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+      <div className="container px-0 sm:px-4 md:px-6">
+        <div className="max-w-3xl mx-auto text-center mb-12 px-4 sm:px-0">
           <h2 className="section-title">
             See <span className="text-cogintech-teal">Cogintech AI</span> in Action
           </h2>
@@ -30,7 +30,7 @@ const DemoSection = () => {
           </p>
         </div>
 
-        <div className="bg-black/30 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 max-w-4xl mx-auto">
+        <div className="bg-black/30 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 max-w-4xl mx-auto px-0 mx-0 sm:mx-4">
           <div className="border-b border-white/10 p-4 flex items-center">
             <div className="flex space-x-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -43,16 +43,16 @@ const DemoSection = () => {
           <div className="p-6">
             <div className="mb-6">
               <div className="mb-2 text-white/60 text-sm">Query:</div>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
                   value={currentQuery}
                   onChange={(e) => setCurrentQuery(e.target.value)}
-                  className="flex-1 bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cogintech-teal/50"
+                  className="flex-1 bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cogintech-teal/50 w-full"
                 />
                 <Button 
                   onClick={handleDemo}
-                  className="bg-cogintech-teal hover:bg-cogintech-teal/90 text-white"
+                  className="bg-cogintech-teal hover:bg-cogintech-teal/90 text-white w-full sm:w-auto mt-2 sm:mt-0"
                   disabled={isGenerating}
                 >
                   {isGenerating ? "Processing..." : "Run Query"}
@@ -134,7 +134,7 @@ const DemoSection = () => {
           </div>
         </div>
 
-        <div className="mt-12 max-w-2xl mx-auto text-center">
+        <div className="mt-12 max-w-2xl mx-auto text-center px-4 sm:px-0">
           <p className="text-white/80">
             This interactive demo shows how engineers can quickly access critical inspection insights using natural language queries, saving hours of manual report analysis.
           </p>

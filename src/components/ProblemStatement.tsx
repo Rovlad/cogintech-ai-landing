@@ -31,8 +31,8 @@ const ProblemStatement = () => {
 
   return (
     <section className="section bg-gradient-to-b from-background to-muted">
-      <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+      <div className="container px-0 sm:px-4 md:px-6">
+        <div className="max-w-3xl mx-auto text-center mb-12 px-4 sm:px-0">
           <h2 className="section-title">
             The <span className="text-cogintech-blue">Challenges</span> in Equipment Integrity Management
           </h2>
@@ -41,9 +41,9 @@ const ProblemStatement = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-0 sm:px-4">
           {problems.map((problem, index) => (
-            <Card key={index} className="border border-border hover:shadow-md transition-shadow">
+            <Card key={index} className="border border-border hover:shadow-md transition-shadow mx-0">
               <CardContent className="p-6">
                 <div className="w-12 h-12 rounded-full bg-cogintech-blue/10 flex items-center justify-center mb-4">
                   <span className="text-cogintech-blue font-bold">{index + 1}</span>
@@ -55,7 +55,7 @@ const ProblemStatement = () => {
           ))}
         </div>
 
-        <div className="mt-16 max-w-3xl mx-auto text-center">
+        <div className="mt-16 max-w-3xl mx-auto text-center px-4 sm:px-0">
           <div className="bg-cogintech-dark/5 rounded-lg p-6 border border-cogintech-blue/20">
             <h3 className="text-xl font-semibold mb-3">The Result?</h3>
             <p className="text-lg">

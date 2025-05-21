@@ -55,9 +55,9 @@ const LeadForm = () => {
 
   return (
     <section id="lead-form" className="section bg-cogintech-dark text-white">
-      <div className="container">
+      <div className="container px-0 sm:px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 px-4 sm:px-0">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Transform Your Inspection Process?
@@ -113,7 +113,7 @@ const LeadForm = () => {
               </div>
             </div>
             
-            <div className="bg-white/5 border border-white/10 rounded-lg p-8">
+            <div className="bg-white/5 border border-white/10 rounded-lg p-4 sm:p-8 w-full">
               <h3 className="text-2xl font-bold mb-6">Request a Free Consultation</h3>
               
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -125,7 +125,7 @@ const LeadForm = () => {
                     value={formData.name} 
                     onChange={handleChange} 
                     required 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
                     placeholder="John Smith"
                   />
                 </div>
@@ -138,7 +138,7 @@ const LeadForm = () => {
                     value={formData.company} 
                     onChange={handleChange} 
                     required 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
                     placeholder="Acme Oil & Gas Ltd."
                   />
                 </div>
@@ -146,7 +146,7 @@ const LeadForm = () => {
                 <div>
                   <Label htmlFor="role">Your Role</Label>
                   <Select required onValueChange={handleSelectChange} value={formData.role}>
-                    <SelectTrigger className="bg-white/10 border-white/20 text-white focus:ring-cogintech-teal mt-1">
+                    <SelectTrigger className="bg-white/10 border-white/20 text-white focus:ring-cogintech-teal mt-1 w-full">
                       <SelectValue placeholder="Select your role" />
                     </SelectTrigger>
                     <SelectContent className="bg-cogintech-dark border-white/20">
@@ -168,7 +168,7 @@ const LeadForm = () => {
                     value={formData.email} 
                     onChange={handleChange} 
                     required 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
                     placeholder="john@acme.com"
                   />
                 </div>
@@ -180,7 +180,7 @@ const LeadForm = () => {
                     name="phone" 
                     value={formData.phone} 
                     onChange={handleChange} 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -192,7 +192,7 @@ const LeadForm = () => {
                     name="comments" 
                     value={formData.comments} 
                     onChange={handleChange} 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal h-24 mt-1"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal h-24 mt-1 w-full"
                     placeholder="Tell us about your current inspection analysis process..."
                   />
                 </div>

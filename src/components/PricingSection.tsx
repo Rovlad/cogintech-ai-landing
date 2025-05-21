@@ -16,8 +16,8 @@ const PricingSection = () => {
 
   return (
     <section id="pricing" className="section bg-white">
-      <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+      <div className="container px-0 sm:px-4 md:px-6">
+        <div className="max-w-3xl mx-auto text-center mb-12 px-4 sm:px-0">
           <h2 className="section-title">
             Transparent <span className="text-cogintech-blue">Pricing</span> with Guaranteed ROI
           </h2>
@@ -26,10 +26,10 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-cogintech-blue to-cogintech-teal rounded-xl overflow-hidden shadow-lg">
+        <div className="max-w-4xl mx-auto px-0 sm:px-4">
+          <div className="bg-gradient-to-r from-cogintech-blue to-cogintech-teal rounded-xl overflow-hidden shadow-lg m-0 sm:m-4">
             <div className="bg-white/95 m-1 rounded-lg">
-              <div className="p-8">
+              <div className="p-4 sm:p-8">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Enterprise Solution</h3>
@@ -91,7 +91,7 @@ const PricingSection = () => {
             </div>
           </div>
           
-          <div className="mt-12 text-center max-w-2xl mx-auto">
+          <div className="mt-12 text-center max-w-2xl mx-auto px-4 sm:px-0">
             <p className="text-lg">
               Not ready for a full implementation? Ask about our <span className="font-semibold text-cogintech-blue">proof-of-concept package</span> to test our solution with your actual inspection data.
             </p>
