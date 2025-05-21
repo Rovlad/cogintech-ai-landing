@@ -1,12 +1,10 @@
 ---
 deployment:
   tasks:
-    # 1. Устанавливаем правильную Node/Bun среду
-    - source /opt/cpanel/ea-nodejs20/bin/activate || true   # для npm
-    - command -v bun >/dev/null || curl -fsSL https://bun.sh/install | bash
-    # 2. Сборка
-    - cd $DEPLOYDIR        # cPanel передаёт переменную окружения
-    - bun install || npm ci
-    - bun run build || npm run build
-    # 3. Копирование в public_html/landing
-    - rsync -az --delete dist/ /home/${CPANEL_USER}/public_html/landing/
+    - export DEPLOYPATH=/home/v92793/public_html/landing       # ← полный путь
+    - cd $DEPLOYPATH && /bin/rm -rf *                        # очистить каталог
+    - cd $DEPLOYDIR                                          # $DEPLOYDIR = путь репо
+    - /opt/cpanel/ea-nodejs20/bin/npm ci --silent            # или bun install
+    - /opt/cpanel/ea-nodejs20/bin/npm run build              # создаёт dist/
+    - /usr/bin/rsync -az --delete dist/ $DEPLOYPATH/         # копируем билд
+
