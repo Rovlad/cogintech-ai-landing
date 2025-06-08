@@ -111,7 +111,7 @@ const LeadForm = () => {
                   Prefer to speak with someone immediately? Reach out to our solutions team:
                 </p>
                 <div className="space-y-1 text-white/80">
-                  <div>Email: <a href="mailto:solutions@cogintech.com" className="text-cogintech-teal hover:underline">solutions@cogintech.com</a></div>
+                  <div>Email: <a href="mailto:vr@cogintech.com" className="text-cogintech-teal hover:underline">vr@cogintech.com</a></div>
                   
                 </div>
               </div>
@@ -149,12 +149,12 @@ const LeadForm = () => {
                 
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="john@acme.com" />
+                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="vr@cogintech.com" />
                 </div>
                 
                 <div>
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="+1 (555) 123-4567" />
+                  <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="Enter your phone number" />
                 </div>
                 
                 <div>

@@ -19,10 +19,12 @@ const Contact = () => {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Headquarters</h3>
                     <address className="not-italic">
-                      1234 Technology Drive<br />
-                      Suite 500<br />
-                      Houston, TX 77002<br />
-                      United States
+                      Mansion House<br />
+                      Manchester Road<br />
+                      Altrincham<br />
+                      Cheshire<br />
+                      WA14 4RW<br />
+                      United Kingdom
                     </address>
                   </div>
                   
