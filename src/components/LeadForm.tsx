@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,9 +6,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { User } from "lucide-react";
-
 const LeadForm = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -19,28 +19,34 @@ const LeadForm = () => {
     phone: '',
     comments: ''
   });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-
   const handleSelectChange = (value: string) => {
-    setFormData(prev => ({ ...prev, role: value }));
+    setFormData(prev => ({
+      ...prev,
+      role: value
+    }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
         title: "Request Submitted Successfully",
-        description: "Our team will contact you within 1 business day.",
+        description: "Our team will contact you within 1 business day."
       });
-      
+
       // Reset form
       setFormData({
         name: '',
@@ -52,9 +58,7 @@ const LeadForm = () => {
       });
     }, 1500);
   };
-
-  return (
-    <section id="lead-form" className="section bg-cogintech-dark text-white">
+  return <section id="lead-form" className="section bg-cogintech-dark text-white">
       <div className="container px-0 sm:px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 px-4 sm:px-0">
@@ -108,7 +112,7 @@ const LeadForm = () => {
                 </p>
                 <div className="space-y-1 text-white/80">
                   <div>Email: <a href="mailto:solutions@cogintech.com" className="text-cogintech-teal hover:underline">solutions@cogintech.com</a></div>
-                  <div>Phone: <a href="tel:+12025551234" className="text-cogintech-teal hover:underline">+1 (202) 555-1234</a></div>
+                  
                 </div>
               </div>
             </div>
@@ -119,28 +123,12 @@ const LeadForm = () => {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <Label htmlFor="name">Full Name</Label>
-                  <Input 
-                    id="name" 
-                    name="name" 
-                    value={formData.name} 
-                    onChange={handleChange} 
-                    required 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
-                    placeholder="John Smith"
-                  />
+                  <Input id="name" name="name" value={formData.name} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="John Smith" />
                 </div>
                 
                 <div>
                   <Label htmlFor="company">Company</Label>
-                  <Input 
-                    id="company" 
-                    name="company" 
-                    value={formData.company} 
-                    onChange={handleChange} 
-                    required 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
-                    placeholder="Acme Oil & Gas Ltd."
-                  />
+                  <Input id="company" name="company" value={formData.company} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="Acme Oil & Gas Ltd." />
                 </div>
                 
                 <div>
@@ -161,47 +149,20 @@ const LeadForm = () => {
                 
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input 
-                    id="email" 
-                    name="email" 
-                    type="email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    required 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
-                    placeholder="john@acme.com"
-                  />
+                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="john@acme.com" />
                 </div>
                 
                 <div>
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input 
-                    id="phone" 
-                    name="phone" 
-                    value={formData.phone} 
-                    onChange={handleChange} 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full"
-                    placeholder="+1 (555) 123-4567"
-                  />
+                  <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="+1 (555) 123-4567" />
                 </div>
                 
                 <div>
                   <Label htmlFor="comments">Additional Comments (Optional)</Label>
-                  <Textarea 
-                    id="comments" 
-                    name="comments" 
-                    value={formData.comments} 
-                    onChange={handleChange} 
-                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal h-24 mt-1 w-full"
-                    placeholder="Tell us about your current inspection analysis process..."
-                  />
+                  <Textarea id="comments" name="comments" value={formData.comments} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal h-24 mt-1 w-full" placeholder="Tell us about your current inspection analysis process..." />
                 </div>
                 
-                <Button 
-                  type="submit" 
-                  className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white"
-                  disabled={isSubmitting}
-                >
+                <Button type="submit" className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white" disabled={isSubmitting}>
                   {isSubmitting ? "Submitting..." : "Submit Request"}
                 </Button>
                 
@@ -213,8 +174,6 @@ const LeadForm = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default LeadForm;
