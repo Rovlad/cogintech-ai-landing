@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -14,7 +15,7 @@ const CaseStudies = () => {
         "96% AI analysis accuracy, verified by QA teams",
         "Identified critical flaw missed in previous manual inspection"
       ],
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
     },
     {
       title: "GlobalGas: Improving Safety Through AI-Powered Insights",
@@ -27,7 +28,7 @@ const CaseStudies = () => {
         "Identified three critical failure risks in first month",
         "Consolidated data from 5 separate inspection systems"
       ],
-      image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop"
     },
     {
       title: "PetroMarine: Offshore Platform Integrity Management",
@@ -40,7 +41,7 @@ const CaseStudies = () => {
         "Enhanced reporting compliance with regulatory bodies",
         "Improved equipment lifespan through early intervention"
       ],
-      image: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1570553140027-d56d4ac1d927?w=800&h=600&fit=crop"
     }
   ];
 
