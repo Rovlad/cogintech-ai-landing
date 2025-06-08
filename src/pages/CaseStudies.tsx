@@ -15,7 +15,7 @@ const CaseStudies = () => {
         "96% AI analysis accuracy, verified by QA teams",
         "Identified critical flaw missed in previous manual inspection"
       ],
-      image: "https://images.unsplash.com/photo-1589758443012-487e435eb841"
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
     },
     {
       title: "GlobalGas: Improving Safety Through AI-Powered Insights",
@@ -28,7 +28,7 @@ const CaseStudies = () => {
         "Identified three critical failure risks in first month",
         "Consolidated data from 5 separate inspection systems"
       ],
-      image: "https://images.unsplash.com/photo-1546388612-5d134acd4c3e"
+      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop"
     },
     {
       title: "PetroMarine: Offshore Platform Integrity Management",
@@ -41,7 +41,7 @@ const CaseStudies = () => {
         "Enhanced reporting compliance with regulatory bodies",
         "Improved equipment lifespan through early intervention"
       ],
-      image: "https://images.unsplash.com/photo-1622434641406-a158123450f9"
+      image: "https://images.unsplash.com/photo-1570553140027-d56d4ac1d927?w=800&h=600&fit=crop"
     }
   ];
 
