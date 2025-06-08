@@ -72,9 +72,8 @@ const PrivacyPolicy = () => {
                   If you have any questions about this privacy policy or our privacy practices, please contact us at:
                 </p>
                 <div className="bg-muted p-4 rounded-md mb-4">
-                  <p>Email: privacy@cogintech.com</p>
-                  <p>Address: 1234 Technology Drive, Suite 500, Houston, TX 77002</p>
-                  <p>Phone: +1 (713) 555-1234</p>
+                  <p>Email: vr@cogintech.com</p>
+                  <p>Address: Mansion House, Manchester Road, Altrincham, Cheshire, WA14 4RW, United Kingdom</p>
                 </div>
               </div>
             </div>
