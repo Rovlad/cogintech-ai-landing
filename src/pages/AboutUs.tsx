@@ -8,10 +8,25 @@ const AboutUs = () => {
       <Navbar />
       
       <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative h-64 md:h-80 bg-gradient-to-r from-cogintech-blue to-cogintech-orange flex items-center">
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+              alt="Industrial AI Technology" 
+              className="w-full h-full object-cover opacity-20"
+            />
+          </div>
+          <div className="container relative z-10">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Us</h1>
+            <p className="text-xl text-white/90 max-w-2xl">
+              Pioneering the future of industrial equipment integrity through artificial intelligence
+            </p>
+          </div>
+        </section>
+
         <section className="section">
           <div className="container">
-            <h1 className="text-4xl font-bold mb-8">About Us</h1>
-            
             <div className="prose max-w-none">
               <p className="text-lg mb-6">
                 Cognitive Industrial Technologies (Cogintech) is a pioneering company focused on revolutionizing equipment integrity management in the oil and gas industry through artificial intelligence.

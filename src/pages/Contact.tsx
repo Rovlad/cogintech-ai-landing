@@ -1,16 +1,36 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+
 const Contact = () => {
-  return <div className="min-h-screen flex flex-col">
+  return (
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative h-64 md:h-80 bg-gradient-to-r from-cogintech-blue to-cogintech-orange flex items-center">
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2426&q=80" 
+              alt="Contact Us - Technology Office" 
+              className="w-full h-full object-cover opacity-20"
+            />
+          </div>
+          <div className="container relative z-10">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Contact Us</h1>
+            <p className="text-xl text-white/90 max-w-2xl">
+              Get in touch with our AI experts and discover how we can transform your industrial operations
+            </p>
+          </div>
+        </section>
+
         <section className="section">
           <div className="container">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div>
-                <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+                <h2 className="text-3xl font-bold mb-4">Let's Talk</h2>
                 <p className="text-lg mb-8">
                   Have questions about our AI-powered solutions? Get in touch with our team, and we'll be happy to help.
                 </p>
@@ -32,11 +52,7 @@ const Contact = () => {
                     <h3 className="text-xl font-semibold mb-2">Email</h3>
                     <p>vr@cogintech.com</p>
                   </div>
-                  
-                  
                 </div>
-                
-                
               </div>
               
               <div className="bg-card p-8 rounded-lg shadow-md">
@@ -84,6 +100,8 @@ const Contact = () => {
       </main>
       
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Contact;
