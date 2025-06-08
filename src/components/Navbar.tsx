@@ -207,33 +207,33 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border animate-fade-in z-50">
-          <div className="container py-4 flex flex-col space-y-4">
+          <div className="container py-4 flex flex-col space-y-2">
             {isHomePage ? (
               <>
                 <a 
                   href="#solution" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Solution
                 </a>
                 <a 
                   href="#demo" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Demo
                 </a>
                 <a 
                   href="#testimonials" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Results
                 </a>
                 <a 
                   href="#pricing" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Pricing
@@ -244,35 +244,35 @@ const Navbar = () => {
                   <div className="text-sm font-semibold text-foreground mb-2">Company</div>
                   <Link 
                     to="/about-us" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     About Us
                   </Link>
                   <Link 
                     to="/our-team" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Our Team
                   </Link>
                   <Link 
                     to="/careers" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Careers
                   </Link>
                   <Link 
                     to="/news" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     News
                   </Link>
                   <Link 
                     to="/contact" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Contact
@@ -284,35 +284,35 @@ const Navbar = () => {
                   <div className="text-sm font-semibold text-foreground mb-2">Resources</div>
                   <Link 
                     to="/case-studies" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Case Studies
                   </Link>
                   <Link 
                     to="/technology" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Technology
                   </Link>
                   <Link 
                     to="/blog" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Blog
                   </Link>
                   <Link 
                     to="/privacy-policy" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Privacy Policy
                   </Link>
                   <Link 
                     to="/terms-of-service" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Terms of Service
@@ -323,42 +323,42 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Main Page
                 </Link>
                 <Link 
                   to="/about-us" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link 
                   to="/our-team" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Our Team
                 </Link>
                 <Link 
                   to="/careers" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Careers
                 </Link>
                 <Link 
                   to="/news" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   News
                 </Link>
                 <Link 
                   to="/contact" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
@@ -369,35 +369,35 @@ const Navbar = () => {
                   <div className="text-sm font-semibold text-foreground mb-2">Resources</div>
                   <Link 
                     to="/case-studies" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Case Studies
                   </Link>
                   <Link 
                     to="/technology" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Technology
                   </Link>
                   <Link 
                     to="/blog" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Blog
                   </Link>
                   <Link 
                     to="/privacy-policy" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Privacy Policy
                   </Link>
                   <Link 
                     to="/terms-of-service" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Terms of Service
@@ -408,42 +408,42 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Main Page
                 </Link>
                 <Link 
                   to="/case-studies" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Case Studies
                 </Link>
                 <Link 
                   to="/technology" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Technology
                 </Link>
                 <Link 
                   to="/blog" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Blog
                 </Link>
                 <Link 
                   to="/privacy-policy" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Privacy Policy
                 </Link>
                 <Link 
                   to="/terms-of-service" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Terms of Service
@@ -454,35 +454,35 @@ const Navbar = () => {
                   <div className="text-sm font-semibold text-foreground mb-2">Company</div>
                   <Link 
                     to="/about-us" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     About Us
                   </Link>
                   <Link 
                     to="/our-team" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Our Team
                   </Link>
                   <Link 
                     to="/careers" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Careers
                   </Link>
                   <Link 
                     to="/news" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     News
                   </Link>
                   <Link 
                     to="/contact" 
-                    className="block py-2 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-4 text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Contact
@@ -493,42 +493,42 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Main Page
                 </Link>
                 <Link 
                   to="/about-us" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link 
                   to="/our-team" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Our Team
                 </Link>
                 <Link 
                   to="/careers" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Careers
                 </Link>
                 <Link 
                   to="/news" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   News
                 </Link>
                 <Link 
                   to="/contact" 
-                  className="py-2 text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
