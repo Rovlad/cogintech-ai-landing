@@ -57,137 +57,137 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center space-x-6">
           {isHomePage ? (
             <>
-              <a href="#solution" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Solution</a>
-              <a href="#demo" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Demo</a>
-              <a href="#testimonials" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Results</a>
-              <a href="#pricing" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Pricing</a>
+              <a href="#solution" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Solution</a>
+              <a href="#demo" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Demo</a>
+              <a href="#testimonials" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Results</a>
+              <a href="#pricing" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Pricing</a>
               
               {/* Company Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">
+                <DropdownMenuTrigger className="flex items-center text-base text-foreground/80 hover:text-cogintech-blue transition-colors">
                   Company <ChevronDown className="ml-1 h-3 w-3" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
                   <DropdownMenuItem asChild>
-                    <Link to="/about-us" className="cursor-pointer text-sm">About Us</Link>
+                    <Link to="/about-us" className="cursor-pointer text-base">About Us</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/our-team" className="cursor-pointer text-sm">Our Team</Link>
+                    <Link to="/our-team" className="cursor-pointer text-base">Our Team</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/careers" className="cursor-pointer text-sm">Careers</Link>
+                    <Link to="/careers" className="cursor-pointer text-base">Careers</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/news" className="cursor-pointer text-sm">News</Link>
+                    <Link to="/news" className="cursor-pointer text-base">News</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/contact" className="cursor-pointer text-sm">Contact</Link>
+                    <Link to="/contact" className="cursor-pointer text-base">Contact</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
 
               {/* Resources Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">
+                <DropdownMenuTrigger className="flex items-center text-base text-foreground/80 hover:text-cogintech-blue transition-colors">
                   Resources <ChevronDown className="ml-1 h-3 w-3" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
                   <DropdownMenuItem asChild>
-                    <Link to="/case-studies" className="cursor-pointer text-sm">Case Studies</Link>
+                    <Link to="/case-studies" className="cursor-pointer text-base">Case Studies</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/technology" className="cursor-pointer text-sm">Technology</Link>
+                    <Link to="/technology" className="cursor-pointer text-base">Technology</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/blog" className="cursor-pointer text-sm">Blog</Link>
+                    <Link to="/blog" className="cursor-pointer text-base">Blog</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/privacy-policy" className="cursor-pointer text-sm">Privacy Policy</Link>
+                    <Link to="/privacy-policy" className="cursor-pointer text-base">Privacy Policy</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/terms-of-service" className="cursor-pointer text-sm">Terms of Service</Link>
+                    <Link to="/terms-of-service" className="cursor-pointer text-base">Terms of Service</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
           ) : isCompanyPage ? (
             <>
-              <Link to="/" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Home</Link>
-              <Link to="/about-us" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">About Us</Link>
-              <Link to="/our-team" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Our Team</Link>
-              <Link to="/careers" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Careers</Link>
-              <Link to="/news" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">News</Link>
-              <Link to="/contact" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Contact</Link>
+              <Link to="/" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Home</Link>
+              <Link to="/about-us" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">About Us</Link>
+              <Link to="/our-team" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Our Team</Link>
+              <Link to="/careers" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Careers</Link>
+              <Link to="/news" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">News</Link>
+              <Link to="/contact" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Contact</Link>
               
               {/* Resources Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">
+                <DropdownMenuTrigger className="flex items-center text-base text-foreground/80 hover:text-cogintech-blue transition-colors">
                   Resources <ChevronDown className="ml-1 h-3 w-3" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
                   <DropdownMenuItem asChild>
-                    <Link to="/case-studies" className="cursor-pointer text-sm">Case Studies</Link>
+                    <Link to="/case-studies" className="cursor-pointer text-base">Case Studies</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/technology" className="cursor-pointer text-sm">Technology</Link>
+                    <Link to="/technology" className="cursor-pointer text-base">Technology</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/blog" className="cursor-pointer text-sm">Blog</Link>
+                    <Link to="/blog" className="cursor-pointer text-base">Blog</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/privacy-policy" className="cursor-pointer text-sm">Privacy Policy</Link>
+                    <Link to="/privacy-policy" className="cursor-pointer text-base">Privacy Policy</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/terms-of-service" className="cursor-pointer text-sm">Terms of Service</Link>
+                    <Link to="/terms-of-service" className="cursor-pointer text-base">Terms of Service</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
           ) : isResourcesPage ? (
             <>
-              <Link to="/" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Home</Link>
-              <Link to="/case-studies" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Case Studies</Link>
-              <Link to="/technology" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Technology</Link>
-              <Link to="/blog" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Blog</Link>
-              <Link to="/privacy-policy" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Privacy Policy</Link>
-              <Link to="/terms-of-service" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Terms of Service</Link>
+              <Link to="/" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Home</Link>
+              <Link to="/case-studies" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Case Studies</Link>
+              <Link to="/technology" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Technology</Link>
+              <Link to="/blog" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Blog</Link>
+              <Link to="/privacy-policy" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Terms of Service</Link>
               
               {/* Company Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">
+                <DropdownMenuTrigger className="flex items-center text-base text-foreground/80 hover:text-cogintech-blue transition-colors">
                   Company <ChevronDown className="ml-1 h-3 w-3" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
                   <DropdownMenuItem asChild>
-                    <Link to="/about-us" className="cursor-pointer text-sm">About Us</Link>
+                    <Link to="/about-us" className="cursor-pointer text-base">About Us</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/our-team" className="cursor-pointer text-sm">Our Team</Link>
+                    <Link to="/our-team" className="cursor-pointer text-base">Our Team</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/careers" className="cursor-pointer text-sm">Careers</Link>
+                    <Link to="/careers" className="cursor-pointer text-base">Careers</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/news" className="cursor-pointer text-sm">News</Link>
+                    <Link to="/news" className="cursor-pointer text-base">News</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/contact" className="cursor-pointer text-sm">Contact</Link>
+                    <Link to="/contact" className="cursor-pointer text-base">Contact</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
           ) : (
             <>
-              <Link to="/" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Home</Link>
-              <Link to="/about-us" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">About Us</Link>
-              <Link to="/our-team" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Our Team</Link>
-              <Link to="/careers" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Careers</Link>
-              <Link to="/news" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">News</Link>
-              <Link to="/contact" className="text-sm text-foreground/80 hover:text-cogintech-blue transition-colors">Contact</Link>
+              <Link to="/" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Home</Link>
+              <Link to="/about-us" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">About Us</Link>
+              <Link to="/our-team" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Our Team</Link>
+              <Link to="/careers" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Careers</Link>
+              <Link to="/news" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">News</Link>
+              <Link to="/contact" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Contact</Link>
             </>
           )}
           <Button 
-            className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-sm px-4 py-2"
+            className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-base px-4 py-2"
             onClick={handleRequestConsultation}
           >
             Request Consultation
@@ -212,28 +212,28 @@ const Navbar = () => {
               <>
                 <a 
                   href="#solution" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Solution
                 </a>
                 <a 
                   href="#demo" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Demo
                 </a>
                 <a 
                   href="#testimonials" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Results
                 </a>
                 <a 
                   href="#pricing" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Pricing
@@ -244,35 +244,35 @@ const Navbar = () => {
                   <div className="text-xs font-semibold text-foreground mb-2">Company</div>
                   <Link 
                     to="/about-us" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     About Us
                   </Link>
                   <Link 
                     to="/our-team" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Our Team
                   </Link>
                   <Link 
                     to="/careers" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Careers
                   </Link>
                   <Link 
                     to="/news" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     News
                   </Link>
                   <Link 
                     to="/contact" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Contact
@@ -284,35 +284,35 @@ const Navbar = () => {
                   <div className="text-xs font-semibold text-foreground mb-2">Resources</div>
                   <Link 
                     to="/case-studies" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Case Studies
                   </Link>
                   <Link 
                     to="/technology" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Technology
                   </Link>
                   <Link 
                     to="/blog" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Blog
                   </Link>
                   <Link 
                     to="/privacy-policy" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Privacy Policy
                   </Link>
                   <Link 
                     to="/terms-of-service" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Terms of Service
@@ -323,42 +323,42 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
                 </Link>
                 <Link 
                   to="/about-us" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link 
                   to="/our-team" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Our Team
                 </Link>
                 <Link 
                   to="/careers" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Careers
                 </Link>
                 <Link 
                   to="/news" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   News
                 </Link>
                 <Link 
                   to="/contact" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
@@ -369,35 +369,35 @@ const Navbar = () => {
                   <div className="text-xs font-semibold text-foreground mb-2">Resources</div>
                   <Link 
                     to="/case-studies" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Case Studies
                   </Link>
                   <Link 
                     to="/technology" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Technology
                   </Link>
                   <Link 
                     to="/blog" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Blog
                   </Link>
                   <Link 
                     to="/privacy-policy" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Privacy Policy
                   </Link>
                   <Link 
                     to="/terms-of-service" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Terms of Service
@@ -408,42 +408,42 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
                 </Link>
                 <Link 
                   to="/case-studies" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Case Studies
                 </Link>
                 <Link 
                   to="/technology" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Technology
                 </Link>
                 <Link 
                   to="/blog" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Blog
                 </Link>
                 <Link 
                   to="/privacy-policy" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Privacy Policy
                 </Link>
                 <Link 
                   to="/terms-of-service" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Terms of Service
@@ -454,35 +454,35 @@ const Navbar = () => {
                   <div className="text-xs font-semibold text-foreground mb-2">Company</div>
                   <Link 
                     to="/about-us" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     About Us
                   </Link>
                   <Link 
                     to="/our-team" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Our Team
                   </Link>
                   <Link 
                     to="/careers" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Careers
                   </Link>
                   <Link 
                     to="/news" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     News
                   </Link>
                   <Link 
                     to="/contact" 
-                    className="block py-1 pl-3 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Contact
@@ -493,42 +493,42 @@ const Navbar = () => {
               <>
                 <Link 
                   to="/" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
                 </Link>
                 <Link 
                   to="/about-us" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link 
                   to="/our-team" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Our Team
                 </Link>
                 <Link 
                   to="/careers" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Careers
                 </Link>
                 <Link 
                   to="/news" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   News
                 </Link>
                 <Link 
                   to="/contact" 
-                  className="py-1 text-sm text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
@@ -536,7 +536,7 @@ const Navbar = () => {
               </>
             )}
             <Button 
-              className="bg-cogintech-orange hover:bg-cogintech-orange/90 w-full text-sm mt-3"
+              className="bg-cogintech-orange hover:bg-cogintech-orange/90 w-full text-base mt-3"
               onClick={() => {
                 setIsMenuOpen(false);
                 handleRequestConsultation();
