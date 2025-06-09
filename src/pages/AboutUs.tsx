@@ -12,8 +12,8 @@ const AboutUs = () => {
         <section className="relative h-64 md:h-80 bg-gradient-to-r from-cogintech-blue to-cogintech-orange flex items-center">
           <div className="absolute inset-0">
             <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-              alt="Industrial AI Technology" 
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+              alt="Industrial AI Technology - Circuit Board" 
               className="w-full h-full object-cover opacity-20"
             />
           </div>
