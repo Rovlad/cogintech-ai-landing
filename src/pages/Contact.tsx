@@ -1,11 +1,11 @@
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
-import { YandexSmartCaptcha } from "@/components/SmartCaptcha";
+import { YandexSmartCaptcha, SmartCaptchaRef } from "@/components/SmartCaptcha";
 import { useSecureForm } from "@/hooks/useSecureForm";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { useToast } from "@/hooks/use-toast";
@@ -29,6 +29,7 @@ const Contact = () => {
     termsOfService: false
   });
   
+  const captchaRef = useRef<SmartCaptchaRef>(null);
   const [captchaToken, setCaptchaToken] = useState<string>("");
   const [emailValidation, setEmailValidation] = useState<{isValid: boolean, error?: string}>({ isValid: true });
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -72,6 +73,12 @@ const Contact = () => {
       return;
     }
 
+    // Если токена нет, запускаем капчу
+    if (!captchaToken) {
+      captchaRef.current?.execute();
+      return;
+    }
+
     const success = await submitForm(formData, captchaToken);
     
     if (success) {
@@ -95,7 +102,7 @@ const Contact = () => {
     }
   };
   
-  const isFormValid = agreements.privacyPolicy && agreements.termsOfService && captchaToken;
+  const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -295,9 +302,8 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {agreements.privacyPolicy && agreements.termsOfService && (
-                    <YandexSmartCaptcha onSuccess={setCaptchaToken} />
-                  )}
+                  {/* Невидимая капча */}
+                  <YandexSmartCaptcha ref={captchaRef} onSuccess={setCaptchaToken} />
                   
                   <Button 
                     type="submit" 

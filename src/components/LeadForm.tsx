@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { YandexSmartCaptcha } from "./SmartCaptcha";
+import { YandexSmartCaptcha, SmartCaptchaRef } from "./SmartCaptcha";
 import { useSecureForm } from "@/hooks/useSecureForm";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 const LeadForm = () => {
@@ -30,6 +30,7 @@ const LeadForm = () => {
     termsOfService: false
   });
   
+  const captchaRef = useRef<SmartCaptchaRef>(null);
   const [captchaToken, setCaptchaToken] = useState<string>("");
   const [emailValidation, setEmailValidation] = useState<{isValid: boolean, error?: string}>({ isValid: true });
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -66,7 +67,6 @@ const LeadForm = () => {
     }
   };
   
-  const isFormValid = agreements.privacyPolicy && agreements.termsOfService && captchaToken;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -77,6 +77,12 @@ const LeadForm = () => {
         description: emailValidation.error || "Please enter a valid email address",
         variant: "destructive"
       });
+      return;
+    }
+
+    // Если токена нет, запускаем капчу
+    if (!captchaToken) {
+      captchaRef.current?.execute();
       return;
     }
 
@@ -102,6 +108,8 @@ const LeadForm = () => {
       setEmailValidation({ isValid: true });
     }
   };
+  
+  const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
   return <section id="lead-form" className="section bg-cogintech-dark text-white">
       <div className="container px-0 sm:px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
@@ -276,9 +284,8 @@ const LeadForm = () => {
                   </div>
                 </div>
 
-                {agreements.privacyPolicy && agreements.termsOfService && (
-                  <YandexSmartCaptcha onSuccess={setCaptchaToken} />
-                )}
+                {/* Невидимая капча */}
+                <YandexSmartCaptcha ref={captchaRef} onSuccess={setCaptchaToken} />
                 
                 <Button 
                   type="submit" 
