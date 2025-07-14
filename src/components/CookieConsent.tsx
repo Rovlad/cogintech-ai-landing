@@ -31,8 +31,8 @@ const CookieConsent = () => {
           <p className="text-sm text-muted-foreground">
             We use cookies to improve our website performance, analyze traffic, and personalize content. 
             By continuing to use our site, you agree to our{" "}
-            <a href="/privacy-policy" className="text-primary hover:underline">
-              privacy policy
+            <a href="/cookie-policy" className="text-primary hover:underline">
+              cookie policy
             </a>.
           </p>
         </div>
