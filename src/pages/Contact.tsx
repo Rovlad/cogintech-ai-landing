@@ -19,6 +19,10 @@ const Contact = () => {
       ...prev,
       [field]: checked
     }));
+    // Сбрасываем токен капчи если снимаем галку
+    if (!checked) {
+      setCaptchaToken("");
+    }
   };
   
   const isFormValid = agreements.privacyPolicy && agreements.termsOfService && captchaToken;
@@ -150,7 +154,9 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <YandexSmartCaptcha onSuccess={setCaptchaToken} />
+                  {agreements.privacyPolicy && agreements.termsOfService && (
+                    <YandexSmartCaptcha onSuccess={setCaptchaToken} />
+                  )}
                   
                   <Button 
                     type="submit" 
