@@ -63,6 +63,43 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Custom validation with English messages
+    if (!formData.firstName.trim()) {
+      toast({
+        title: "Required Field Missing",
+        description: "Please enter your first name",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.lastName.trim()) {
+      toast({
+        title: "Required Field Missing", 
+        description: "Please enter your last name",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.email.trim()) {
+      toast({
+        title: "Required Field Missing",
+        description: "Please enter your email address", 
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.message.trim()) {
+      toast({
+        title: "Required Field Missing",
+        description: "Please enter your message",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     // Проверяем валидность email перед отправкой
     if (!emailValidation.isValid) {
       toast({
@@ -183,7 +220,6 @@ const Contact = () => {
                         onChange={handleChange}
                         className="w-full p-2 border border-border rounded-md" 
                         placeholder="Enter your first name"
-                        required
                       />
                     </div>
                     <div>
@@ -196,7 +232,6 @@ const Contact = () => {
                         onChange={handleChange} 
                         className="w-full p-2 border border-border rounded-md" 
                         placeholder="Enter your last name"
-                        required
                       />
                     </div>
                   </div>
@@ -226,7 +261,6 @@ const Contact = () => {
                         !emailValidation.isValid ? 'border-red-500' : ''
                       }`}
                       placeholder="Enter your email address"
-                      required
                     />
                     {!emailValidation.isValid && emailValidation.error && (
                       <p className="text-red-500 text-sm mt-1">{emailValidation.error}</p>
@@ -256,7 +290,6 @@ const Contact = () => {
                       rows={4} 
                       className="w-full p-2 border border-border rounded-md" 
                       placeholder="How can we help you?"
-                      required
                     />
                   </div>
                   

@@ -70,6 +70,34 @@ const LeadForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Custom validation with English messages
+    if (!formData.name.trim()) {
+      toast({
+        title: "Required Field Missing",
+        description: "Please enter your name",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.company.trim()) {
+      toast({
+        title: "Required Field Missing",
+        description: "Please enter your company name",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.email.trim()) {
+      toast({
+        title: "Required Field Missing",
+        description: "Please enter your email address",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     // Проверяем валидность email перед отправкой
     if (!emailValidation.isValid) {
       toast({
@@ -189,17 +217,17 @@ const LeadForm = () => {
 
                 <div>
                   <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" name="name" value={formData.name} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="John Smith" />
+                  <Input id="name" name="name" value={formData.name} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="John Smith" />
                 </div>
                 
                 <div>
                   <Label htmlFor="company">Company</Label>
-                  <Input id="company" name="company" value={formData.company} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="Acme Oil & Gas Ltd." />
+                  <Input id="company" name="company" value={formData.company} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="Acme Oil & Gas Ltd." />
                 </div>
                 
                 <div>
                   <Label htmlFor="role">Your Role</Label>
-                  <Select required onValueChange={handleSelectChange} value={formData.role}>
+                  <Select onValueChange={handleSelectChange} value={formData.role}>
                     <SelectTrigger className="bg-white/10 border-white/20 text-white focus:ring-cogintech-teal mt-1 w-full">
                       <SelectValue placeholder="Select your role" />
                     </SelectTrigger>
@@ -221,7 +249,6 @@ const LeadForm = () => {
                     type="email" 
                     value={formData.email} 
                     onChange={handleChange} 
-                    required 
                     className={`bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full ${
                       !emailValidation.isValid ? 'border-red-500' : ''
                     }`}
