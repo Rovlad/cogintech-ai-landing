@@ -35,7 +35,7 @@ export const useSecureForm = ({ formType }: UseSecureFormOptions) => {
     generateCSRFToken();
   }, []);
 
-  const submitForm = async (formData: any, captchaToken: string) => {
+  const submitForm = async (formData: any) => {
     if (!csrfToken) {
       toast({
         title: "Security Error",
@@ -55,8 +55,7 @@ export const useSecureForm = ({ formType }: UseSecureFormOptions) => {
         csrfToken,
         formData,
         honeypot,
-        fillTime,
-        captchaToken
+        fillTime
       };
 
       const { data, error } = await supabase.functions.invoke('submit-form', {

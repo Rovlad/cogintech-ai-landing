@@ -12,7 +12,6 @@ interface FormSubmission {
   formData: any;
   honeypot: string;
   fillTime: number;
-  captchaToken: string;
 }
 
 serve(async (req) => {

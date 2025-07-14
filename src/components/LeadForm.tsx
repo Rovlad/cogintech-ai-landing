@@ -8,7 +8,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { YandexSmartCaptcha, SmartCaptchaRef } from "./SmartCaptcha";
 import { useSecureForm } from "@/hooks/useSecureForm";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 const LeadForm = () => {
@@ -30,8 +29,6 @@ const LeadForm = () => {
     termsOfService: false
   });
   
-  const captchaRef = useRef<SmartCaptchaRef>(null);
-  const [captchaToken, setCaptchaToken] = useState<string>("");
   const [emailValidation, setEmailValidation] = useState<{isValid: boolean, error?: string}>({ isValid: true });
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -61,10 +58,6 @@ const LeadForm = () => {
       ...prev,
       [field]: checked
     }));
-    // Сбрасываем токен капчи если снимаем галку
-    if (!checked) {
-      setCaptchaToken("");
-    }
   };
   
   const handleSubmit = async (e: React.FormEvent) => {
@@ -80,13 +73,7 @@ const LeadForm = () => {
       return;
     }
 
-    // Если токена нет, запускаем капчу
-    if (!captchaToken) {
-      captchaRef.current?.execute();
-      return;
-    }
-
-    const success = await submitForm(formData, captchaToken);
+    const success = await submitForm(formData);
     
     if (success) {
       // Reset form
@@ -104,7 +91,6 @@ const LeadForm = () => {
         privacyPolicy: false,
         termsOfService: false
       });
-      setCaptchaToken("");
       setEmailValidation({ isValid: true });
     }
   };
@@ -284,9 +270,6 @@ const LeadForm = () => {
                   </div>
                 </div>
 
-                {/* Невидимая капча */}
-                <YandexSmartCaptcha ref={captchaRef} onSuccess={setCaptchaToken} />
-                
                 <Button 
                   type="submit" 
                   className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white disabled:opacity-50 disabled:cursor-not-allowed" 

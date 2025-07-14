@@ -1,11 +1,10 @@
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
-import { YandexSmartCaptcha, SmartCaptchaRef } from "@/components/SmartCaptcha";
 import { useSecureForm } from "@/hooks/useSecureForm";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { useToast } from "@/hooks/use-toast";
@@ -29,8 +28,6 @@ const Contact = () => {
     termsOfService: false
   });
   
-  const captchaRef = useRef<SmartCaptchaRef>(null);
-  const [captchaToken, setCaptchaToken] = useState<string>("");
   const [emailValidation, setEmailValidation] = useState<{isValid: boolean, error?: string}>({ isValid: true });
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -54,10 +51,6 @@ const Contact = () => {
       ...prev,
       [field]: checked
     }));
-    // Сбрасываем токен капчи если снимаем галку
-    if (!checked) {
-      setCaptchaToken("");
-    }
   };
   
   const handleSubmit = async (e: React.FormEvent) => {
@@ -73,13 +66,7 @@ const Contact = () => {
       return;
     }
 
-    // Если токена нет, запускаем капчу
-    if (!captchaToken) {
-      captchaRef.current?.execute();
-      return;
-    }
-
-    const success = await submitForm(formData, captchaToken);
+    const success = await submitForm(formData);
     
     if (success) {
       // Reset form
@@ -97,7 +84,6 @@ const Contact = () => {
         privacyPolicy: false,
         termsOfService: false
       });
-      setCaptchaToken("");
       setEmailValidation({ isValid: true });
     }
   };
@@ -300,16 +286,13 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Невидимая капча */}
-                  <YandexSmartCaptcha ref={captchaRef} onSuccess={setCaptchaToken} />
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={isSubmitting || !isFormValid || !emailValidation.isValid || !csrfToken}
-                  >
-                    {isSubmitting ? "Submitting..." : "Submit"}
-                  </Button>
+                   <Button 
+                     type="submit" 
+                     className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                     disabled={isSubmitting || !isFormValid || !emailValidation.isValid || !csrfToken}
+                   >
+                     {isSubmitting ? "Submitting..." : "Submit"}
+                   </Button>
                   
                   {/* CSRF токен (скрытое поле) */}
                   <input type="hidden" name="csrf_token" value={csrfToken} />
