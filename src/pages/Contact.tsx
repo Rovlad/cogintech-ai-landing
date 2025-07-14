@@ -150,7 +150,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <YandexSmartCaptcha onSuccess={setCaptchaToken} />
+                  <YandexSmartCaptcha onSuccess={setCaptchaToken} invisible={true} />
                   
                   <Button 
                     type="submit" 
