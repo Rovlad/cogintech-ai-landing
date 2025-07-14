@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const CookiePolicy = () => {
+  console.log("CookiePolicy component is rendering");
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
