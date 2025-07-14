@@ -7,7 +7,7 @@ interface SmartCaptchaProps {
   invisible?: boolean;
 }
 
-export const YandexSmartCaptcha = ({ onSuccess, sitekey = "ysc1_NGFXF31XAff9jCBHPdUOHgbgW04WktyeCmRQm0Rdda1fd731", lang = "en", invisible = false }: SmartCaptchaProps) => {
+export const YandexSmartCaptcha = ({ onSuccess, sitekey = "ysc1_NGFXF31XAff9jCBHPdUOHgbgW04WktyeCmRQm0Rdda1fd731", lang = "en", invisible = true }: SmartCaptchaProps) => {
   return (
     <div className="flex justify-center my-4">
       <SmartCaptcha
