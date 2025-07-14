@@ -229,7 +229,7 @@ const LeadForm = () => {
                   </div>
                 </div>
 
-                <YandexSmartCaptcha onSuccess={setCaptchaToken} invisible={true} />
+                <YandexSmartCaptcha onSuccess={setCaptchaToken} />
                 
                 <Button 
                   type="submit" 

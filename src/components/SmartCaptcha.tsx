@@ -4,12 +4,11 @@ interface SmartCaptchaProps {
   onSuccess: (token: string) => void;
   sitekey?: string;
   lang?: string;
-  invisible?: boolean;
 }
 
-export const YandexSmartCaptcha = ({ onSuccess, sitekey = "ysc1_NGFXF31XAff9jCBHPdUOHgbgW04WktyeCmRQm0Rdda1fd731", lang = "en", invisible = true }: SmartCaptchaProps) => {
+export const YandexSmartCaptcha = ({ onSuccess, sitekey = "ysc1_NGFXF31XAff9jCBHPdUOHgbgW04WktyeCmRQm0Rdda1fd731", lang = "en" }: SmartCaptchaProps) => {
   return (
-    <div className={`flex justify-center my-4 ${invisible ? 'opacity-0 w-1 h-1 overflow-hidden pointer-events-none' : ''}`}>
+    <div className="flex justify-center my-4">
       <SmartCaptcha
         sitekey={sitekey}
         onSuccess={onSuccess}
