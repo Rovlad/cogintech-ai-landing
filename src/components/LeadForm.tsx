@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
+import { YandexSmartCaptcha } from "./SmartCaptcha";
 const LeadForm = () => {
   const {
     toast
@@ -26,6 +27,7 @@ const LeadForm = () => {
     privacyPolicy: false,
     termsOfService: false
   });
+  const [captchaToken, setCaptchaToken] = useState<string>("");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -50,7 +52,7 @@ const LeadForm = () => {
     }));
   };
   
-  const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
+  const isFormValid = agreements.privacyPolicy && agreements.termsOfService && captchaToken;
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -78,6 +80,7 @@ const LeadForm = () => {
         privacyPolicy: false,
         termsOfService: false
       });
+      setCaptchaToken("");
     }, 1500);
   };
   return <section id="lead-form" className="section bg-cogintech-dark text-white">
@@ -225,6 +228,8 @@ const LeadForm = () => {
                     </label>
                   </div>
                 </div>
+
+                <YandexSmartCaptcha onSuccess={setCaptchaToken} />
                 
                 <Button 
                   type="submit" 

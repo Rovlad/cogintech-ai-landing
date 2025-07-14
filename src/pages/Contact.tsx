@@ -5,12 +5,14 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
+import { YandexSmartCaptcha } from "@/components/SmartCaptcha";
 
 const Contact = () => {
   const [agreements, setAgreements] = useState({
     privacyPolicy: false,
     termsOfService: false
   });
+  const [captchaToken, setCaptchaToken] = useState<string>("");
   
   const handleAgreementChange = (field: 'privacyPolicy' | 'termsOfService') => (checked: boolean) => {
     setAgreements(prev => ({
@@ -19,7 +21,7 @@ const Contact = () => {
     }));
   };
   
-  const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
+  const isFormValid = agreements.privacyPolicy && agreements.termsOfService && captchaToken;
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -147,6 +149,8 @@ const Contact = () => {
                       </label>
                     </div>
                   </div>
+
+                  <YandexSmartCaptcha onSuccess={setCaptchaToken} />
                   
                   <Button 
                     type="submit" 
