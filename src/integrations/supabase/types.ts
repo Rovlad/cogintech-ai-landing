@@ -14,13 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      csrf_tokens: {
+        Row: {
+          created_at: string
+          expires_at: string
+          id: string
+          token: string
+          used: boolean | null
+        }
+        Insert: {
+          created_at?: string
+          expires_at: string
+          id?: string
+          token: string
+          used?: boolean | null
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          id?: string
+          token?: string
+          used?: boolean | null
+        }
+        Relationships: []
+      }
+      form_submissions_log: {
+        Row: {
+          created_at: string
+          form_type: string
+          id: string
+          ip_address: unknown
+          is_suspicious: boolean | null
+          submission_data: Json | null
+          suspicious_reasons: string[] | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          form_type: string
+          id?: string
+          ip_address: unknown
+          is_suspicious?: boolean | null
+          submission_data?: Json | null
+          suspicious_reasons?: string[] | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          form_type?: string
+          id?: string
+          ip_address?: unknown
+          is_suspicious?: boolean | null
+          submission_data?: Json | null
+          suspicious_reasons?: string[] | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cleanup_old_records: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,11 +9,13 @@ import { useToast } from "@/hooks/use-toast";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { YandexSmartCaptcha } from "./SmartCaptcha";
+import { useSecureForm } from "@/hooks/useSecureForm";
+import { useEmailValidation } from "@/hooks/useEmailValidation";
 const LeadForm = () => {
-  const {
-    toast
-  } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  const { validateEmail } = useEmailValidation();
+  const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'lead' });
+  
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -27,16 +29,24 @@ const LeadForm = () => {
     privacyPolicy: false,
     termsOfService: false
   });
+  
   const [captchaToken, setCaptchaToken] = useState<string>("");
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+  const [emailValidation, setEmailValidation] = useState<{isValid: boolean, error?: string}>({ isValid: true });
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
+    // Валидация email в реальном времени
+    if (name === 'email' && value) {
+      const validation = await validateEmail(value);
+      setEmailValidation(validation);
+    } else if (name === 'email' && !value) {
+      setEmailValidation({ isValid: true });
+    }
   };
   const handleSelectChange = (value: string) => {
     setFormData(prev => ({
@@ -57,18 +67,22 @@ const LeadForm = () => {
   };
   
   const isFormValid = agreements.privacyPolicy && agreements.termsOfService && captchaToken;
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    
+    // Проверяем валидность email перед отправкой
+    if (!emailValidation.isValid) {
       toast({
-        title: "Request Submitted Successfully",
-        description: "Our team will contact you within 1 business day."
+        title: "Invalid Email",
+        description: emailValidation.error || "Please enter a valid email address",
+        variant: "destructive"
       });
+      return;
+    }
 
+    const success = await submitForm(formData, captchaToken);
+    
+    if (success) {
       // Reset form
       setFormData({
         name: '',
@@ -85,7 +99,8 @@ const LeadForm = () => {
         termsOfService: false
       });
       setCaptchaToken("");
-    }, 1500);
+      setEmailValidation({ isValid: true });
+    }
   };
   return <section id="lead-form" className="section bg-cogintech-dark text-white">
       <div className="container px-0 sm:px-4 md:px-6">
@@ -150,6 +165,20 @@ const LeadForm = () => {
               <h3 className="text-2xl font-bold mb-6">Request a Free Consultation</h3>
               
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot field - скрытое поле для защиты от ботов */}
+                <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}>
+                  <label htmlFor="website">Website (do not fill this out)</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div>
                   <Label htmlFor="name">Full Name</Label>
                   <Input id="name" name="name" value={formData.name} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="John Smith" />
@@ -178,7 +207,21 @@ const LeadForm = () => {
                 
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="vr@cogintech.com" />
+                  <Input 
+                    id="email" 
+                    name="email" 
+                    type="email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    required 
+                    className={`bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full ${
+                      !emailValidation.isValid ? 'border-red-500' : ''
+                    }`}
+                    placeholder="vr@cogintech.com" 
+                  />
+                  {!emailValidation.isValid && emailValidation.error && (
+                    <p className="text-red-400 text-sm mt-1">{emailValidation.error}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -240,10 +283,13 @@ const LeadForm = () => {
                 <Button 
                   type="submit" 
                   className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white disabled:opacity-50 disabled:cursor-not-allowed" 
-                  disabled={isSubmitting || !isFormValid}
+                  disabled={isSubmitting || !isFormValid || !emailValidation.isValid || !csrfToken}
                 >
                   {isSubmitting ? "Submitting..." : "Submit Request"}
                 </Button>
+                
+                {/* CSRF токен (скрытое поле) */}
+                <input type="hidden" name="csrf_token" value={csrfToken} />
               </form>
             </div>
           </div>

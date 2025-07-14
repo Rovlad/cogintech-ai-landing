@@ -6,13 +6,47 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
 import { YandexSmartCaptcha } from "@/components/SmartCaptcha";
+import { useSecureForm } from "@/hooks/useSecureForm";
+import { useEmailValidation } from "@/hooks/useEmailValidation";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const { validateEmail } = useEmailValidation();
+  const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'contact' });
+  
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  
   const [agreements, setAgreements] = useState({
     privacyPolicy: false,
     termsOfService: false
   });
+  
   const [captchaToken, setCaptchaToken] = useState<string>("");
+  const [emailValidation, setEmailValidation] = useState<{isValid: boolean, error?: string}>({ isValid: true });
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+
+    // Валидация email в реальном времени
+    if (name === 'email' && value) {
+      const validation = await validateEmail(value);
+      setEmailValidation(validation);
+    } else if (name === 'email' && !value) {
+      setEmailValidation({ isValid: true });
+    }
+  };
   
   const handleAgreementChange = (field: 'privacyPolicy' | 'termsOfService') => (checked: boolean) => {
     setAgreements(prev => ({
@@ -22,6 +56,42 @@ const Contact = () => {
     // Сбрасываем токен капчи если снимаем галку
     if (!checked) {
       setCaptchaToken("");
+    }
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Проверяем валидность email перед отправкой
+    if (!emailValidation.isValid) {
+      toast({
+        title: "Invalid Email",
+        description: emailValidation.error || "Please enter a valid email address",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const success = await submitForm(formData, captchaToken);
+    
+    if (success) {
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        company: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+      
+      // Reset agreements
+      setAgreements({
+        privacyPolicy: false,
+        termsOfService: false
+      });
+      setCaptchaToken("");
+      setEmailValidation({ isValid: true });
     }
   };
   
@@ -80,36 +150,107 @@ const Contact = () => {
               
               <div className="bg-card p-8 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                <form className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Honeypot field - скрытое поле для защиты от ботов */}
+                  <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}>
+                    <label htmlFor="contact-website">Website (do not fill this out)</label>
+                    <input
+                      type="text"
+                      id="contact-website"
+                      name="website"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block mb-1 font-medium">First Name</label>
-                      <input type="text" id="firstName" className="w-full p-2 border border-border rounded-md" placeholder="Enter your first name" />
+                      <input 
+                        type="text" 
+                        id="firstName" 
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        className="w-full p-2 border border-border rounded-md" 
+                        placeholder="Enter your first name"
+                        required
+                      />
                     </div>
                     <div>
                       <label htmlFor="lastName" className="block mb-1 font-medium">Last Name</label>
-                      <input type="text" id="lastName" className="w-full p-2 border border-border rounded-md" placeholder="Enter your last name" />
+                      <input 
+                        type="text" 
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange} 
+                        className="w-full p-2 border border-border rounded-md" 
+                        placeholder="Enter your last name"
+                        required
+                      />
                     </div>
                   </div>
                   
                   <div>
                     <label htmlFor="company" className="block mb-1 font-medium">Company</label>
-                    <input type="text" id="company" className="w-full p-2 border border-border rounded-md" placeholder="Enter your company name" />
+                    <input 
+                      type="text" 
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange} 
+                      className="w-full p-2 border border-border rounded-md" 
+                      placeholder="Enter your company name" 
+                    />
                   </div>
                   
                   <div>
                     <label htmlFor="email" className="block mb-1 font-medium">Email</label>
-                    <input type="email" id="email" className="w-full p-2 border border-border rounded-md" placeholder="Enter your email address" />
+                    <input 
+                      type="email" 
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange} 
+                      className={`w-full p-2 border border-border rounded-md ${
+                        !emailValidation.isValid ? 'border-red-500' : ''
+                      }`}
+                      placeholder="Enter your email address"
+                      required
+                    />
+                    {!emailValidation.isValid && emailValidation.error && (
+                      <p className="text-red-500 text-sm mt-1">{emailValidation.error}</p>
+                    )}
                   </div>
                   
                   <div>
                     <label htmlFor="phone" className="block mb-1 font-medium">Phone</label>
-                    <input type="tel" id="phone" className="w-full p-2 border border-border rounded-md" placeholder="Enter your phone number" />
+                    <input 
+                      type="tel" 
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange} 
+                      className="w-full p-2 border border-border rounded-md" 
+                      placeholder="Enter your phone number" 
+                    />
                   </div>
                   
                   <div>
                     <label htmlFor="message" className="block mb-1 font-medium">Message</label>
-                    <textarea id="message" rows={4} className="w-full p-2 border border-border rounded-md" placeholder="How can we help you?"></textarea>
+                    <textarea 
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange} 
+                      rows={4} 
+                      className="w-full p-2 border border-border rounded-md" 
+                      placeholder="How can we help you?"
+                      required
+                    />
                   </div>
                   
                   <div className="space-y-4">
@@ -161,10 +302,13 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={!isFormValid}
+                    disabled={isSubmitting || !isFormValid || !emailValidation.isValid || !csrfToken}
                   >
-                    Submit
+                    {isSubmitting ? "Submitting..." : "Submit"}
                   </Button>
+                  
+                  {/* CSRF токен (скрытое поле) */}
+                  <input type="hidden" name="csrf_token" value={csrfToken} />
                 </form>
               </div>
             </div>
