@@ -13,6 +13,7 @@ export const YandexSmartCaptcha = ({ onSuccess, sitekey = "ysc1_NGFXF31XAff9jCBH
         sitekey={sitekey}
         onSuccess={onSuccess}
         language={lang as "en"}
+        test={true}
       />
     </div>
   );
