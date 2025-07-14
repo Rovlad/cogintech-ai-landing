@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { User } from "lucide-react";
+import { Link } from "react-router-dom";
 const LeadForm = () => {
   const {
     toast
@@ -18,6 +20,11 @@ const LeadForm = () => {
     email: '',
     phone: '',
     comments: ''
+  });
+  
+  const [agreements, setAgreements] = useState({
+    privacyPolicy: false,
+    termsOfService: false
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
@@ -35,6 +42,15 @@ const LeadForm = () => {
       role: value
     }));
   };
+  
+  const handleAgreementChange = (field: 'privacyPolicy' | 'termsOfService') => (checked: boolean) => {
+    setAgreements(prev => ({
+      ...prev,
+      [field]: checked
+    }));
+  };
+  
+  const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -55,6 +71,12 @@ const LeadForm = () => {
         email: '',
         phone: '',
         comments: ''
+      });
+      
+      // Reset agreements
+      setAgreements({
+        privacyPolicy: false,
+        termsOfService: false
       });
     }, 1500);
   };
@@ -162,13 +184,55 @@ const LeadForm = () => {
                   <Textarea id="comments" name="comments" value={formData.comments} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal h-24 mt-1 w-full" placeholder="Tell us about your current inspection analysis process..." />
                 </div>
                 
-                <Button type="submit" className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white" disabled={isSubmitting}>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <Checkbox 
+                      id="privacy-policy"
+                      checked={agreements.privacyPolicy}
+                      onCheckedChange={handleAgreementChange('privacyPolicy')}
+                      className="mt-1"
+                    />
+                    <label htmlFor="privacy-policy" className="text-sm text-white/80 leading-relaxed">
+                      I agree to the{' '}
+                      <Link 
+                        to="/privacy-policy" 
+                        className="text-cogintech-teal hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Checkbox 
+                      id="terms-of-service"
+                      checked={agreements.termsOfService}
+                      onCheckedChange={handleAgreementChange('termsOfService')}
+                      className="mt-1"
+                    />
+                    <label htmlFor="terms-of-service" className="text-sm text-white/80 leading-relaxed">
+                      I agree to the{' '}
+                      <Link 
+                        to="/terms-of-service" 
+                        className="text-cogintech-teal hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Terms of Service
+                      </Link>
+                    </label>
+                  </div>
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white disabled:opacity-50 disabled:cursor-not-allowed" 
+                  disabled={isSubmitting || !isFormValid}
+                >
                   {isSubmitting ? "Submitting..." : "Submit Request"}
                 </Button>
-                
-                <div className="text-xs text-white/60 text-center mt-4">
-                  By submitting this form, you agree to our privacy policy and terms of service.
-                </div>
               </form>
             </div>
           </div>

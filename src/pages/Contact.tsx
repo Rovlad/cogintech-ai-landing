@@ -1,9 +1,26 @@
 
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
+  const [agreements, setAgreements] = useState({
+    privacyPolicy: false,
+    termsOfService: false
+  });
+  
+  const handleAgreementChange = (field: 'privacyPolicy' | 'termsOfService') => (checked: boolean) => {
+    setAgreements(prev => ({
+      ...prev,
+      [field]: checked
+    }));
+  };
+  
+  const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -89,7 +106,53 @@ const Contact = () => {
                     <textarea id="message" rows={4} className="w-full p-2 border border-border rounded-md" placeholder="How can we help you?"></textarea>
                   </div>
                   
-                  <Button type="submit" className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90">
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <Checkbox 
+                        id="contact-privacy-policy"
+                        checked={agreements.privacyPolicy}
+                        onCheckedChange={handleAgreementChange('privacyPolicy')}
+                        className="mt-1"
+                      />
+                      <label htmlFor="contact-privacy-policy" className="text-sm leading-relaxed">
+                        I agree to the{' '}
+                        <Link 
+                          to="/privacy-policy" 
+                          className="text-cogintech-blue hover:underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Privacy Policy
+                        </Link>
+                      </label>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Checkbox 
+                        id="contact-terms-of-service"
+                        checked={agreements.termsOfService}
+                        onCheckedChange={handleAgreementChange('termsOfService')}
+                        className="mt-1"
+                      />
+                      <label htmlFor="contact-terms-of-service" className="text-sm leading-relaxed">
+                        I agree to the{' '}
+                        <Link 
+                          to="/terms-of-service" 
+                          className="text-cogintech-blue hover:underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Terms of Service
+                        </Link>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={!isFormValid}
+                  >
                     Submit
                   </Button>
                 </form>
