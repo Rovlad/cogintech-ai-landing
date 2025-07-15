@@ -95,7 +95,7 @@ async function createBitrix24Contact(formData: any) {
         SOURCE_ID: 'WEB',
         SOURCE_DESCRIPTION: 'Website form submission',
         STATUS_ID: 'NEW',
-        REQUEST_MESSAGE: formData.comments || formData.message || '',
+        COMMENTS: formData.comments || formData.message || '',
         OPPORTUNITY: 0
       }
     };
