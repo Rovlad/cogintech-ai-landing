@@ -6,12 +6,12 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// HubSpot API integration
+// HubSpot API integration (using Private Apps)
 async function createHubSpotContact(formData: any) {
-  const hubspotApiKey = Deno.env.get('HUBSPOT_API_KEY');
+  const hubspotAccessToken = Deno.env.get('HUBSPOT_ACCESS_TOKEN');
   
-  if (!hubspotApiKey) {
-    console.log('HubSpot API key not configured, skipping HubSpot integration');
+  if (!hubspotAccessToken) {
+    console.log('HubSpot Access Token not configured, skipping HubSpot integration');
     return null;
   }
 
@@ -34,7 +34,7 @@ async function createHubSpotContact(formData: any) {
     const contactResponse = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${hubspotApiKey}`,
+        'Authorization': `Bearer ${hubspotAccessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(contactData),
@@ -44,7 +44,7 @@ async function createHubSpotContact(formData: any) {
       // If contact exists, try to update it
       if (contactResponse.status === 409) {
         console.log('Contact already exists in HubSpot, attempting to update');
-        return await updateHubSpotContact(formData.email, contactData, hubspotApiKey);
+        return await updateHubSpotContact(formData.email, contactData, hubspotAccessToken);
       }
       throw new Error(`HubSpot contact creation failed: ${contactResponse.status}`);
     }
@@ -73,7 +73,7 @@ async function createHubSpotContact(formData: any) {
     const dealResponse = await fetch('https://api.hubapi.com/crm/v3/objects/deals', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${hubspotApiKey}`,
+        'Authorization': `Bearer ${hubspotAccessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(dealData),
@@ -94,13 +94,13 @@ async function createHubSpotContact(formData: any) {
   }
 }
 
-async function updateHubSpotContact(email: string, contactData: any, hubspotApiKey: string) {
+async function updateHubSpotContact(email: string, contactData: any, hubspotAccessToken: string) {
   try {
     // Search for contact by email
     const searchResponse = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/search`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${hubspotApiKey}`,
+        'Authorization': `Bearer ${hubspotAccessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -123,7 +123,7 @@ async function updateHubSpotContact(email: string, contactData: any, hubspotApiK
         const updateResponse = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`, {
           method: 'PATCH',
           headers: {
-            'Authorization': `Bearer ${hubspotApiKey}`,
+            'Authorization': `Bearer ${hubspotAccessToken}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(contactData),
