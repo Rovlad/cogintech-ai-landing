@@ -36,7 +36,10 @@ export const useSecureForm = ({ formType }: UseSecureFormOptions) => {
   }, []);
 
   const submitForm = async (formData: any) => {
+    console.log('🚀 Starting form submission with data:', formData);
+    
     if (!csrfToken) {
+      console.error('❌ No CSRF token available');
       toast({
         title: "Security Error",
         description: "Security token not available. Please refresh the page.",
@@ -45,6 +48,7 @@ export const useSecureForm = ({ formType }: UseSecureFormOptions) => {
       return false;
     }
 
+    console.log('✅ CSRF token available:', csrfToken);
     setIsSubmitting(true);
 
     try {
@@ -58,9 +62,13 @@ export const useSecureForm = ({ formType }: UseSecureFormOptions) => {
         fillTime
       };
 
+      console.log('📤 Invoking submit-form function with:', submission);
+
       const { data, error } = await supabase.functions.invoke('submit-form', {
         body: submission
       });
+
+      console.log('📥 Response from submit-form:', { data, error });
 
       if (error) {
         throw error;
