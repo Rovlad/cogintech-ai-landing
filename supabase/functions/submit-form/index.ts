@@ -6,6 +6,142 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// HubSpot API integration
+async function createHubSpotContact(formData: any) {
+  const hubspotApiKey = Deno.env.get('HUBSPOT_API_KEY');
+  
+  if (!hubspotApiKey) {
+    console.log('HubSpot API key not configured, skipping HubSpot integration');
+    return null;
+  }
+
+  try {
+    const contactData = {
+      properties: {
+        email: formData.email,
+        firstname: formData.name?.split(' ')[0] || formData.name,
+        lastname: formData.name?.split(' ').slice(1).join(' ') || '',
+        company: formData.company || '',
+        jobtitle: formData.role || '',
+        phone: formData.phone || '',
+        hs_lead_status: 'NEW',
+        lifecyclestage: 'lead',
+        lead_source: 'Website Form'
+      }
+    };
+
+    // Create or update contact
+    const contactResponse = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${hubspotApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contactData),
+    });
+
+    if (!contactResponse.ok) {
+      // If contact exists, try to update it
+      if (contactResponse.status === 409) {
+        console.log('Contact already exists in HubSpot, attempting to update');
+        return await updateHubSpotContact(formData.email, contactData, hubspotApiKey);
+      }
+      throw new Error(`HubSpot contact creation failed: ${contactResponse.status}`);
+    }
+
+    const contact = await contactResponse.json();
+    console.log('HubSpot contact created:', contact.id);
+
+    // Create a deal for this lead
+    const dealData = {
+      properties: {
+        dealname: `Website Lead - ${formData.name} (${formData.company || 'No Company'})`,
+        dealstage: 'appointmentscheduled',
+        pipeline: 'default',
+        amount: '0',
+        closedate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+        deal_source: 'Website Form'
+      },
+      associations: [
+        {
+          to: { id: contact.id },
+          types: [{ associationCategory: 'HUBSPOT_DEFINED', associationTypeId: 3 }]
+        }
+      ]
+    };
+
+    const dealResponse = await fetch('https://api.hubapi.com/crm/v3/objects/deals', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${hubspotApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dealData),
+    });
+
+    if (dealResponse.ok) {
+      const deal = await dealResponse.json();
+      console.log('HubSpot deal created:', deal.id);
+      return { contact, deal };
+    } else {
+      console.error('HubSpot deal creation failed:', await dealResponse.text());
+      return { contact, deal: null };
+    }
+
+  } catch (error) {
+    console.error('HubSpot integration error:', error);
+    return null;
+  }
+}
+
+async function updateHubSpotContact(email: string, contactData: any, hubspotApiKey: string) {
+  try {
+    // Search for contact by email
+    const searchResponse = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/search`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${hubspotApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        filterGroups: [{
+          filters: [{
+            propertyName: 'email',
+            operator: 'EQ',
+            value: email
+          }]
+        }]
+      }),
+    });
+
+    if (searchResponse.ok) {
+      const searchResult = await searchResponse.json();
+      if (searchResult.results && searchResult.results.length > 0) {
+        const contactId = searchResult.results[0].id;
+        
+        // Update the contact
+        const updateResponse = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`, {
+          method: 'PATCH',
+          headers: {
+            'Authorization': `Bearer ${hubspotApiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(contactData),
+        });
+
+        if (updateResponse.ok) {
+          const updatedContact = await updateResponse.json();
+          console.log('HubSpot contact updated:', contactId);
+          return { contact: updatedContact, deal: null };
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error updating HubSpot contact:', error);
+  }
+  return null;
+}
+
 interface FormSubmission {
   formType: 'contact' | 'lead';
   csrfToken: string;
@@ -164,13 +300,22 @@ serve(async (req) => {
       );
     }
 
-    // Здесь можно добавить реальную отправку email или сохранение в CRM
+    // Интеграция с HubSpot CRM
+    const hubspotResult = await createHubSpotContact(submission.formData);
+    
     console.log('Valid form submission processed:', submission.formType);
+    if (hubspotResult) {
+      console.log('HubSpot integration successful:', {
+        contactId: hubspotResult.contact?.id,
+        dealId: hubspotResult.deal?.id
+      });
+    }
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: 'Form submitted successfully' 
+        message: 'Form submitted successfully',
+        hubspotIntegrated: !!hubspotResult
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
