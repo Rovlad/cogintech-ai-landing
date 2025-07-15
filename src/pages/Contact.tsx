@@ -15,8 +15,7 @@ const Contact = () => {
   const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'contact' });
   
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     company: '',
     email: '',
     phone: '',
@@ -71,8 +70,7 @@ const Contact = () => {
     if (success) {
       // Reset form
       setFormData({
-        firstName: '',
-        lastName: '',
+        name: '',
         company: '',
         email: '',
         phone: '',
@@ -158,32 +156,18 @@ const Contact = () => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="firstName" className="block mb-1 font-medium">First Name</label>
-                      <input 
-                        type="text" 
-                        id="firstName" 
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-border rounded-md" 
-                        placeholder="Enter your first name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="lastName" className="block mb-1 font-medium">Last Name</label>
-                      <input 
-                        type="text" 
-                        id="lastName"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange} 
-                        className="w-full p-2 border border-border rounded-md" 
-                        placeholder="Enter your last name"
-                      />
-                    </div>
+                  <div>
+                    <label htmlFor="name" className="block mb-1 font-medium">Full Name</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full p-2 border border-border rounded-md" 
+                      placeholder="Enter your full name"
+                      required
+                    />
                   </div>
                   
                   <div>
