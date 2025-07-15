@@ -23,10 +23,7 @@ async function createHubSpotContact(formData: any) {
         lastname: formData.name?.split(' ').slice(1).join(' ') || '',
         company: formData.company || '',
         jobtitle: formData.role || '',
-        phone: formData.phone || '',
-        hs_lead_status: 'NEW',
-        lifecyclestage: 'lead',
-        lead_source: 'Website Form'
+        phone: formData.phone || ''
       }
     };
 
@@ -66,8 +63,7 @@ async function createHubSpotContact(formData: any) {
         dealstage: 'appointmentscheduled',
         pipeline: 'default',
         amount: '0',
-        closedate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        deal_source: 'Website Form'
+        closedate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
       },
       associations: [
         {
