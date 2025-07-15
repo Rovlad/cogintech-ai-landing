@@ -30,6 +30,8 @@ async function createHubSpotContact(formData: any) {
       }
     };
 
+    console.log('Creating HubSpot contact with data:', JSON.stringify(contactData, null, 2));
+
     // Create or update contact
     const contactResponse = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
       method: 'POST',
@@ -40,13 +42,18 @@ async function createHubSpotContact(formData: any) {
       body: JSON.stringify(contactData),
     });
 
+    console.log('HubSpot contact creation response status:', contactResponse.status);
+
     if (!contactResponse.ok) {
+      const errorText = await contactResponse.text();
+      console.error('HubSpot contact creation error response:', errorText);
+      
       // If contact exists, try to update it
       if (contactResponse.status === 409) {
         console.log('Contact already exists in HubSpot, attempting to update');
         return await updateHubSpotContact(formData.email, contactData, hubspotAccessToken);
       }
-      throw new Error(`HubSpot contact creation failed: ${contactResponse.status}`);
+      throw new Error(`HubSpot contact creation failed: ${contactResponse.status} - ${errorText}`);
     }
 
     const contact = await contactResponse.json();
@@ -162,9 +169,9 @@ serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    const clientIP = req.headers.get('x-forwarded-for') || 
-                    req.headers.get('x-real-ip') || 
-                    'unknown';
+    const clientIP = (req.headers.get('x-forwarded-for') || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown').split(',')[0].trim(); // Берем только первый IP
     const userAgent = req.headers.get('user-agent') || '';
 
     const submission: FormSubmission = await req.json();
