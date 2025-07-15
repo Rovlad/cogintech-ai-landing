@@ -1,16 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { User } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useSecureForm } from "@/hooks/useSecureForm";
+import { useEmailValidation } from "@/hooks/useEmailValidation";
 const LeadForm = () => {
-  const {
-    toast
-  } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  const { validateEmail } = useEmailValidation();
+  const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'lead' });
+  
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -19,15 +23,28 @@ const LeadForm = () => {
     phone: '',
     comments: ''
   });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+  
+  const [agreements, setAgreements] = useState({
+    privacyPolicy: false,
+    termsOfService: false
+  });
+  
+  const [emailValidation, setEmailValidation] = useState<{isValid: boolean, error?: string}>({ isValid: true });
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
+    // Валидация email в реальном времени
+    if (name === 'email' && value) {
+      const validation = await validateEmail(value);
+      setEmailValidation(validation);
+    } else if (name === 'email' && !value) {
+      setEmailValidation({ isValid: true });
+    }
   };
   const handleSelectChange = (value: string) => {
     setFormData(prev => ({
@@ -35,18 +52,30 @@ const LeadForm = () => {
       role: value
     }));
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  
+  const handleAgreementChange = (field: 'privacyPolicy' | 'termsOfService') => (checked: boolean) => {
+    setAgreements(prev => ({
+      ...prev,
+      [field]: checked
+    }));
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    
+    // Проверяем валидность email перед отправкой
+    if (!emailValidation.isValid) {
       toast({
-        title: "Request Submitted Successfully",
-        description: "Our team will contact you within 1 business day."
+        title: "Invalid Email",
+        description: emailValidation.error || "Please enter a valid email address",
+        variant: "destructive"
       });
+      return;
+    }
 
+    const success = await submitForm(formData);
+    
+    if (success) {
       // Reset form
       setFormData({
         name: '',
@@ -56,8 +85,17 @@ const LeadForm = () => {
         phone: '',
         comments: ''
       });
-    }, 1500);
+      
+      // Reset agreements
+      setAgreements({
+        privacyPolicy: false,
+        termsOfService: false
+      });
+      setEmailValidation({ isValid: true });
+    }
   };
+  
+  const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
   return <section id="lead-form" className="section bg-cogintech-dark text-white">
       <div className="container px-0 sm:px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
@@ -121,6 +159,20 @@ const LeadForm = () => {
               <h3 className="text-2xl font-bold mb-6">Request a Free Consultation</h3>
               
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot field - скрытое поле для защиты от ботов */}
+                <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}>
+                  <label htmlFor="website">Website (do not fill this out)</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div>
                   <Label htmlFor="name">Full Name</Label>
                   <Input id="name" name="name" value={formData.name} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="John Smith" />
@@ -128,12 +180,12 @@ const LeadForm = () => {
                 
                 <div>
                   <Label htmlFor="company">Company</Label>
-                  <Input id="company" name="company" value={formData.company} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="Acme Oil & Gas Ltd." />
+                  <Input id="company" name="company" value={formData.company} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="Acme Oil & Gas Ltd." />
                 </div>
                 
                 <div>
                   <Label htmlFor="role">Your Role</Label>
-                  <Select required onValueChange={handleSelectChange} value={formData.role}>
+                  <Select onValueChange={handleSelectChange} value={formData.role}>
                     <SelectTrigger className="bg-white/10 border-white/20 text-white focus:ring-cogintech-teal mt-1 w-full">
                       <SelectValue placeholder="Select your role" />
                     </SelectTrigger>
@@ -149,7 +201,21 @@ const LeadForm = () => {
                 
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full" placeholder="vr@cogintech.com" />
+                  <Input 
+                    id="email" 
+                    name="email" 
+                    type="email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    required
+                    className={`bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal mt-1 w-full ${
+                      !emailValidation.isValid ? 'border-red-500' : ''
+                    }`}
+                    placeholder="vr@cogintech.com" 
+                  />
+                  {!emailValidation.isValid && emailValidation.error && (
+                    <p className="text-red-400 text-sm mt-1">{emailValidation.error}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -162,13 +228,58 @@ const LeadForm = () => {
                   <Textarea id="comments" name="comments" value={formData.comments} onChange={handleChange} className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal h-24 mt-1 w-full" placeholder="Tell us about your current inspection analysis process..." />
                 </div>
                 
-                <Button type="submit" className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white" disabled={isSubmitting}>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <Checkbox 
+                      id="privacy-policy"
+                      checked={agreements.privacyPolicy}
+                      onCheckedChange={handleAgreementChange('privacyPolicy')}
+                      className="mt-1"
+                    />
+                    <label htmlFor="privacy-policy" className="text-sm text-white/80 leading-relaxed">
+                      I agree to the{' '}
+                      <Link 
+                        to="/privacy-policy" 
+                        className="text-cogintech-teal hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Checkbox 
+                      id="terms-of-service"
+                      checked={agreements.termsOfService}
+                      onCheckedChange={handleAgreementChange('termsOfService')}
+                      className="mt-1"
+                    />
+                    <label htmlFor="terms-of-service" className="text-sm text-white/80 leading-relaxed">
+                      I agree to the{' '}
+                      <Link 
+                        to="/terms-of-service" 
+                        className="text-cogintech-teal hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Terms of Service
+                      </Link>
+                    </label>
+                  </div>
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white disabled:opacity-50 disabled:cursor-not-allowed" 
+                  disabled={isSubmitting || !isFormValid || !emailValidation.isValid || !csrfToken}
+                >
                   {isSubmitting ? "Submitting..." : "Submit Request"}
                 </Button>
                 
-                <div className="text-xs text-white/60 text-center mt-4">
-                  By submitting this form, you agree to our privacy policy and terms of service.
-                </div>
+                {/* CSRF токен (скрытое поле) */}
+                <input type="hidden" name="csrf_token" value={csrfToken} />
               </form>
             </div>
           </div>

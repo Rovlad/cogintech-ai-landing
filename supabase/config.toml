@@ -1,0 +1,7 @@
+project_id = "slepitlcsczbnecvnhgu"
+
+[functions.generate-csrf-token]
+verify_jwt = false
+
+[functions.submit-form]
+verify_jwt = false

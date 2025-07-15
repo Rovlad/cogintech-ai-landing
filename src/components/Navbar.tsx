@@ -17,7 +17,7 @@ const Navbar = () => {
   
   // Определяем, находимся ли мы на страницах Company или Resources
   const companyPages = ['/about-us', '/our-team', '/careers', '/news', '/contact'];
-  const resourcesPages = ['/case-studies', '/technology', '/blog', '/privacy-policy', '/terms-of-service'];
+  const resourcesPages = ['/case-studies', '/technology', '/blog', '/privacy-policy', '/terms-of-service', '/cookie-policy'];
   
   const isCompanyPage = companyPages.includes(location.pathname);
   const isResourcesPage = resourcesPages.includes(location.pathname);
@@ -107,6 +107,9 @@ const Navbar = () => {
                   <DropdownMenuItem asChild>
                     <Link to="/terms-of-service" className="cursor-pointer text-base">Terms of Service</Link>
                   </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/cookie-policy" className="cursor-pointer text-base">Cookie Policy</Link>
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
@@ -139,6 +142,9 @@ const Navbar = () => {
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link to="/terms-of-service" className="cursor-pointer text-base">Terms of Service</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/cookie-policy" className="cursor-pointer text-base">Cookie Policy</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -317,6 +323,13 @@ const Navbar = () => {
                   >
                     Terms of Service
                   </Link>
+                  <Link 
+                    to="/cookie-policy" 
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Cookie Policy
+                  </Link>
                 </div>
               </>
             ) : isCompanyPage ? (
@@ -402,6 +415,13 @@ const Navbar = () => {
                   >
                     Terms of Service
                   </Link>
+                  <Link 
+                    to="/cookie-policy" 
+                    className="block py-1 pl-3 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Cookie Policy
+                  </Link>
                 </div>
               </>
             ) : isResourcesPage ? (
@@ -447,6 +467,13 @@ const Navbar = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Terms of Service
+                </Link>
+                <Link 
+                  to="/cookie-policy" 
+                  className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Cookie Policy
                 </Link>
                 
                 {/* Company Section in Mobile */}
