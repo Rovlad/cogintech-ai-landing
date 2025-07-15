@@ -6,143 +6,85 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// HubSpot API integration (using Private Apps)
-async function createHubSpotContact(formData: any) {
-  const hubspotAccessToken = Deno.env.get('HUBSPOT_ACCESS_TOKEN');
+// Bitrix24 CRM integration
+async function createBitrix24Contact(formData: any) {
+  const bitrix24WebhookUrl = Deno.env.get('BITRIX24_WEBHOOK_URL');
   
-  if (!hubspotAccessToken) {
-    console.log('HubSpot Access Token not configured, skipping HubSpot integration');
+  if (!bitrix24WebhookUrl) {
+    console.log('Bitrix24 Webhook URL not configured, skipping Bitrix24 integration');
     return null;
   }
 
   try {
+    // Create contact in Bitrix24
     const contactData = {
-      properties: {
-        email: formData.email,
-        firstname: formData.name?.split(' ')[0] || formData.name,
-        lastname: formData.name?.split(' ').slice(1).join(' ') || '',
-        company: formData.company || '',
-        jobtitle: formData.role || '',
-        phone: formData.phone || ''
+      fields: {
+        NAME: formData.name?.split(' ')[0] || formData.name,
+        LAST_NAME: formData.name?.split(' ').slice(1).join(' ') || '',
+        EMAIL: [{ VALUE: formData.email, VALUE_TYPE: 'WORK' }],
+        PHONE: formData.phone ? [{ VALUE: formData.phone, VALUE_TYPE: 'WORK' }] : [],
+        COMPANY_TITLE: formData.company || '',
+        POST: formData.role || '',
+        SOURCE_ID: 'WEB',
+        SOURCE_DESCRIPTION: 'Website form submission'
       }
     };
 
-    console.log('Creating HubSpot contact with data:', JSON.stringify(contactData, null, 2));
+    console.log('Creating Bitrix24 contact with data:', JSON.stringify(contactData, null, 2));
 
-    // Create or update contact
-    const contactResponse = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+    const contactResponse = await fetch(`${bitrix24WebhookUrl}/crm.contact.add.json`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${hubspotAccessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(contactData),
     });
 
-    console.log('HubSpot contact creation response status:', contactResponse.status);
+    console.log('Bitrix24 contact creation response status:', contactResponse.status);
 
     if (!contactResponse.ok) {
       const errorText = await contactResponse.text();
-      console.error('HubSpot contact creation error response:', errorText);
-      
-      // If contact exists, try to update it
-      if (contactResponse.status === 409) {
-        console.log('Contact already exists in HubSpot, attempting to update');
-        return await updateHubSpotContact(formData.email, contactData, hubspotAccessToken);
-      }
-      throw new Error(`HubSpot contact creation failed: ${contactResponse.status} - ${errorText}`);
+      console.error('Bitrix24 contact creation error response:', errorText);
+      throw new Error(`Bitrix24 contact creation failed: ${contactResponse.status} - ${errorText}`);
     }
 
-    const contact = await contactResponse.json();
-    console.log('HubSpot contact created:', contact.id);
+    const contactResult = await contactResponse.json();
+    console.log('Bitrix24 contact created:', contactResult.result);
 
-    // Create a deal for this lead
-    const dealData = {
-      properties: {
-        dealname: `Website Lead - ${formData.name} (${formData.company || 'No Company'})`,
-        dealstage: 'appointmentscheduled',
-        pipeline: 'default',
-        amount: '0',
-        closedate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-      },
-      associations: [
-        {
-          to: { id: contact.id },
-          types: [{ associationCategory: 'HUBSPOT_DEFINED', associationTypeId: 3 }]
-        }
-      ]
+    // Create a lead/deal for this contact
+    const leadData = {
+      fields: {
+        TITLE: `Website Lead - ${formData.name} (${formData.company || 'No Company'})`,
+        CONTACT_ID: contactResult.result,
+        SOURCE_ID: 'WEB',
+        SOURCE_DESCRIPTION: 'Website form submission',
+        STATUS_ID: 'NEW',
+        COMMENTS: formData.comments || '',
+        OPPORTUNITY: 0
+      }
     };
 
-    const dealResponse = await fetch('https://api.hubapi.com/crm/v3/objects/deals', {
+    const leadResponse = await fetch(`${bitrix24WebhookUrl}/crm.lead.add.json`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${hubspotAccessToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(dealData),
+      body: JSON.stringify(leadData),
     });
 
-    if (dealResponse.ok) {
-      const deal = await dealResponse.json();
-      console.log('HubSpot deal created:', deal.id);
-      return { contact, deal };
+    if (leadResponse.ok) {
+      const leadResult = await leadResponse.json();
+      console.log('Bitrix24 lead created:', leadResult.result);
+      return { contact: contactResult.result, lead: leadResult.result };
     } else {
-      console.error('HubSpot deal creation failed:', await dealResponse.text());
-      return { contact, deal: null };
+      console.error('Bitrix24 lead creation failed:', await leadResponse.text());
+      return { contact: contactResult.result, lead: null };
     }
 
   } catch (error) {
-    console.error('HubSpot integration error:', error);
+    console.error('Bitrix24 integration error:', error);
     return null;
   }
-}
-
-async function updateHubSpotContact(email: string, contactData: any, hubspotAccessToken: string) {
-  try {
-    // Search for contact by email
-    const searchResponse = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/search`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${hubspotAccessToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        filterGroups: [{
-          filters: [{
-            propertyName: 'email',
-            operator: 'EQ',
-            value: email
-          }]
-        }]
-      }),
-    });
-
-    if (searchResponse.ok) {
-      const searchResult = await searchResponse.json();
-      if (searchResult.results && searchResult.results.length > 0) {
-        const contactId = searchResult.results[0].id;
-        
-        // Update the contact
-        const updateResponse = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`, {
-          method: 'PATCH',
-          headers: {
-            'Authorization': `Bearer ${hubspotAccessToken}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(contactData),
-        });
-
-        if (updateResponse.ok) {
-          const updatedContact = await updateResponse.json();
-          console.log('HubSpot contact updated:', contactId);
-          return { contact: updatedContact, deal: null };
-        }
-      }
-    }
-  } catch (error) {
-    console.error('Error updating HubSpot contact:', error);
-  }
-  return null;
 }
 
 interface FormSubmission {
@@ -303,14 +245,14 @@ serve(async (req) => {
       );
     }
 
-    // Интеграция с HubSpot CRM
-    const hubspotResult = await createHubSpotContact(submission.formData);
+    // Интеграция с Bitrix24 CRM
+    const bitrix24Result = await createBitrix24Contact(submission.formData);
     
     console.log('Valid form submission processed:', submission.formType);
-    if (hubspotResult) {
-      console.log('HubSpot integration successful:', {
-        contactId: hubspotResult.contact?.id,
-        dealId: hubspotResult.deal?.id
+    if (bitrix24Result) {
+      console.log('Bitrix24 integration successful:', {
+        contactId: bitrix24Result.contact,
+        leadId: bitrix24Result.lead
       });
     }
 
@@ -318,7 +260,7 @@ serve(async (req) => {
       JSON.stringify({ 
         success: true, 
         message: 'Form submitted successfully',
-        hubspotIntegrated: !!hubspotResult
+        bitrix24Integrated: !!bitrix24Result
       }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
