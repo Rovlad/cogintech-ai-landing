@@ -245,7 +245,7 @@ serve(async (req) => {
       );
     }
 
-    // Интеграция с Bitrix24 CRM
+    // Bitrix24 CRM integration
     const bitrix24Result = await createBitrix24Contact(submission.formData);
     
     console.log('Valid form submission processed:', submission.formType);
