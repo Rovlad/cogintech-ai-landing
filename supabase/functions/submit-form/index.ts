@@ -16,10 +16,11 @@ async function createBitrix24Contact(formData: any) {
   }
 
   try {
-    // Create contact in Bitrix24
+    // Create contact in Bitrix24 using proper field mapping
     const contactData = {
-      fields: {
-        NAME: formData.name?.split(' ')[0] || formData.name,
+      FIELDS: {
+        TITLE: `Новый лид - ${formData.name || 'Без имени'}`,
+        NAME: formData.name?.split(' ')[0] || formData.name || '',
         LAST_NAME: formData.name?.split(' ').slice(1).join(' ') || '',
         EMAIL: [{ VALUE: formData.email, VALUE_TYPE: 'WORK' }],
         PHONE: formData.phone ? [{ VALUE: formData.phone, VALUE_TYPE: 'WORK' }] : [],
@@ -27,7 +28,9 @@ async function createBitrix24Contact(formData: any) {
         POST: formData.role || '',
         SOURCE_ID: 'WEB',
         SOURCE_DESCRIPTION: 'Website form submission'
-      }
+      },
+      REQUEST_MESSAGE: formData.comments || formData.message || '',
+      REQUEST_FORM: 'Website Contact Form'
     };
 
     console.log('Creating Bitrix24 contact with data:', JSON.stringify(contactData, null, 2));
