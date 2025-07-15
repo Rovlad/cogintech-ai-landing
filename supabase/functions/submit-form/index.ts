@@ -16,6 +16,38 @@ async function createBitrix24Contact(formData: any) {
   }
 
   try {
+    let companyId = null;
+    
+    // Create company if provided
+    if (formData.company && formData.company.trim() !== '') {
+      const companyData = {
+        fields: {
+          TITLE: formData.company,
+          COMPANY_TYPE: 'CUSTOMER',
+          SOURCE_ID: 'WEB',
+          SOURCE_DESCRIPTION: 'Website form submission'
+        }
+      };
+
+      console.log('Creating Bitrix24 company with data:', JSON.stringify(companyData, null, 2));
+
+      const companyResponse = await fetch(`${bitrix24WebhookUrl}/crm.company.add.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(companyData),
+      });
+
+      if (companyResponse.ok) {
+        const companyResult = await companyResponse.json();
+        companyId = companyResult.result;
+        console.log('Bitrix24 company created:', companyId);
+      } else {
+        console.error('Bitrix24 company creation failed:', await companyResponse.text());
+      }
+    }
+
     // Create contact in Bitrix24 using proper field mapping
     const contactData = {
       FIELDS: {
@@ -24,7 +56,7 @@ async function createBitrix24Contact(formData: any) {
         LAST_NAME: formData.name?.split(' ').slice(1).join(' ') || '',
         EMAIL: [{ VALUE: formData.email, VALUE_TYPE: 'WORK' }],
         PHONE: formData.phone ? [{ VALUE: formData.phone, VALUE_TYPE: 'WORK' }] : [],
-        COMPANY_TITLE: formData.company || '',
+        COMPANY_ID: companyId || undefined,
         POST: formData.role || '',
         SOURCE_ID: 'WEB',
         SOURCE_DESCRIPTION: 'Website form submission'
@@ -59,10 +91,11 @@ async function createBitrix24Contact(formData: any) {
       fields: {
         TITLE: `Website Lead - ${formData.name} (${formData.company || 'No Company'})`,
         CONTACT_ID: contactResult.result,
+        COMPANY_ID: companyId || undefined,
         SOURCE_ID: 'WEB',
         SOURCE_DESCRIPTION: 'Website form submission',
         STATUS_ID: 'NEW',
-        COMMENTS: formData.comments || '',
+        COMMENTS: formData.comments || formData.message || '',
         OPPORTUNITY: 0
       }
     };
@@ -78,10 +111,10 @@ async function createBitrix24Contact(formData: any) {
     if (leadResponse.ok) {
       const leadResult = await leadResponse.json();
       console.log('Bitrix24 lead created:', leadResult.result);
-      return { contact: contactResult.result, lead: leadResult.result };
+      return { contact: contactResult.result, lead: leadResult.result, company: companyId };
     } else {
       console.error('Bitrix24 lead creation failed:', await leadResponse.text());
-      return { contact: contactResult.result, lead: null };
+      return { contact: contactResult.result, lead: null, company: companyId };
     }
 
   } catch (error) {
