@@ -28,14 +28,14 @@ const Navbar = () => {
     }
   };
 
-  const handleRequestConsultation = () => {
+  const handleTryFree = () => {
     if (isHomePage) {
-      document.getElementById('lead-form')?.scrollIntoView({
+      document.getElementById('pricing')?.scrollIntoView({
         behavior: 'smooth'
       });
     } else {
-      // Navigate to home page and then scroll to form
-      window.location.href = '/#lead-form';
+      // Navigate to home page and then scroll to pricing
+      window.location.href = '/#pricing';
     }
   };
 
@@ -194,9 +194,9 @@ const Navbar = () => {
           )}
           <Button 
             className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-base px-4 py-2"
-            onClick={handleRequestConsultation}
+            onClick={handleTryFree}
           >
-            Request Consultation
+            Try for free
           </Button>
         </div>
 
@@ -566,10 +566,10 @@ const Navbar = () => {
               className="bg-cogintech-orange hover:bg-cogintech-orange/90 w-full text-base mt-3"
               onClick={() => {
                 setIsMenuOpen(false);
-                handleRequestConsultation();
+                handleTryFree();
               }}
             >
-              Request Consultation
+              Try for free
             </Button>
           </div>
         </div>
