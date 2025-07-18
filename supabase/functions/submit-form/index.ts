@@ -33,6 +33,12 @@ async function createBitrix24Contact(formData: any, formType: string) {
             sourceDescription: 'Website demo booking form',
             formName: 'Demo Booking Form'
           };
+        case 'sandbox':
+          return {
+            sourceId: 'WEBSITE',
+            sourceDescription: 'Access Sandbox',
+            formName: 'Access Sandbox Environment'
+          };
         default:
           return {
             sourceId: 'WEB',
@@ -153,7 +159,7 @@ async function createBitrix24Contact(formData: any, formType: string) {
 }
 
 interface FormSubmission {
-  formType: 'contact' | 'lead';
+  formType: 'contact' | 'lead' | 'sandbox';
   csrfToken: string;
   formData: any;
   honeypot: string;

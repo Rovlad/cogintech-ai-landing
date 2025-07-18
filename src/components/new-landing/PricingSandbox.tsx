@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const PricingSandbox = () => {
   const { toast } = useToast();
   const { validateEmail } = useEmailValidation();
-  const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'lead' });
+  const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'sandbox' });
   
   const [formData, setFormData] = useState({
     email: '',
