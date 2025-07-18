@@ -57,7 +57,7 @@ const Hero = () => {
           
           <div className="relative h-80 sm:h-96 md:h-[500px] rounded-xl overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-cogintech-blue/30 to-cogintech-teal/30 z-10 rounded-xl"></div>
-            <img src="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png" alt="AI-powered oil and gas infrastructure analysis" className="object-cover w-full h-full rounded-xl" />
+            <img src="/lovable-uploads/import_pdf.gif" alt="AI-powered oil and gas infrastructure analysis" className="object-cover w-full h-full rounded-xl" />
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-20">
               <div className="bg-black/60 backdrop-blur-sm p-4 md:p-6 rounded-lg max-w-md animate-pulse-slow">
                 <div className="text-white text-sm md:text-base">
