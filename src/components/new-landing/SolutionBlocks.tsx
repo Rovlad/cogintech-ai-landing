@@ -68,13 +68,12 @@ const SolutionBlocks = () => {
                 </Button>
               </div>
               
-              <div className={`relative aspect-video rounded-xl overflow-hidden bg-gradient-to-b from-gray-50 to-cogintech-blue/10 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+              <div className={`relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-b from-gray-50 to-cogintech-blue/10 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                 <img 
                   src={solution.gif} 
                   alt={`${solution.title} demonstration`} 
-                  className="w-full h-auto max-h-full object-contain object-top" 
+                  className="w-full h-full object-cover object-top" 
                 />
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-cogintech-blue/20 to-transparent rounded-b-xl"></div>
               </div>
             </div>
           ))}

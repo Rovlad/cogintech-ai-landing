@@ -65,13 +65,12 @@ const NewHero = () => {
             </div>
           </div>
           
-          <div className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-b from-gray-50 to-cogintech-blue/10">
+          <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-b from-gray-50 to-cogintech-blue/10">
             <img 
               src="/lovable-uploads/import_pdf.gif" 
               alt="Drag & drop to dashboard workflow demonstration" 
-              className="w-full h-auto max-h-full object-contain object-top" 
+              className="w-full h-full object-cover object-top" 
             />
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-cogintech-blue/20 to-transparent rounded-b-xl"></div>
           </div>
         </div>
       </div>
