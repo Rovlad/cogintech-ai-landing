@@ -7,6 +7,7 @@ import SocialProof from "@/components/new-landing/SocialProof";
 import SecurityIT from "@/components/new-landing/SecurityIT";
 import PricingSandbox from "@/components/new-landing/PricingSandbox";
 import FAQ from "@/components/new-landing/FAQ";
+import BookDemo from "@/components/new-landing/BookDemo";
 import Footer from "@/components/Footer";
 
 const NewLanding = () => {
@@ -21,6 +22,7 @@ const NewLanding = () => {
       <SecurityIT />
       <PricingSandbox />
       <FAQ />
+      <BookDemo />
       <Footer />
     </div>
   );

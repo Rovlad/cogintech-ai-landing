@@ -71,8 +71,9 @@ const FAQ = () => {
             size="lg"
             className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-white font-medium px-8 py-6"
             onClick={() => {
-              // TODO: Open HubSpot popup with 4 fields (name, email, role, company)
-              alert('Demo booking form will be implemented with HubSpot integration');
+              document.getElementById('book-demo')?.scrollIntoView({
+                behavior: 'smooth'
+              });
             }}
           >
             Book a 15-minute demo call

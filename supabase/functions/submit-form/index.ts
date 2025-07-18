@@ -7,7 +7,7 @@ const corsHeaders = {
 };
 
 // Bitrix24 CRM integration
-async function createBitrix24Contact(formData: any) {
+async function createBitrix24Contact(formData: any, formType: string) {
   const bitrix24WebhookUrl = Deno.env.get('BITRIX24_WEBHOOK_URL');
   
   if (!bitrix24WebhookUrl) {
@@ -18,14 +18,46 @@ async function createBitrix24Contact(formData: any) {
   try {
     let companyId = null;
     
+    // Determine source based on form type
+    const getSourceInfo = (formType: string) => {
+      switch (formType) {
+        case 'contact':
+          return {
+            sourceId: 'CONSULTATION',
+            sourceDescription: 'Website consultation form',
+            formName: 'Consultation Request Form'
+          };
+        case 'lead':
+          return {
+            sourceId: 'WEBSITE',
+            sourceDescription: 'Website Book Demo Request Form',
+            formName: 'Book Demo Request Form'
+          };
+        case 'sandbox':
+          return {
+            sourceId: 'WEBSITE',
+            sourceDescription: 'Access Sandbox',
+            formName: 'Access Sandbox Environment'
+          };
+        default:
+          return {
+            sourceId: 'WEB',
+            sourceDescription: 'Website form submission',
+            formName: 'Website Contact Form'
+          };
+      }
+    };
+
+    const sourceInfo = getSourceInfo(formType);
+    
     // Create company if provided
     if (formData.company && formData.company.trim() !== '') {
       const companyData = {
         fields: {
           TITLE: formData.company,
           COMPANY_TYPE: 'CUSTOMER',
-          SOURCE_ID: 'WEB',
-          SOURCE_DESCRIPTION: 'Website form submission'
+          SOURCE_ID: sourceInfo.sourceId,
+          SOURCE_DESCRIPTION: sourceInfo.sourceDescription
         }
       };
 
@@ -49,6 +81,9 @@ async function createBitrix24Contact(formData: any) {
     }
 
     // Create contact in Bitrix24 using proper field mapping
+    const formMessage = formData.comments || formData.message || '';
+    const finalMessage = formMessage || `Отправлено через ${sourceInfo.formName}`;
+    
     const contactData = {
       FIELDS: {
         TITLE: `Новый лид - ${formData.name || 'Без имени'}`,
@@ -58,11 +93,11 @@ async function createBitrix24Contact(formData: any) {
         PHONE: formData.phone ? [{ VALUE: formData.phone, VALUE_TYPE: 'WORK' }] : [],
         COMPANY_ID: companyId || undefined,
         POST: formData.role || '',
-        SOURCE_ID: 'WEB',
-        SOURCE_DESCRIPTION: 'Website form submission'
+        SOURCE_ID: sourceInfo.sourceId,
+        SOURCE_DESCRIPTION: sourceInfo.sourceDescription
       },
-      REQUEST_MESSAGE: formData.comments || formData.message || '',
-      REQUEST_FORM: 'Website Contact Form'
+      REQUEST_MESSAGE: finalMessage,
+      REQUEST_FORM: sourceInfo.formName
     };
 
     console.log('Creating Bitrix24 contact with data:', JSON.stringify(contactData, null, 2));
@@ -92,10 +127,10 @@ async function createBitrix24Contact(formData: any) {
         TITLE: `Website Lead - ${formData.name} (${formData.company || 'No Company'})`,
         CONTACT_ID: contactResult.result,
         COMPANY_ID: companyId || undefined,
-        SOURCE_ID: 'WEB',
-        SOURCE_DESCRIPTION: 'Website form submission',
+        SOURCE_ID: sourceInfo.sourceId,
+        SOURCE_DESCRIPTION: sourceInfo.sourceDescription,
         STATUS_ID: 'NEW',
-        COMMENTS: formData.comments || formData.message || '',
+        COMMENTS: finalMessage,
         OPPORTUNITY: 0
       }
     };
@@ -124,7 +159,7 @@ async function createBitrix24Contact(formData: any) {
 }
 
 interface FormSubmission {
-  formType: 'contact' | 'lead';
+  formType: 'contact' | 'lead' | 'sandbox';
   csrfToken: string;
   formData: any;
   honeypot: string;
@@ -282,7 +317,7 @@ serve(async (req) => {
     }
 
     // Bitrix24 CRM integration
-    const bitrix24Result = await createBitrix24Contact(submission.formData);
+    const bitrix24Result = await createBitrix24Contact(submission.formData, submission.formType);
     
     console.log('Valid form submission processed:', submission.formType);
     if (bitrix24Result) {

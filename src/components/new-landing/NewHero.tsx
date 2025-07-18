@@ -28,21 +28,18 @@ const NewHero = () => {
               <Button 
                 size="lg" 
                 className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-white font-medium px-8 py-6"
-                onClick={() => {
-                  // TODO: Open HubSpot popup with 4 fields (name, email, role, company)
-                  document.getElementById('demo-form')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Book 15-min Live Demo
+                Try Sandbox
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
                 className="border-cogintech-blue text-cogintech-blue hover:bg-cogintech-blue/5 font-medium px-8 py-6"
-                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Try Sandbox
+                Book 15-min Live Demo
               </Button>
             </div>
           </div>
