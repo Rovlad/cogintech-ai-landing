@@ -29,9 +29,9 @@ async function createBitrix24Contact(formData: any, formType: string) {
           };
         case 'lead':
           return {
-            sourceId: 'DEMO',
-            sourceDescription: 'Website demo booking form',
-            formName: 'Demo Booking Form'
+            sourceId: 'WEBSITE',
+            sourceDescription: 'Website Book Demo Request Form',
+            formName: 'Book Demo Request Form'
           };
         case 'sandbox':
           return {
