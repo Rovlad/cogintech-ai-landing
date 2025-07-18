@@ -196,7 +196,7 @@ const Navbar = () => {
             className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-base px-4 py-2"
             onClick={handleTryFree}
           >
-            Try for free
+            Try For Free
           </Button>
         </div>
 
@@ -569,7 +569,7 @@ const Navbar = () => {
                 handleTryFree();
               }}
             >
-              Try for free
+              Try For Free
             </Button>
           </div>
         </div>
