@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { FileText, BarChart3, Brain } from "lucide-react";
+import { FileText, BarChart3, Brain, X } from "lucide-react";
+import { useState } from "react";
 
 const SolutionBlocks = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
   const solutions = [
     {
       icon: FileText,
@@ -68,7 +72,13 @@ const SolutionBlocks = () => {
                 </Button>
               </div>
               
-              <div className={`relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+              <div 
+                className={`relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm cursor-pointer hover:opacity-90 transition-opacity ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
+                onClick={() => {
+                  setSelectedImage(solution.gif);
+                  setIsModalOpen(true);
+                }}
+              >
                 <img 
                   src={solution.gif} 
                   alt={`${solution.title} demonstration`} 
@@ -79,6 +89,28 @@ const SolutionBlocks = () => {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50" onClick={() => setIsModalOpen(false)}>
+          <div className="relative w-full h-full flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-colors"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <div className="w-full h-full flex items-center justify-center">
+              <img 
+                src={selectedImage} 
+                alt="Full size demonstration" 
+                className="w-auto h-auto max-w-full max-h-full object-contain" 
+                style={{ maxWidth: '95vw', maxHeight: '95vh' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
