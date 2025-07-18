@@ -58,8 +58,8 @@ const Navbar = () => {
           {isHomePage ? (
             <>
               <a href="#solution" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Solution</a>
-              <a href="#demo" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Demo</a>
-              <a href="#testimonials" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Results</a>
+              <a href="#solution" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Demo</a>
+              <a href="#results" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Results</a>
               <a href="#pricing" className="text-base text-foreground/80 hover:text-cogintech-blue transition-colors">Pricing</a>
               
               {/* Company Dropdown */}
@@ -224,14 +224,14 @@ const Navbar = () => {
                   Solution
                 </a>
                 <a 
-                  href="#demo" 
+                  href="#solution" 
                   className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Demo
                 </a>
                 <a 
-                  href="#testimonials" 
+                  href="#results" 
                   className="py-1 text-base text-foreground/80 hover:text-cogintech-blue transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >

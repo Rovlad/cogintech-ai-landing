@@ -40,7 +40,7 @@ const NewHero = () => {
                 variant="outline" 
                 size="lg" 
                 className="border-cogintech-blue text-cogintech-blue hover:bg-cogintech-blue/5 font-medium px-8 py-6"
-                onClick={() => document.getElementById('sandbox')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Try Sandbox
               </Button>
@@ -49,7 +49,7 @@ const NewHero = () => {
           
           <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity shadow-sm" onClick={() => setIsModalOpen(true)}>
             <img 
-              src="/lovable-uploads/dashboard.png" 
+              src="/lovable-uploads/file to dashboard.gif" 
               alt="Drag & drop to dashboard workflow demonstration" 
               className="w-full h-full object-contain" 
             />
@@ -91,7 +91,7 @@ const NewHero = () => {
             </button>
             <div className="w-full h-full flex items-center justify-center">
               <img 
-                src="/lovable-uploads/dashboard.png" 
+                src="/lovable-uploads/file to dashboard.gif" 
                 alt="Drag & drop to dashboard workflow demonstration" 
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}

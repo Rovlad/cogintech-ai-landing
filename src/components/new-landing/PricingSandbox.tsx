@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const PricingSandbox = () => {
   return (
-    <section id="sandbox" className="py-16">
+    <section id="pricing" className="py-16">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">

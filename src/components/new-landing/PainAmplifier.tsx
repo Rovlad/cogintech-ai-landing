@@ -20,7 +20,7 @@ const PainAmplifier = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-background to-gray-50/50">
+    <section id="problem" className="py-16 bg-gradient-to-b from-background to-gray-50/50">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">

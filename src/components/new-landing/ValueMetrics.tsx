@@ -23,7 +23,7 @@ const ValueMetrics = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-cogintech-blue/5 to-background">
+    <section id="results" className="py-16 bg-gradient-to-b from-cogintech-blue/5 to-background">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
