@@ -68,7 +68,7 @@ const SolutionBlocks = () => {
                 </Button>
               </div>
               
-              <div className={`relative aspect-[2/1] rounded-xl overflow-hidden bg-gradient-to-b from-gray-200 to-gray-300 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+              <div className={`relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                 <img 
                   src={solution.gif} 
                   alt={`${solution.title} demonstration`} 

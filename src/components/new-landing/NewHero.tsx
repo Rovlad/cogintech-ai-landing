@@ -1,7 +1,10 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const NewHero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Background decoration */}
@@ -44,9 +47,9 @@ const NewHero = () => {
             </div>
           </div>
           
-          <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-gradient-to-b from-gray-200 to-gray-300">
+          <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity shadow-sm" onClick={() => setIsModalOpen(true)}>
             <img 
-              src="/lovable-uploads/file to dashboard.gif" 
+              src="/lovable-uploads/dashboard.png" 
               alt="Drag & drop to dashboard workflow demonstration" 
               className="w-full h-full object-contain" 
             />
@@ -75,6 +78,25 @@ const NewHero = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50" onClick={() => setIsModalOpen(false)}>
+          <div className="relative w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-colors"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <img 
+              src="/lovable-uploads/dashboard.png" 
+              alt="Drag & drop to dashboard workflow demonstration" 
+              className="max-w-full max-h-full object-contain" 
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
