@@ -55,8 +55,9 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="relative h-80 sm:h-96 md:h-[500px] rounded-xl overflow-hidden bg-gray-50">
-            <img src="/lovable-uploads/import_pdf.gif" alt="AI-powered oil and gas infrastructure analysis" className="object-contain w-full h-full rounded-xl" />
+          <div className="relative h-80 sm:h-96 md:h-[500px] rounded-xl overflow-hidden bg-gradient-to-b from-gray-50 to-cogintech-blue/10">
+            <img src="/lovable-uploads/import_pdf.gif" alt="AI-powered oil and gas infrastructure analysis" className="w-full h-auto max-h-full object-contain object-top" />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-cogintech-blue/20 to-transparent rounded-b-xl"></div>
           </div>
         </div>
       </div>
