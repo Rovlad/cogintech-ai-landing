@@ -65,7 +65,7 @@ const NewHero = () => {
             </div>
           </div>
           
-          <div className="relative aspect-[3/2] rounded-xl overflow-hidden bg-gradient-to-b from-gray-200 to-gray-300">
+          <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-gradient-to-b from-gray-200 to-gray-300">
             <img 
               src="/lovable-uploads/import_pdf.gif" 
               alt="Drag & drop to dashboard workflow demonstration" 
