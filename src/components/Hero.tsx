@@ -55,25 +55,8 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="relative h-80 sm:h-96 md:h-[500px] rounded-xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-cogintech-blue/30 to-cogintech-teal/30 z-10 rounded-xl"></div>
-            <img src="/lovable-uploads/import_pdf.gif" alt="AI-powered oil and gas infrastructure analysis" className="object-cover w-full h-full rounded-xl" />
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-20">
-              <div className="bg-black/60 backdrop-blur-sm p-4 md:p-6 rounded-lg max-w-md animate-pulse-slow">
-                <div className="text-white text-sm md:text-base">
-                  <div className="font-mono mb-3 text-green-400">AI ANALYSIS COMPLETE</div>
-                  <div className="bg-cogintech-teal/20 rounded px-2 py-1 mb-2">
-                    <span className="text-cogintech-teal font-semibold">✓ 95.4%</span> Confidence Score
-                  </div>
-                  <div className="bg-cogintech-blue/20 rounded px-2 py-1 mb-2">
-                    <span className="text-blue-300 font-semibold">→</span> 3 Critical Findings Identified
-                  </div>
-                  <div className="bg-orange-500/20 rounded px-2 py-1">
-                    <span className="text-orange-300 font-semibold">⚠</span> Corrosion Rate 2.3x Higher Than Expected
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="relative h-80 sm:h-96 md:h-[500px] rounded-xl overflow-hidden bg-gray-50">
+            <img src="/lovable-uploads/import_pdf.gif" alt="AI-powered oil and gas infrastructure analysis" className="object-contain w-full h-full rounded-xl" />
           </div>
         </div>
       </div>
