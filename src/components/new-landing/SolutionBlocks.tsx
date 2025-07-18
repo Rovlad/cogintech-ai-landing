@@ -16,7 +16,7 @@ const SolutionBlocks = () => {
       title: "Dashboard + AI Assistant",
       description: "Real-time equipment health monitoring with intelligent insights and predictive alerts.",
       benefits: "Prevent failures before they happen.",
-      gif: "/lovable-uploads/import_pdf.gif", // Placeholder - replace with actual GIF
+      gif: "/lovable-uploads/dashboard.gif", // Placeholder - replace with actual GIF
       ctaText: "View Dashboard Demo"
     },
     {
@@ -24,7 +24,7 @@ const SolutionBlocks = () => {
       title: "Smart AI Tools",
       description: "Advanced corrosion loop analysis and risk assessment. Recent case: prevented $30k failure at offshore platform.",
       benefits: "AI-powered analysis saves millions.",
-      gif: "/lovable-uploads/import_pdf.gif", // Placeholder - replace with actual GIF
+      gif: "/lovable-uploads/corrosion loops.gif", // Placeholder - replace with actual GIF
       ctaText: "Try AI Tools"
     }
   ];
