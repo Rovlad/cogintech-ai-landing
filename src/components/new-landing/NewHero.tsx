@@ -9,7 +9,7 @@ const NewHero = () => {
       <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-cogintech-blue/10 rounded-full blur-3xl"></div>
       
       <div className="container relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8 max-w-2xl">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight lg:text-5xl">
@@ -42,27 +42,6 @@ const NewHero = () => {
                 Try Sandbox
               </Button>
             </div>
-            
-            <div className="flex flex-wrap gap-8 pt-4 text-sm">
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
-                  <span className="text-red-600 font-bold">-30%</span>
-                </div>
-                <span>Downtime Reduction</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                  <span className="text-green-600 font-bold">$10M</span>
-                </div>
-                <span>Annual Savings</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                  <span className="text-blue-600 font-bold">95%+</span>
-                </div>
-                <span>Accuracy Rate</span>
-              </div>
-            </div>
           </div>
           
           <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-gradient-to-b from-gray-200 to-gray-300">
@@ -71,6 +50,28 @@ const NewHero = () => {
               alt="Drag & drop to dashboard workflow demonstration" 
               className="w-full h-full object-contain" 
             />
+          </div>
+        </div>
+        
+        {/* Statistics row spanning full width */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
+              <span className="text-red-600 font-bold text-lg">-30%</span>
+            </div>
+            <span className="text-lg font-medium">Downtime Reduction</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
+              <span className="text-green-600 font-bold text-lg">$10M</span>
+            </div>
+            <span className="text-lg font-medium">Annual Savings</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+              <span className="text-blue-600 font-bold text-lg">95%+</span>
+            </div>
+            <span className="text-lg font-medium">Accuracy Rate</span>
           </div>
         </div>
       </div>
