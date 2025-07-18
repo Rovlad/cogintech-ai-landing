@@ -9,12 +9,13 @@ import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 
-const PricingSandbox = () => {
+const BookDemo = () => {
   const { toast } = useToast();
   const { validateEmail } = useEmailValidation();
-  const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'lead' });
+  const { csrfToken, isSubmitting, honeypot, setHoneypot, submitForm } = useSecureForm({ formType: 'contact' });
   
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     company: '',
     role: ''
@@ -69,6 +70,7 @@ const PricingSandbox = () => {
     if (success) {
       // Reset form
       setFormData({
+        name: '',
         email: '',
         company: '',
         role: ''
@@ -86,67 +88,33 @@ const PricingSandbox = () => {
   const isFormValid = agreements.privacyPolicy && agreements.termsOfService;
 
   return (
-    <section id="pricing" className="py-16">
+    <section id="book-demo" className="py-16 bg-cogintech-dark">
       <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">
-            Try before you buy
-          </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Get instant access to a read-only sandbox environment with sample data.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Pricing Info */}
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl">Enterprise Pricing</CardTitle>
-                <CardDescription>
-                  Flexible pricing based on your infrastructure scale
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span>Small operations (1-50 assets)</span>
-                    <span className="font-semibold">$5K-15K/month</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Medium operations (50-200 assets)</span>
-                    <span className="font-semibold">$15K-40K/month</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Large operations (200+ assets)</span>
-                    <span className="font-semibold">Custom pricing</span>
-                  </div>
-                </div>
-                <div className="pt-4 border-t">
-                  <p className="text-sm text-foreground/70">
-                    All plans include: AI analysis, 24/7 support, custom integrations, and dedicated success manager.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-white">
+              Book a 15-Minute Demo
+            </h2>
+            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              See how Cogintech can transform your inspection process in just 15 minutes
+            </p>
           </div>
           
-          {/* Sandbox Form */}
-          <Card>
+          <Card className="bg-white/5 border-white/10">
             <CardHeader>
-              <CardTitle className="text-xl">Access Sandbox Environment</CardTitle>
-              <CardDescription>
-                Explore our platform with real-world sample data
+              <CardTitle className="text-xl text-white">Schedule Your Demo</CardTitle>
+              <CardDescription className="text-white/70">
+                Get a personalized demonstration of our AI-powered analysis platform
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Honeypot field - скрытое поле для защиты от ботов */}
                 <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}>
-                  <label htmlFor="website">Website (do not fill this out)</label>
+                  <label htmlFor="website-demo">Website (do not fill this out)</label>
                   <input
                     type="text"
-                    id="website"
+                    id="website-demo"
                     name="website"
                     value={honeypot}
                     onChange={(e) => setHoneypot(e.target.value)}
@@ -155,56 +123,80 @@ const PricingSandbox = () => {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="sandbox-email">Work Email</Label>
-                  <Input 
-                    id="sandbox-email" 
-                    name="email"
-                    type="email" 
-                    placeholder="your.email@company.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className={!emailValidation.isValid ? 'border-red-500' : ''}
-                  />
-                  {!emailValidation.isValid && emailValidation.error && (
-                    <p className="text-red-500 text-sm">{emailValidation.error}</p>
-                  )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="demo-name" className="text-white">Full Name</Label>
+                    <Input 
+                      id="demo-name" 
+                      name="name"
+                      type="text" 
+                      placeholder="John Smith"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="demo-email" className="text-white">Work Email</Label>
+                    <Input 
+                      id="demo-email" 
+                      name="email"
+                      type="email" 
+                      placeholder="your.email@company.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className={`bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal ${
+                        !emailValidation.isValid ? 'border-red-500' : ''
+                      }`}
+                    />
+                    {!emailValidation.isValid && emailValidation.error && (
+                      <p className="text-red-400 text-sm">{emailValidation.error}</p>
+                    )}
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="sandbox-company">Company Name</Label>
-                  <Input 
-                    id="sandbox-company" 
-                    name="company"
-                    type="text" 
-                    placeholder="Your Company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    required 
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="sandbox-role">Your Role</Label>
-                  <Input 
-                    id="sandbox-role" 
-                    name="role"
-                    type="text" 
-                    placeholder="e.g., Integrity Engineer"
-                    value={formData.role}
-                    onChange={handleChange}
-                    required 
-                  />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="demo-company" className="text-white">Company Name</Label>
+                    <Input 
+                      id="demo-company" 
+                      name="company"
+                      type="text" 
+                      placeholder="Your Company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      required
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="demo-role" className="text-white">Your Role</Label>
+                    <Input 
+                      id="demo-role" 
+                      name="role"
+                      type="text" 
+                      placeholder="e.g., Integrity Engineer"
+                      value={formData.role}
+                      onChange={handleChange}
+                      required
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus-visible:ring-cogintech-teal"
+                    />
+                  </div>
                 </div>
                 
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
                     <Checkbox 
-                      id="privacy-policy-sandbox"
+                      id="privacy-policy-demo"
                       checked={agreements.privacyPolicy}
                       onCheckedChange={handleAgreementChange('privacyPolicy')}
                       className="mt-1"
                     />
-                    <label htmlFor="privacy-policy-sandbox" className="text-sm text-foreground/80 leading-relaxed">
+                    <label htmlFor="privacy-policy-demo" className="text-sm text-white/80 leading-relaxed">
                       I agree to the{' '}
                       <Link 
                         to="/privacy-policy" 
@@ -219,12 +211,12 @@ const PricingSandbox = () => {
                   
                   <div className="flex items-start space-x-3">
                     <Checkbox 
-                      id="terms-of-service-sandbox"
+                      id="terms-of-service-demo"
                       checked={agreements.termsOfService}
                       onCheckedChange={handleAgreementChange('termsOfService')}
                       className="mt-1"
                     />
-                    <label htmlFor="terms-of-service-sandbox" className="text-sm text-foreground/80 leading-relaxed">
+                    <label htmlFor="terms-of-service-demo" className="text-sm text-white/80 leading-relaxed">
                       I agree to the{' '}
                       <Link 
                         to="/terms-of-service" 
@@ -243,15 +235,12 @@ const PricingSandbox = () => {
                   className="w-full bg-cogintech-orange hover:bg-cogintech-orange/90 text-white disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isSubmitting || !isFormValid || !emailValidation.isValid || !csrfToken}
                 >
-                  {isSubmitting ? "Submitting..." : "Get Instant Sandbox Access"}
+                  {isSubmitting ? "Booking Demo..." : "Book 15-Min Demo"}
                 </Button>
                 
                 {/* CSRF токен (скрытое поле) */}
                 <input type="hidden" name="csrf_token" value={csrfToken} />
               </form>
-              <p className="text-xs text-foreground/60 text-center">
-                You'll receive login credentials within 2 minutes
-              </p>
             </CardContent>
           </Card>
         </div>
@@ -260,4 +249,4 @@ const PricingSandbox = () => {
   );
 };
 
-export default PricingSandbox;
+export default BookDemo;
