@@ -49,6 +49,8 @@ const NewHero = () => {
               src="/lovable-uploads/file to dashboard.gif" 
               alt="Drag & drop to dashboard workflow demonstration" 
               className="w-full h-full object-contain" 
+              fetchPriority="high"
+              loading="eager"
             />
           </div>
         </div>
