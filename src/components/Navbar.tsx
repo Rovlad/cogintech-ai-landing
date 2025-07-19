@@ -48,7 +48,9 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/ad840850-7ba3-4ea9-94b2-bcc7d798cc9b.png" 
               alt="Cognitive Industrial Technologies Logo" 
-              className="h-10 mr-2"
+              className="h-10 mr-2 w-auto object-contain"
+              width="140"
+              height="40"
             />
           </Link>
         </div>
