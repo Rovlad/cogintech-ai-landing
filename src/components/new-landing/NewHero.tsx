@@ -46,7 +46,7 @@ const NewHero = () => {
           
           <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity shadow-sm" onClick={() => setIsModalOpen(true)}>
             <img 
-              src="/lovable-uploads/file%20to%20dashboard.gif"
+              src="/lovable-uploads/file_to_dashboard.gif"
               alt="Drag & drop to dashboard workflow demonstration" 
               className="w-full h-full object-contain" 
               fetchPriority="high"
@@ -90,7 +90,7 @@ const NewHero = () => {
             </button>
             <div className="w-full h-full flex items-center justify-center">
               <img 
-                src="/lovable-uploads/file%20to%20dashboard.gif" 
+                src="/lovable-uploads/file_to_dashboard.gif" 
                 alt="Drag & drop to dashboard workflow demonstration" 
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}
