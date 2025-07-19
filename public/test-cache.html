@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-item { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>Тест кэширования</h1>
+    <p>Эта страница поможет проверить, работает ли кэширование на вашем сервере.</p>
+    
+    <div class="test-item">
+        <h3>Проверка заголовков кэширования:</h3>
+        <p>Откройте Developer Tools (F12) и перейдите на вкладку Network.</p>
+        <p>Обновите страницу и проверьте заголовки для следующих файлов:</p>
+        <ul>
+            <li>CSS файлы должны иметь: <code>Cache-Control: public, max-age=31536000, immutable</code></li>
+            <li>JS файлы должны иметь: <code>Cache-Control: public, max-age=31536000, immutable</code></li>
+            <li>Изображения должны иметь: <code>Cache-Control: public, max-age=31536000, immutable</code></li>
+            <li>Видео должны иметь: <code>Cache-Control: public, max-age=31536000, immutable</code></li>
+        </ul>
+    </div>
+    
+    <div class="test-item">
+        <h3>Тестовые файлы:</h3>
+        <p>Проверьте заголовки для этих файлов:</p>
+        <ul>
+            <li><a href="/assets/index.Byq2sqRR.css" target="_blank">CSS файл</a></li>
+            <li><a href="/assets/index-BDVbZ2hi.js" target="_blank">JS файл</a></li>
+            <li><a href="/lovable-uploads/dashboard.png" target="_blank">Изображение</a></li>
+            <li><a href="/lovable-uploads/file_to_dashboard.mp4" target="_blank">Видео</a></li>
+        </ul>
+    </div>
+    
+    <div class="test-item">
+        <h3>Инструкции для Timeweb:</h3>
+        <p>Если кэширование не работает:</p>
+        <ol>
+            <li>Убедитесь, что файл <code>.htaccess</code> находится в корневой папке сайта</li>
+            <li>Проверьте, что в настройках хостинга включена поддержка .htaccess</li>
+            <li>Обратитесь в техподдержку Timeweb для включения mod_headers</li>
+            <li>Проверьте логи ошибок сервера</li>
+        </ol>
+    </div>
+</body>
+</html> 
