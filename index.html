@@ -28,9 +28,45 @@
     
     <!-- Optimized font loading -->
     
-    <!-- Optimized font loading -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <!-- Critical CSS inlined and optimized font loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/src/index.css" as="style">
+    
+    <!-- Critical CSS inline for above-the-fold content -->
+    <style>
+      :root {
+        --background: 210 50% 98%;
+        --foreground: 220 40% 15%;
+        --primary: 202 68% 28%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 168 42% 39%;
+        --border: 214.3 31.8% 91.4%;
+        --radius: 0.5rem;
+      }
+      .dark {
+        --background: 220 40% 15%;
+        --foreground: 210 40% 98%;
+      }
+      body { 
+        font-family: Inter, system-ui, sans-serif; 
+        background: hsl(var(--background)); 
+        color: hsl(var(--foreground)); 
+        margin: 0; 
+        line-height: 1.5;
+      }
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+      .btn-primary { 
+        background: hsl(var(--primary)); 
+        color: hsl(var(--primary-foreground)); 
+        padding: 0.75rem 1.5rem; 
+        border-radius: var(--radius); 
+        border: none; 
+        cursor: pointer; 
+      }
+    </style>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
