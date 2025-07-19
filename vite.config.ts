@@ -24,11 +24,21 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast'],
+          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast', '@radix-ui/react-dialog', '@radix-ui/react-popover'],
           router: ['react-router-dom'],
+          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
+          supabase: ['@supabase/supabase-js'],
+          utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
         },
       },
     },
-    assetsInlineLimit: 0, // Force all assets to be separate files for better caching
+    assetsInlineLimit: 0,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   },
 }));
