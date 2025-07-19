@@ -19,4 +19,16 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast'],
+          router: ['react-router-dom'],
+        },
+      },
+    },
+    assetsInlineLimit: 0, // Force all assets to be separate files for better caching
+  },
 }));
