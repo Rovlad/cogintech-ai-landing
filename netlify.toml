@@ -1,12 +1,14 @@
+
 [build]
   publish = "dist"
   command = "npm run build"
 
 [[plugins]]
   package = "@netlify/plugin-prerender-spa"
-  
+
 [plugins.inputs]
-  prerenderDir = "dist"
+  # This plugin will automatically detect bots and serve prerendered HTML
+  # No additional configuration needed
 
 [[headers]]
   for = "/assets/*"
@@ -32,8 +34,9 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+    X-Robots-Tag = "index, follow"
 
 [[headers]]
   for = "/*.(png|jpg|jpeg|gif|svg|mp4|webm|woff|woff2)"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable" 
+    Cache-Control = "public, max-age=31536000, immutable"
