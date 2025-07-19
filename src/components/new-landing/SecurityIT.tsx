@@ -1,7 +1,9 @@
 import { Shield, Server, Lock, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const SecurityIT = () => {
+  const { toast } = useToast();
   const features = [
     {
       icon: Server,
@@ -56,6 +58,12 @@ const SecurityIT = () => {
             variant="outline" 
             size="lg"
             className="border-cogintech-blue text-cogintech-blue hover:bg-cogintech-blue/5"
+            onClick={() => {
+              toast({
+                title: "Coming Soon",
+                description: "API Documentation is coming soon! Stay tuned for updates.",
+              });
+            }}
           >
             View API Documentation
           </Button>
