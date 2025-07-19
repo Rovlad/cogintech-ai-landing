@@ -78,6 +78,16 @@ const SolutionBlocks = () => {
                   setSelectedImage(solution.video);
                   setIsModalOpen(true);
                 }}
+                role="button"
+                tabIndex={0}
+                aria-label={`Открыть видео демонстрацию: ${solution.title}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedImage(solution.video);
+                    setIsModalOpen(true);
+                  }
+                }}
               >
                 <video 
                   src={solution.video} 
@@ -85,7 +95,8 @@ const SolutionBlocks = () => {
                   muted 
                   loop 
                   playsInline
-                  className="w-full h-full object-contain" 
+                  className="w-full h-full object-contain"
+                  aria-label={`Демонстрация: ${solution.title}`}
                 />
               </div>
             </div>
@@ -100,8 +111,10 @@ const SolutionBlocks = () => {
             <button 
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-colors"
+              aria-label="Закрыть видео"
+              title="Закрыть видео"
             >
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="w-full h-full flex items-center justify-center">
               <video 
