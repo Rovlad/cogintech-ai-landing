@@ -8,6 +8,10 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    headers: {
+      // Cache static assets for 1 year
+      'Cache-Control': 'public, max-age=31536000, immutable',
+    },
   },
   plugins: [
     react(),
@@ -20,6 +24,8 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    // Add cache headers for production
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks: {
