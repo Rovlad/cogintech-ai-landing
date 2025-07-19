@@ -6,7 +6,7 @@ const ValueMetrics = () => {
       description: "Prevent costly equipment breakdowns with predictive insights"
     },
     {
-      value: "50%",
+      value: "100x",
       label: "Faster information search",
       description: "Find critical documents and data in seconds, not hours"
     },
