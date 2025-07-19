@@ -1,0 +1,3 @@
+
+# Cache optimization headers only
+# Bot prerendering is handled by Netlify plugin automatically
