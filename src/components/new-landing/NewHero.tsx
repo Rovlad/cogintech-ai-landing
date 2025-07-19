@@ -45,12 +45,13 @@ const NewHero = () => {
           </div>
           
           <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity shadow-sm" onClick={() => setIsModalOpen(true)}>
-            <img 
-              src="/lovable-uploads/file_to_dashboard.gif"
-              alt="Drag & drop to dashboard workflow demonstration" 
+            <video 
+              src="/lovable-uploads/file_to_dashboard.mp4"
+              autoPlay 
+              muted 
+              loop 
+              playsInline
               className="w-full h-full object-contain" 
-              fetchPriority="high"
-              loading="eager"
             />
           </div>
         </div>
@@ -89,9 +90,12 @@ const NewHero = () => {
               <X className="h-6 w-6" />
             </button>
             <div className="w-full h-full flex items-center justify-center">
-              <img 
-                src="/lovable-uploads/file_to_dashboard.gif" 
-                alt="Drag & drop to dashboard workflow demonstration" 
+              <video 
+                src="/lovable-uploads/file_to_dashboard.mp4" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}
               />

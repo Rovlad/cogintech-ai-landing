@@ -12,7 +12,7 @@ const SolutionBlocks = () => {
       title: "Document Manager",
       description: "Centralize all integrity documents with AI-powered search and instant access to critical information.",
       benefits: "Find any document in seconds, not hours.",
-      gif: "/lovable-uploads/import_pdf.gif", // Placeholder - replace with actual GIF
+      video: "/lovable-uploads/import_pdf.mp4", // MP4 video
       ctaText: "See Document Manager"
     },
     {
@@ -20,7 +20,7 @@ const SolutionBlocks = () => {
       title: "Dashboard + AI Assistant",
       description: "Real-time equipment health monitoring with intelligent insights and predictive alerts.",
       benefits: "Prevent failures before they happen.",
-      gif: "/lovable-uploads/dashboard.gif", // Placeholder - replace with actual GIF
+      video: "/lovable-uploads/dashboard.mp4", // MP4 video
       ctaText: "View Dashboard Demo"
     },
     {
@@ -28,7 +28,7 @@ const SolutionBlocks = () => {
       title: "Smart AI Tools",
       description: "Advanced corrosion loop analysis and risk assessment. Recent case: prevented $30k failure at offshore platform.",
       benefits: "AI-powered analysis saves millions.",
-      gif: "/lovable-uploads/corrosion_loops.gif", // Placeholder - replace with actual GIF
+      video: "/lovable-uploads/corrosion_loops.mp4", // MP4 video
       ctaText: "Try AI Tools"
     }
   ];
@@ -75,13 +75,16 @@ const SolutionBlocks = () => {
               <div 
                 className={`relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm cursor-pointer hover:opacity-90 transition-opacity ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
                 onClick={() => {
-                  setSelectedImage(solution.gif);
+                  setSelectedImage(solution.video);
                   setIsModalOpen(true);
                 }}
               >
-                <img 
-                  src={solution.gif} 
-                  alt={`${solution.title} demonstration`} 
+                <video 
+                  src={solution.video} 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
                   className="w-full h-full object-contain" 
                 />
               </div>
@@ -101,9 +104,12 @@ const SolutionBlocks = () => {
               <X className="h-6 w-6" />
             </button>
             <div className="w-full h-full flex items-center justify-center">
-              <img 
+              <video 
                 src={selectedImage} 
-                alt="Full size demonstration" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}
               />
