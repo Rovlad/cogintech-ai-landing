@@ -10,5 +10,11 @@ deployment:
     # выкладка 
     - /usr/bin/mkdir -p $PUBLIC
     - /usr/bin/rsync -az --delete $REPO/dist/ $PUBLIC/
+    # настройка кеширования
+    - echo 'Header set Cache-Control "max-age=31536000, public, immutable"' > $PUBLIC/.htaccess
+    - echo 'Header set Expires "Thu, 31 Dec 2025 23:59:59 GMT"' >> $PUBLIC/.htaccess
+    - echo '<FilesMatch "\.(mp4|gif|png|jpg|jpeg|svg|webp|ico|css|js|woff|woff2|ttf|eot)$">' >> $PUBLIC/.htaccess
+    - echo '  Header set Cache-Control "max-age=31536000, public, immutable"' >> $PUBLIC/.htaccess
+    - echo '</FilesMatch>' >> $PUBLIC/.htaccess
 
 
