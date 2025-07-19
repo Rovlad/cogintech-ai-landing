@@ -44,14 +44,27 @@ const NewHero = () => {
             </div>
           </div>
           
-          <div className="relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity shadow-sm" onClick={() => setIsModalOpen(true)}>
+          <div 
+            className="relative aspect-[2/1] rounded-xl overflow-hidden bg-white border border-gray-200 cursor-pointer hover:opacity-90 transition-opacity shadow-sm" 
+            onClick={() => setIsModalOpen(true)}
+            role="button"
+            tabIndex={0}
+            aria-label="Открыть видео демонстрацию загрузки файла в дашборд"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setIsModalOpen(true);
+              }
+            }}
+          >
             <video 
               src="/lovable-uploads/file_to_dashboard.mp4"
               autoPlay 
               muted 
               loop 
               playsInline
-              className="w-full h-full object-contain" 
+              className="w-full h-full object-contain"
+              aria-label="Демонстрация: перетаскивание файла в дашборд"
             />
           </div>
         </div>
@@ -86,8 +99,10 @@ const NewHero = () => {
             <button 
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-colors"
+              aria-label="Закрыть видео"
+              title="Закрыть видео"
             >
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="w-full h-full flex items-center justify-center">
               <video 
