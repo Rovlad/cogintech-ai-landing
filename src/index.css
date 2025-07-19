@@ -74,35 +74,83 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Prevent layout shifts */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
+    /* Prevent layout recalculation */
+    line-height: 1.2;
   }
 
   .container {
     @apply px-4 md:px-6 mx-auto max-w-7xl;
+    /* Use transform for better performance */
+    contain: layout style paint;
   }
 
   .section {
     @apply py-12 md:py-24;
+    /* Optimize rendering */
+    contain: layout style;
   }
 
   .gradient-text {
     @apply bg-gradient-to-r from-cogintech-blue to-cogintech-teal text-transparent bg-clip-text;
+    /* Force GPU acceleration */
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Optimize animations */
+  * {
+    will-change: auto;
+  }
+
+  /* Optimize images */
+  img {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
+
+  /* Optimize scrolling */
+  * {
+    scroll-behavior: smooth;
   }
 }
 
 @layer components {
   .highlight-number {
     @apply text-4xl md:text-5xl font-bold text-cogintech-teal mb-2;
+    /* Prevent layout shifts */
+    contain: layout style;
+    line-height: 1.1;
   }
   
   .section-title {
     @apply text-3xl md:text-4xl font-bold mb-6 md:mb-8;
+    /* Optimize rendering */
+    contain: layout style;
+    line-height: 1.2;
   }
   
   .feature-card {
     @apply p-6 rounded-lg border border-border bg-card hover:shadow-md transition-shadow;
+    /* Use transform for animations */
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+  }
+
+  /* Optimize interactive elements */
+  .hover-scale {
+    transform: translateZ(0);
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05) translateZ(0);
   }
 }
