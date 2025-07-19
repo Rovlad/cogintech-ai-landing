@@ -3,7 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 interface UseSecureFormOptions {
-  formType: 'contact' | 'lead' | 'sandbox';
+  formType: 'contact' | 'lead' | 'sandbox' | 'api-subscription';
 }
 
 export const useSecureForm = ({ formType }: UseSecureFormOptions) => {

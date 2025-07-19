@@ -7,9 +7,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSecureForm } from "@/hooks/useSecureForm";
 
 const SecurityIT = () => {
   const { toast } = useToast();
+  const { submitForm, isSubmitting, honeypot, setHoneypot } = useSecureForm({ 
+    formType: 'api-subscription' 
+  });
+  
   const [formData, setFormData] = useState({
     name: '',
     email: ''
@@ -35,7 +40,7 @@ const SecurityIT = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!agreements.privacyPolicy || !agreements.termsOfService) {
@@ -47,15 +52,15 @@ const SecurityIT = () => {
       return;
     }
 
-    // Here you would typically send the data to your backend
-    toast({
-      title: "Successfully Subscribed!",
-      description: "We'll notify you when API documentation is available.",
+    const success = await submitForm({
+      ...formData,
+      comment: "API news subscription"
     });
 
-    // Reset form
-    setFormData({ name: '', email: '' });
-    setAgreements({ privacyPolicy: false, termsOfService: false });
+    if (success) {
+      setFormData({ name: '', email: '' });
+      setAgreements({ privacyPolicy: false, termsOfService: false });
+    }
   };
 
   const isFormValid = formData.name && formData.email && agreements.privacyPolicy && agreements.termsOfService;
@@ -199,12 +204,23 @@ const SecurityIT = () => {
                     </div>
                   </div>
 
+                  {/* Honeypot field - hidden from users */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    style={{ display: 'none' }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+
                   <Button 
                     type="submit" 
                     className="w-full" 
-                    disabled={!isFormValid}
+                    disabled={!isFormValid || isSubmitting}
                   >
-                    Subscribe for Updates
+                    {isSubmitting ? "Subscribing..." : "Subscribe for Updates"}
                   </Button>
                 </form>
               </div>
