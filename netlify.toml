@@ -2,6 +2,12 @@
   publish = "dist"
   command = "npm run build"
 
+[[plugins]]
+  package = "@netlify/plugin-prerender-spa"
+  
+[plugins.inputs]
+  prerenderDir = "dist"
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
