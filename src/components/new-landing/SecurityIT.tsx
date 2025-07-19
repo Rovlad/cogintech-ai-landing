@@ -1,9 +1,64 @@
 import { Shield, Server, Lock, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SecurityIT = () => {
   const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: ''
+  });
+  
+  const [agreements, setAgreements] = useState({
+    privacyPolicy: false,
+    termsOfService: false
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleAgreementChange = (field: 'privacyPolicy' | 'termsOfService') => (checked: boolean) => {
+    setAgreements(prev => ({
+      ...prev,
+      [field]: checked
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!agreements.privacyPolicy || !agreements.termsOfService) {
+      toast({
+        title: "Agreement Required",
+        description: "Please accept both Privacy Policy and Terms of Service",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Here you would typically send the data to your backend
+    toast({
+      title: "Successfully Subscribed!",
+      description: "We'll notify you when API documentation is available.",
+    });
+
+    // Reset form
+    setFormData({ name: '', email: '' });
+    setAgreements({ privacyPolicy: false, termsOfService: false });
+  };
+
+  const isFormValid = formData.name && formData.email && agreements.privacyPolicy && agreements.termsOfService;
   const features = [
     {
       icon: Server,
@@ -54,19 +109,107 @@ const SecurityIT = () => {
         </div>
         
         <div className="text-center">
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-cogintech-blue text-cogintech-blue hover:bg-cogintech-blue/5"
-            onClick={() => {
-              toast({
-                title: "Coming Soon",
-                description: "API Documentation is coming soon! Stay tuned for updates.",
-              });
-            }}
-          >
-            View API Documentation
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-cogintech-blue text-cogintech-blue hover:bg-cogintech-blue/5"
+              >
+                View API Documentation
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>API Documentation Coming Soon</DialogTitle>
+              </DialogHeader>
+              
+              <div className="space-y-6">
+                <p className="text-foreground/70">
+                  Our comprehensive API documentation is in development. Subscribe to get notified when it's available!
+                </p>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="name">Full Name</Label>
+                    <Input 
+                      id="name" 
+                      name="name" 
+                      value={formData.name} 
+                      onChange={handleChange} 
+                      required 
+                      placeholder="Enter your name"
+                      className="mt-1"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input 
+                      id="email" 
+                      name="email" 
+                      type="email" 
+                      value={formData.email} 
+                      onChange={handleChange} 
+                      required 
+                      placeholder="Enter your email"
+                      className="mt-1"
+                    />
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <Checkbox 
+                        id="privacy-policy"
+                        checked={agreements.privacyPolicy}
+                        onCheckedChange={handleAgreementChange('privacyPolicy')}
+                        className="mt-1"
+                      />
+                      <label htmlFor="privacy-policy" className="text-sm text-foreground/70 leading-relaxed">
+                        I agree to the{' '}
+                        <Link 
+                          to="/privacy-policy" 
+                          className="text-cogintech-blue hover:underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Privacy Policy
+                        </Link>
+                      </label>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <Checkbox 
+                        id="terms-of-service"
+                        checked={agreements.termsOfService}
+                        onCheckedChange={handleAgreementChange('termsOfService')}
+                        className="mt-1"
+                      />
+                      <label htmlFor="terms-of-service" className="text-sm text-foreground/70 leading-relaxed">
+                        I agree to the{' '}
+                        <Link 
+                          to="/terms-of-service" 
+                          className="text-cogintech-blue hover:underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Terms of Service
+                        </Link>
+                      </label>
+                    </div>
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    className="w-full" 
+                    disabled={!isFormValid}
+                  >
+                    Subscribe for Updates
+                  </Button>
+                </form>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>
