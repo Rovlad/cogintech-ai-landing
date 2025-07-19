@@ -24,6 +24,8 @@ const SecurityIT = () => {
     privacyPolicy: false,
     termsOfService: false
   });
+  
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -60,6 +62,7 @@ const SecurityIT = () => {
     if (success) {
       setFormData({ name: '', email: '' });
       setAgreements({ privacyPolicy: false, termsOfService: false });
+      setIsDialogOpen(false);
     }
   };
 
@@ -114,7 +117,7 @@ const SecurityIT = () => {
         </div>
         
         <div className="text-center">
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button 
                 variant="outline" 
