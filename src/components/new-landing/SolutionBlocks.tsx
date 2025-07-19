@@ -107,7 +107,7 @@ const SolutionBlocks = () => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50" onClick={() => setIsModalOpen(false)}>
-          <div className="relative w-full h-full flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full h-full flex items-center justify-center p-4">
             <button 
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-colors"

@@ -39,6 +39,12 @@ async function createBitrix24Contact(formData: any, formType: string) {
             sourceDescription: 'Access Sandbox',
             formName: 'Access Sandbox Environment'
           };
+        case 'api-subscription':
+          return {
+            sourceId: 'WEBSITE',
+            sourceDescription: 'API news subscription',
+            formName: 'API Documentation Updates'
+          };
         default:
           return {
             sourceId: 'WEB',
@@ -159,7 +165,7 @@ async function createBitrix24Contact(formData: any, formType: string) {
 }
 
 interface FormSubmission {
-  formType: 'contact' | 'lead' | 'sandbox';
+  formType: 'contact' | 'lead' | 'sandbox' | 'api-subscription';
   csrfToken: string;
   formData: any;
   honeypot: string;
