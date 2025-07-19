@@ -30,6 +30,17 @@ export default defineConfig(({ mode }) => ({
           supabase: ['@supabase/supabase-js'],
           utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
         },
+        assetFileNames: (assetInfo) => {
+          // Set cache-friendly names for assets
+          if (assetInfo.name) {
+            const info = assetInfo.name.split('.');
+            const ext = info[info.length - 1];
+            if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+              return `assets/images/[name].[hash][extname]`;
+            }
+          }
+          return `assets/[name].[hash][extname]`;
+        },
       },
     },
     assetsInlineLimit: 0,
