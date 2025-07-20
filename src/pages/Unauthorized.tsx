@@ -1,33 +1,23 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
+const Unauthorized: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>404 Page Not Found - Cogintech</title>
-        <meta name="description" content="The page you're looking for doesn't exist." />
+        <title>401 Unauthorized - Cogintech</title>
+        <meta name="description" content="Access denied. You don't have permission to access this resource." />
         <meta name="robots" content="noindex" />
       </Helmet>
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
-            <h1 className="text-6xl font-bold text-red-600 mb-4">404</h1>
+            <h1 className="text-6xl font-bold text-red-600 mb-4">401</h1>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Page Not Found
+              Unauthorized Access
             </h2>
             <p className="text-gray-600 mb-8">
-              The page you're looking for doesn't exist.
+              You don't have permission to access this resource.
             </p>
             <a
               href="/"
@@ -42,4 +32,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default Unauthorized; 
