@@ -1,5 +1,6 @@
 
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 
 const Technology = () => {
@@ -38,6 +39,14 @@ const Technology = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="AI Technology for Equipment Integrity - Computer Vision & ML | Cogintech"
+        description="Discover our multi-agent AI analysis, computer vision, and predictive analytics technology for oil & gas equipment integrity management. 95%+ accuracy."
+        keywords="AI technology, computer vision, predictive analytics, multi-agent AI, equipment integrity, NDT automation, machine learning oil gas"
+        ogTitle="AI Technology for Equipment Integrity - Computer Vision & ML"
+        ogDescription="Discover our multi-agent AI analysis, computer vision, and predictive analytics technology for equipment integrity."
+        ogImage="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png"
+      />
       <Navbar />
       
       <main className="flex-1">

@@ -1,10 +1,19 @@
 
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 
 const AboutUs = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="About Cogintech - AI-Powered Industrial Inspection | Cogintech"
+        description="Learn about Cogintech's mission to revolutionize equipment integrity management in oil & gas through AI. Pioneering industrial inspection technology since 2018."
+        keywords="Cogintech, industrial AI, equipment integrity, oil and gas inspection, NDT technology, company history"
+        ogTitle="About Cogintech - AI-Powered Industrial Inspection"
+        ogDescription="Learn about Cogintech's mission to revolutionize equipment integrity management in oil & gas through AI."
+        ogImage="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png"
+      />
       <Navbar />
       
       <main className="flex-1">
