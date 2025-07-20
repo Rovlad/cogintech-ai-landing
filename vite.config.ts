@@ -27,14 +27,51 @@ export default defineConfig(({ mode }) => ({
     // Add cache headers for production
     assetsDir: 'assets',
     rollupOptions: {
+      treeshake: {
+        preset: 'recommended',
+        moduleSideEffects: false,
+      },
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-slot', '@radix-ui/react-toast', '@radix-ui/react-dialog', '@radix-ui/react-popover'],
-          router: ['react-router-dom'],
-          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
-          supabase: ['@supabase/supabase-js'],
-          utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
+        manualChunks: (id) => {
+          // Core React libraries
+          if (id.includes('react') || id.includes('react-dom')) {
+            return 'vendor';
+          }
+          // Radix UI components - split by functionality
+          if (id.includes('@radix-ui')) {
+            if (id.includes('toast') || id.includes('dialog') || id.includes('popover')) {
+              return 'ui-core';
+            }
+            return 'ui-extended';
+          }
+          // Router
+          if (id.includes('react-router')) {
+            return 'router';
+          }
+          // Forms and validation
+          if (id.includes('react-hook-form') || id.includes('zod') || id.includes('@hookform')) {
+            return 'forms';
+          }
+          // Supabase
+          if (id.includes('supabase')) {
+            return 'supabase';
+          }
+          // Charts (if used)
+          if (id.includes('recharts')) {
+            return 'charts';
+          }
+          // Utilities
+          if (id.includes('clsx') || id.includes('tailwind-merge') || id.includes('class-variance-authority')) {
+            return 'utils';
+          }
+          // Lucide icons
+          if (id.includes('lucide-react')) {
+            return 'icons';
+          }
+          // Large libraries
+          if (id.includes('node_modules')) {
+            return 'vendor-misc';
+          }
         },
         assetFileNames: (assetInfo) => {
           // Set cache-friendly names for assets
@@ -50,6 +87,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
     assetsInlineLimit: 0,
-    minify: 'esbuild', // Use esbuild instead of terser for better compatibility
+    minify: 'esbuild',
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
   },
 }));
