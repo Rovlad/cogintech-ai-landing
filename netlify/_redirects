@@ -1,5 +1,5 @@
 
 # Bot prerendering handled by @netlify/plugin-prerender-spa
 # Block URLs with ?p parameter
-/*    /?p*    401
+/*    /?p=*    401
 # No other manual redirects needed

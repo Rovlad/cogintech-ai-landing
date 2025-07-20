@@ -51,6 +51,13 @@
     </LocationMatch>
 </IfModule>
 
+# Block URLs with ?p= parameter - return 401
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{QUERY_STRING} ^p= [NC]
+    RewriteRule ^(.*)$ - [R=401,L]
+</IfModule>
+
 # Enable compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
