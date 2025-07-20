@@ -1,5 +1,6 @@
 
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 
 const Careers = () => {
@@ -38,6 +39,14 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Join Our AI Team - Careers at Cogintech | Remote & Houston Jobs"
+        description="Work with cutting-edge AI technology in oil & gas. Open positions: AI Engineer, Data Scientist, Frontend Developer. Remote & Houston, TX opportunities."
+        keywords="Cogintech careers, AI jobs, oil gas jobs, remote AI positions, Houston tech jobs, data scientist jobs, AI engineer positions"
+        ogTitle="Join Our AI Team - Careers at Cogintech"
+        ogDescription="Work with cutting-edge AI technology in oil & gas. Remote & Houston opportunities available."
+        ogImage="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png"
+      />
       <Navbar />
       
       <main className="flex-1">

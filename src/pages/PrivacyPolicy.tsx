@@ -1,10 +1,19 @@
 
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Privacy Policy - Data Protection & GDPR Compliance | Cogintech"
+        description="Cogintech's privacy policy: How we collect, use, and protect your personal data. GDPR compliant data processing for industrial AI platform users."
+        keywords="privacy policy, data protection, GDPR compliance, personal data, Cogintech privacy, industrial AI data security"
+        ogTitle="Privacy Policy - Data Protection & GDPR Compliance"
+        ogDescription="Cogintech's privacy policy: How we collect, use, and protect your personal data. GDPR compliant."
+        ogImage="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png"
+      />
       <Navbar />
       
       <main className="flex-1">

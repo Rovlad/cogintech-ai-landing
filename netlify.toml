@@ -7,8 +7,26 @@
   package = "@netlify/plugin-prerender-spa"
 
 [plugins.inputs]
-  # This plugin will automatically detect bots and serve prerendered HTML
-  # No additional configuration needed
+  # Prerender all routes for better SEO
+  routes = [
+    "/",
+    "/old-landing",
+    "/about-us",
+    "/our-team", 
+    "/careers",
+    "/news",
+    "/contact",
+    "/case-studies",
+    "/technology",
+    "/blog",
+    "/privacy-policy",
+    "/terms-of-service",
+    "/cookie-policy"
+  ]
+  # Enable crawling for better discovery
+  crawl = true
+  # Set user agent for bot detection
+  userAgent = "Googlebot"
 
 [[headers]]
   for = "/assets/*"

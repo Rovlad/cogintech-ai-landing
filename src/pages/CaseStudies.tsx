@@ -1,11 +1,20 @@
 
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import { Clock, Sparkles } from "lucide-react";
 
 const CaseStudies = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Customer Success Stories & ROI Results - Coming Soon | Cogintech"
+        description="Real customer case studies showing 30% cost reduction, 95%+ accuracy, and $40M savings in unplanned shutdowns. Leading oil & gas companies trust Cogintech."
+        keywords="case studies, customer success, ROI results, oil gas savings, equipment integrity ROI, NDT cost reduction"
+        ogTitle="Customer Success Stories & ROI Results - Coming Soon"
+        ogDescription="Real customer case studies showing 30% cost reduction and $40M savings in unplanned shutdowns."
+        ogImage="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png"
+      />
       <Navbar />
       
       <main className="flex-1 flex items-center justify-center">

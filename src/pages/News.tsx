@@ -1,5 +1,6 @@
 
 import Navbar from "@/components/Navbar";
+import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 
 const News = () => {
@@ -32,6 +33,14 @@ const News = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Latest AI & Oil Gas Industry News | Cogintech"
+        description="Stay updated with Cogintech's latest developments, partnerships, and industry insights in AI-powered equipment integrity management for oil & gas sector."
+        keywords="Cogintech news, AI oil gas news, equipment integrity news, industrial AI updates, NDT technology news"
+        ogTitle="Latest AI & Oil Gas Industry News"
+        ogDescription="Stay updated with Cogintech's latest developments and industry insights in AI-powered equipment integrity."
+        ogImage="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png"
+      />
       <Navbar />
       
       <main className="flex-1">
