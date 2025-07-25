@@ -25,10 +25,6 @@ const SocialProof = () => {
               Be among the first to experience revolutionary AI-driven integrity management with leading enterprises.
             </p>
             
-            <p className="text-sm font-semibold text-cogintech-blue/80 mb-8">
-              Limited slots available
-            </p>
-            
             <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-cogintech-teal" />
@@ -51,6 +47,10 @@ const SocialProof = () => {
             >
               Join the Program
             </Button>
+            
+            <p className="text-sm font-semibold text-cogintech-blue/80 mt-4">
+              Limited slots available
+            </p>
           </div>
         </div>
       </div>
