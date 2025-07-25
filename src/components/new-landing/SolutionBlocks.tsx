@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FileText, BarChart3, Brain, MessageSquare, X } from "lucide-react";
-import { useState } from "react";
 
 const SolutionBlocks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,7 +36,7 @@ const SolutionBlocks = () => {
       title: "AI Assistant",
       description: "Ask simple questions in natural language and get insights instantly. No special training required.",
       benefits: "Get instant answers from your data without complex commands.",
-      video: "/lovable-uploads/dashboard.mp4", // MP4 video
+      video: "/lovable-uploads/AI_assistant.mp4", // MP4 video
       ctaText: "Try AI Assistant"
     }
   ];
