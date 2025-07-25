@@ -4,25 +4,13 @@ const SocialProof = () => {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Trusted by industry leaders
+            Join Early Adopters
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Leading oil & gas companies rely on our AI platform to protect their critical infrastructure.
+            We are currently running pilot programs with leading enterprises. Join them and be among the first to experience AI-driven integrity management.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {/* Customer logos placeholder */}
-          <div className="bg-gray-100 rounded-lg p-8 flex items-center justify-center h-24">
-            <span className="text-gray-500 font-medium">Customer Logo 1</span>
-          </div>
-          <div className="bg-gray-100 rounded-lg p-8 flex items-center justify-center h-24">
-            <span className="text-gray-500 font-medium">Customer Logo 2</span>
-          </div>
-          <div className="bg-gray-100 rounded-lg p-8 flex items-center justify-center h-24">
-            <span className="text-gray-500 font-medium">Customer Logo 3</span>
-          </div>
-        </div>
         
         <div className="bg-gradient-to-r from-cogintech-blue/10 to-cogintech-teal/10 rounded-xl p-8 text-center">
           <blockquote className="text-xl italic text-foreground/80 mb-4">
