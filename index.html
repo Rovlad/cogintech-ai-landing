@@ -4,6 +4,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Development cache prevention - only in development -->
+    <script>
+      // Check if we're in development mode
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // Add cache prevention headers for development
+        const meta = document.createElement('meta');
+        meta.httpEquiv = 'Cache-Control';
+        meta.content = 'no-cache, no-store, must-revalidate';
+        document.head.appendChild(meta);
+        
+        const pragma = document.createElement('meta');
+        pragma.httpEquiv = 'Pragma';
+        pragma.content = 'no-cache';
+        document.head.appendChild(pragma);
+        
+        const expires = document.createElement('meta');
+        expires.httpEquiv = 'Expires';
+        expires.content = '0';
+        document.head.appendChild(expires);
+      }
+    </script>
+    
     <title>AI Integrity Platform – cut failures 30 % | Cogintech</title>
     <meta name="description" content="Stop losing $40 M to unplanned shutdowns. Book a 15-min demo." />
     <meta name="author" content="Cogintech Ltd." />

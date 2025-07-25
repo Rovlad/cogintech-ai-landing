@@ -1,12 +1,11 @@
-
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import CookieConsent from "./components/CookieConsent";
+import DevInfo from "./components/DevInfo";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
@@ -43,10 +42,7 @@ const App = () => {
   }, []);
 
   return (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
@@ -68,9 +64,11 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />
+        <DevInfo />
+        <Toaster />
+        <Sonner />
       </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+    </QueryClientProvider>
   );
 };
 

@@ -1,24 +1,30 @@
+import { Calendar, Zap, Shield, DollarSign } from "lucide-react";
+
 const ValueMetrics = () => {
   const metrics = [
     {
       value: "30%",
       label: "Reduction in unplanned failures",
-      description: "Prevent costly equipment breakdowns with predictive insights"
+      description: "Prevent costly equipment breakdowns with predictive insights",
+      icon: Calendar
     },
     {
       value: "100x",
       label: "Faster information search",
-      description: "Find critical documents and data in seconds, not hours"
+      description: "Find critical documents and data in seconds, not hours",
+      icon: Zap
     },
     {
       value: "95%+",
       label: "Analysis accuracy",
-      description: "AI-powered precision in integrity assessments"
+      description: "AI-powered precision in integrity assessments",
+      icon: Shield
     },
     {
       value: "$10M",
       label: "Average annual savings",
-      description: "Typical cost reduction from prevented failures and efficiency gains"
+      description: "Typical cost reduction from prevented failures and efficiency gains",
+      icon: DollarSign
     }
   ];
 
@@ -37,6 +43,11 @@ const ValueMetrics = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {metrics.map((metric, index) => (
             <div key={index} className="text-center p-6 rounded-xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center">
+                  <metric.icon className="h-6 w-6 text-green-600" />
+                </div>
+              </div>
               <div className="text-4xl font-bold text-cogintech-orange mb-2">
                 {metric.value}
               </div>
