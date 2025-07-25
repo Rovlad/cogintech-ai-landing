@@ -44,8 +44,8 @@ const ValueMetrics = () => {
           {metrics.map((metric, index) => (
             <div key={index} className="text-center p-6 rounded-xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-center mb-4">
-                <div className="w-12 h-12 bg-cogintech-orange/10 rounded-lg flex items-center justify-center">
-                  <metric.icon className="h-6 w-6 text-cogintech-orange" />
+                <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center">
+                  <metric.icon className="h-6 w-6 text-green-600" />
                 </div>
               </div>
               <div className="text-4xl font-bold text-cogintech-orange mb-2">
