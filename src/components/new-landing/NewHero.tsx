@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const NewHero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
