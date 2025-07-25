@@ -1,8 +1,6 @@
-
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
@@ -45,30 +43,28 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <TooltipProvider>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<NewLanding />} />
-            <Route path="/old-landing" element={<Index />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/our-team" element={<OurTeam />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/technology" element={<Technology />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="/401" element={<Unauthorized />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <CookieConsent />
-          <Toaster />
-          <Sonner />
-        </TooltipProvider>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<NewLanding />} />
+          <Route path="/old-landing" element={<Index />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/technology" element={<Technology />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/401" element={<Unauthorized />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <CookieConsent />
+        <Toaster />
+        <Sonner />
       </BrowserRouter>
     </QueryClientProvider>
   );
