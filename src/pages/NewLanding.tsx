@@ -4,7 +4,6 @@ import SEOHead from "@/components/SEOHead";
 import NewHero from "@/components/new-landing/NewHero";
 import PainAmplifier from "@/components/new-landing/PainAmplifier";
 import SolutionBlocks from "@/components/new-landing/SolutionBlocks";
-import AIAssistant from "@/components/new-landing/AIAssistant";
 import ValueMetrics from "@/components/new-landing/ValueMetrics";
 import SocialProof from "@/components/new-landing/SocialProof";
 import SecurityIT from "@/components/new-landing/SecurityIT";
@@ -28,7 +27,6 @@ const NewLanding = () => {
       <NewHero />
       <PainAmplifier />
       <SolutionBlocks />
-      <AIAssistant />
       <ValueMetrics />
       <SocialProof />
       <SecurityIT />
