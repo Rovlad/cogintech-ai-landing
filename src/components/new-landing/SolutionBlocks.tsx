@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { FileText, BarChart3, Brain, MessageSquare, X } from "lucide-react";
+import { FileText, BarChart3, Brain, X } from "lucide-react";
 import { useState } from "react";
 
 const SolutionBlocks = () => {
@@ -30,14 +30,6 @@ const SolutionBlocks = () => {
       benefits: "AI-powered analysis saves millions.",
       video: "/lovable-uploads/corrosion_loops.mp4", // MP4 video
       ctaText: "Try AI Tools"
-    },
-    {
-      icon: MessageSquare,
-      title: "AI Assistant",
-      description: "Ask simple questions in natural language and get insights instantly. No special training required.",
-      benefits: "Get instant answers from your data without complex commands.",
-      video: "/lovable-uploads/dashboard.mp4", // MP4 video
-      ctaText: "Try AI Assistant"
     }
   ];
 
@@ -49,7 +41,7 @@ const SolutionBlocks = () => {
             See how <span className="gradient-text">AI transforms</span> your workflow
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Four core tools that eliminate information chaos and prevent costly failures.
+            Three core tools that eliminate information chaos and prevent costly failures.
           </p>
         </div>
         
