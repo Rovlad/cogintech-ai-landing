@@ -21,12 +21,8 @@ const SocialProof = () => {
               Join Early Adopters
             </h2>
             
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto mb-4">
+            <p className="text-xl text-foreground/70 max-w-2xl mx-auto mb-8">
               Be among the first to experience revolutionary AI-driven integrity management with leading enterprises.
-            </p>
-            
-            <p className="text-sm font-semibold text-cogintech-blue/80 mb-8">
-              Limited slots available
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
