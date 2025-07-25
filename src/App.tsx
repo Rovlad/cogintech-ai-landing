@@ -43,34 +43,34 @@ const App = () => {
   }, []);
 
   return (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<NewLanding />} />
-          <Route path="/old-landing" element={<Index />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/our-team" element={<OurTeam />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/technology" element={<Technology />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/401" element={<Unauthorized />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <CookieConsent />
+        <TooltipProvider>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<NewLanding />} />
+            <Route path="/old-landing" element={<Index />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/our-team" element={<OurTeam />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/401" element={<Unauthorized />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <CookieConsent />
+          <Toaster />
+          <Sonner />
+        </TooltipProvider>
       </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+    </QueryClientProvider>
   );
 };
 
