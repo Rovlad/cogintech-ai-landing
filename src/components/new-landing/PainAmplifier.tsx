@@ -1,19 +1,19 @@
-import { AlertTriangle, FileX, Users } from "lucide-react";
+import { Search, Timer, Target } from "lucide-react";
 
 const PainAmplifier = () => {
   const painPoints = [
     {
-      icon: FileX,
+      icon: Search,
       title: "Document Search",
       description: "Engineers spend up to 30% of their time searching across PDFs, spreadsheets and folders."
     },
     {
-      icon: AlertTriangle,
+      icon: Timer,
       title: "Slow Delivery",
       description: "Client reports take weeks, slowing delivery and hurting satisfaction."
     },
     {
-      icon: Users,
+      icon: Target,
       title: "Inconsistent Quality",
       description: "Inconsistent documentation makes quality and compliance hard to guarantee."
     }
