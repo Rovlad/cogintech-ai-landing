@@ -4,18 +4,18 @@ const PainAmplifier = () => {
   const painPoints = [
     {
       icon: FileX,
-      title: "Information Chaos",
-      description: "Critical data scattered across multiple systems, making decisions slow and error-prone."
+      title: "Document Search",
+      description: "Engineers spend up to 30% of their time searching across PDFs, spreadsheets and folders."
     },
     {
       icon: AlertTriangle,
-      title: "No Holistic View",
-      description: "Fragmented insights prevent seeing the full picture of equipment health and risk."
+      title: "Slow Delivery",
+      description: "Client reports take weeks, slowing delivery and hurting satisfaction."
     },
     {
       icon: Users,
-      title: "Overloaded Engineers",
-      description: "Teams spend 70% of time searching for information instead of solving problems."
+      title: "Inconsistent Quality",
+      description: "Inconsistent documentation makes quality and compliance hard to guarantee."
     }
   ];
 
@@ -24,10 +24,10 @@ const PainAmplifier = () => {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Why do <span className="text-red-600">sudden failures</span> keep happening?
+            Why service companies lose <span className="text-red-600">time and margin</span>
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Three critical gaps in traditional integrity management are costing your organization millions.
+            Three critical gaps are eating into your engineering productivity and client satisfaction.
           </p>
         </div>
         
@@ -41,6 +41,14 @@ const PainAmplifier = () => {
               <p className="text-foreground/70">{point.description}</p>
             </div>
           ))}
+        </div>
+        
+        {/* Optional pull quote */}
+        <div className="mt-16 text-center">
+          <blockquote className="text-lg italic text-foreground/60 max-w-2xl mx-auto">
+            "We spend hours just finding past reports."
+          </blockquote>
+          <p className="text-sm text-foreground/50 mt-2">— Service company owner</p>
         </div>
       </div>
     </section>

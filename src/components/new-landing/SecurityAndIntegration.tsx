@@ -144,6 +144,12 @@ const SecurityAndIntegration = () => {
             isolated environments with full audit trails and compliance documentation.
           </p>
         </div>
+        
+        <div className="text-center mt-8">
+          <p className="text-sm text-foreground/60">
+            Planned certifications on the roadmap.
+          </p>
+        </div>
       </div>
     </section>
   );

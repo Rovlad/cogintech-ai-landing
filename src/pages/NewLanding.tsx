@@ -5,6 +5,7 @@ import NewHero from "@/components/new-landing/NewHero";
 import PainAmplifier from "@/components/new-landing/PainAmplifier";
 import ValueMetrics from "@/components/new-landing/ValueMetrics";
 import HowItWorks from "@/components/new-landing/HowItWorks";
+import MCPSection from "@/components/new-landing/MCPSection";
 import EarlyAdopters from "@/components/new-landing/SocialProof";
 import SecurityAndIntegration from "@/components/new-landing/SecurityAndIntegration";
 import BookDemo from "@/components/new-landing/BookDemo";
@@ -27,6 +28,7 @@ const NewLanding = () => {
         <PainAmplifier />
         <ValueMetrics />
         <HowItWorks />
+        <MCPSection />
         <EarlyAdopters />
         <SecurityAndIntegration />
         <BookDemo />

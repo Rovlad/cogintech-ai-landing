@@ -82,7 +82,7 @@ const HowItWorks = () => {
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold mb-4 text-foreground">See It in Action</h3>
             <p className="text-lg text-foreground/70">
-              Watch how engineers transform complex data into professional reports
+              See how your team can turn complex files into client-ready reports
             </p>
           </div>
           

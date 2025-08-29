@@ -7,11 +7,11 @@ const EarlyAdopters = () => {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Be the First to Experience 
-            <span className="text-cogintech-teal"> AI-Powered Engineering Services</span>
+            Be the first to experience 
+            <span className="text-cogintech-teal"> AI-powered engineering services</span>
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
-            We're currently opening limited slots for forward-thinking engineering service companies
+            We're opening a limited number of MVP slots this quarter:
           </p>
         </div>
 
@@ -23,7 +23,7 @@ const EarlyAdopters = () => {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-white">Live Demo with Your Team</h3>
             <p className="text-white/70 mb-6">
-              See how our AI works with your actual project data in a personalized demonstration.
+              Walk through a real scenario with your files.
             </p>
             <Button 
               size="lg"
@@ -41,7 +41,7 @@ const EarlyAdopters = () => {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-white">Test Access (Sandbox)</h3>
             <p className="text-white/70 mb-6">
-              Try our platform with sample engineering data before committing to a full implementation.
+              Hands-on with sample data. No setup required.
             </p>
             <Button 
               size="lg"
@@ -60,7 +60,7 @@ const EarlyAdopters = () => {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-white">Subscribe for Updates</h3>
             <p className="text-white/70 mb-6">
-              Stay informed about new features and be first to access advanced AI capabilities.
+              Product news, features and tips.
             </p>
             <Button 
               size="lg"
@@ -76,7 +76,7 @@ const EarlyAdopters = () => {
         <div className="text-center">
           <div className="inline-flex items-center gap-4 bg-white/10 text-white px-8 py-4 rounded-full text-lg font-semibold">
             <Rocket className="w-6 h-6" />
-            Limited slots available • Join 50+ companies already testing
+            Limited slots available.
           </div>
         </div>
       </div>

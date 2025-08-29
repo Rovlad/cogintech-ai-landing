@@ -4,26 +4,26 @@ const ValueMetrics = () => {
   const metrics = [
     {
       value: "30%",
-      label: "Reduction in unplanned failures",
-      description: "Prevent costly equipment breakdowns with predictive insights",
+      label: "lower engineering effort",
+      description: "Reduce manual work with automated data processing and report generation",
       icon: Calendar
     },
     {
-      value: "100x",
-      label: "Faster information search",
+      value: "10×",
+      label: "faster information access",
       description: "Find critical documents and data in seconds, not hours",
       icon: Zap
     },
     {
       value: "95%+",
-      label: "Analysis accuracy",
-      description: "AI-powered precision in integrity assessments",
+      label: "report consistency",
+      description: "AI-powered standardization ensures reliable, client-ready outputs",
       icon: Shield
     },
     {
-      value: "$10M",
-      label: "Average annual savings",
-      description: "Typical cost reduction from prevented failures and efficiency gains",
+      value: "Shorter",
+      label: "delivery cycles",
+      description: "Get from raw data to professional reports in days, not weeks",
       icon: DollarSign
     }
   ];
@@ -33,10 +33,10 @@ const ValueMetrics = () => {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Quantified <span className="text-green-600">value</span> from day one
+            Outcomes you can <span className="text-green-600">aim for</span> from day one
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Real results from customers using our AI-powered integrity management platform.
+            Based on internal benchmarks and early user feedback.
           </p>
         </div>
         
