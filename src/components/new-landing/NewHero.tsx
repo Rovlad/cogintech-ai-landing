@@ -70,24 +70,27 @@ const NewHero = () => {
         </div>
         
         {/* Statistics row spanning full width */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
-              <span className="text-red-600 font-bold text-sm">Up to 30%</span>
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+              <span className="text-white font-bold text-sm">30%</span>
             </div>
-            <span className="text-lg font-medium">less engineering effort</span>
+            <div className="text-2xl font-bold text-red-600 mb-1">Up to 30%</div>
+            <div className="text-sm text-foreground/70">less engineering effort</div>
           </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
-              <span className="text-green-600 font-bold text-lg">10×</span>
+          <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+              <span className="text-white font-bold text-sm">10×</span>
             </div>
-            <span className="text-lg font-medium">faster access to information</span>
+            <div className="text-2xl font-bold text-green-600 mb-1">10× faster</div>
+            <div className="text-sm text-foreground/70">access to information</div>
           </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-              <span className="text-blue-600 font-bold text-lg">Higher</span>
+          <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+              <span className="text-white font-bold text-xs">95%+</span>
             </div>
-            <span className="text-lg font-medium">report consistency</span>
+            <div className="text-2xl font-bold text-blue-600 mb-1">Higher</div>
+            <div className="text-sm text-foreground/70">report consistency</div>
           </div>
         </div>
       </div>
