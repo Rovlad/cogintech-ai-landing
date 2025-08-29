@@ -33,7 +33,7 @@ const ValueMetrics = () => {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Outcomes you can <span className="text-green-600">aim for</span> from day one
+            Outcomes You Can Aim for from Day One
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             Based on internal benchmarks and early user feedback.

@@ -8,8 +8,7 @@ const HowItWorks = () => {
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            How It Works
-            <span className="text-cogintech-teal"> (3 Simple Steps)</span>
+            Three Simple Steps to Transform Your Workflow
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             Get from raw project data to client-ready reports in record time

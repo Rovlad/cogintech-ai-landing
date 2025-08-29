@@ -16,11 +16,11 @@ const NewLanding = () => {
   return (
     <div className="min-h-screen flex flex-col w-full">
       <SEOHead 
-        title="Double Your Engineering Productivity with AI | Cogintech"
-        description="Cut reporting time from weeks to days. Free up your engineers and impress your clients. Book a 15-min demo."
-        keywords="AI for engineering service companies, engineering productivity AI, inspection report automation demo, AI demo engineering services, test access AI platform, subscribe engineering AI news"
-        ogTitle="Double Your Engineering Productivity with AI"
-        ogDescription="Cut reporting time from weeks to days. Free up your engineers and impress your clients."
+        title="AI for Engineering Services – Faster Reporting & Consistent Quality"
+        description="Cut reporting time from weeks to days. AI-powered tools for engineering service companies: faster reports, less manual work, higher client trust."
+        keywords="AI for engineering services, engineering document management, inspection report automation, faster client reporting, test access AI platform, demo AI for service companies, engineering productivity tool, reduce reporting time engineering, standardize report quality, AI for technical documentation"
+        ogTitle="AI for Engineering Services – Faster Reporting & Consistent Quality"
+        ogDescription="Cut reporting time from weeks to days. AI-powered tools for engineering service companies: faster reports, less manual work, higher client trust."
         ogImage="/lovable-uploads/22fc09d7-63fe-4527-885a-d78c38ec2e86.png"
       />
       <Navbar />
