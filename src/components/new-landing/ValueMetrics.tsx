@@ -3,19 +3,19 @@ import { Calendar, Zap, Shield, DollarSign } from "lucide-react";
 const ValueMetrics = () => {
   const metrics = [
     {
-      value: "30%",
-      label: "lower engineering effort",
+      value: "Up to 30%",
+      label: "less engineering effort",
       description: "Reduce manual work with automated data processing and report generation",
       icon: Calendar
     },
     {
       value: "10×",
-      label: "faster information access",
+      label: "faster access to information",
       description: "Find critical documents and data in seconds, not hours",
       icon: Zap
     },
     {
-      value: "95%+",
+      value: "Higher",
       label: "report consistency",
       description: "AI-powered standardization ensures reliable, client-ready outputs",
       icon: Shield
