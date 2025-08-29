@@ -72,24 +72,24 @@ const NewHero = () => {
         {/* Statistics row spanning full width */}
         <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
-            <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">30%</span>
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-cogintech-orange/20 flex items-center justify-center">
+              <span className="text-cogintech-orange font-bold text-sm">30%</span>
             </div>
-            <div className="text-2xl font-bold text-red-600 mb-1">Up to 30%</div>
+            <div className="text-2xl font-bold text-cogintech-orange mb-1">Up to 30%</div>
             <div className="text-sm text-foreground/70">less engineering effort</div>
           </div>
           <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
-            <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">10×</span>
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-cogintech-teal/20 flex items-center justify-center">
+              <span className="text-cogintech-teal font-bold text-sm">10×</span>
             </div>
-            <div className="text-2xl font-bold text-green-600 mb-1">10× faster</div>
+            <div className="text-2xl font-bold text-cogintech-teal mb-1">10× faster</div>
             <div className="text-sm text-foreground/70">access to information</div>
           </div>
           <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
-            <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-xs">95%+</span>
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-cogintech-blue/20 flex items-center justify-center">
+              <span className="text-cogintech-blue font-bold text-xs">95%+</span>
             </div>
-            <div className="text-2xl font-bold text-blue-600 mb-1">Higher</div>
+            <div className="text-2xl font-bold text-cogintech-blue mb-1">Higher</div>
             <div className="text-sm text-foreground/70">report consistency</div>
           </div>
         </div>
