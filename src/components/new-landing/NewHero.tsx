@@ -16,11 +16,11 @@ const NewHero = () => {
           <div className="space-y-8 max-w-2xl">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight lg:text-5xl">
-                <span className="text-red-600">Stop losing $40M/yr</span><br />
-                to sudden failures
+                <span className="bg-gradient-to-r from-cogintech-blue to-cogintech-teal bg-clip-text text-transparent">Double Your Engineering Productivity</span><br />
+                with AI
               </h1>
               <p className="text-xl text-foreground/80">
-                Cut unplanned downtime by <span className="font-semibold text-cogintech-orange">30%</span> and save <span className="font-semibold text-green-600">$10M</span> with AI-powered integrity management.
+                Cut reporting time from weeks to days. <span className="font-semibold text-cogintech-teal">Free up your engineers and impress your clients.</span>
               </p>
             </div>
             
@@ -30,7 +30,7 @@ const NewHero = () => {
                 className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-white font-medium px-8 py-6"
                 onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Try Sandbox
+                Get Test Access
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button 
@@ -39,7 +39,7 @@ const NewHero = () => {
                 className="border-cogintech-blue text-cogintech-blue hover:bg-cogintech-blue/5 font-medium px-8 py-6"
                 onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Book 15-min Live Demo
+                Book a 15-min Demo
               </Button>
             </div>
           </div>
