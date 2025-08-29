@@ -73,9 +73,9 @@ const NewHero = () => {
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
-              <span className="text-red-600 font-bold text-lg">30%</span>
+              <span className="text-red-600 font-bold text-sm">Up to 30%</span>
             </div>
-            <span className="text-lg font-medium">Up to 30% less engineering effort</span>
+            <span className="text-lg font-medium">less engineering effort</span>
           </div>
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
