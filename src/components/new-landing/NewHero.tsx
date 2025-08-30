@@ -49,7 +49,7 @@ const NewHero = () => {
             onClick={() => setIsModalOpen(true)}
             role="button"
             tabIndex={0}
-            aria-label="Открыть демонстрацию процесса извлечения данных"
+            aria-label="Open data extraction process demonstration"
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -59,7 +59,7 @@ const NewHero = () => {
           >
             <img 
               src="/lovable-uploads/299e0adb-c90d-4709-9fc7-06c04860d778.png"
-              alt="Процесс извлечения данных: PDF → Entity Extraction → AI Chat Assistant"
+              alt="Data extraction process: PDF → Entity Extraction → AI Chat Assistant"
               className="w-full h-full object-contain"
             />
           </div>
@@ -71,8 +71,8 @@ const NewHero = () => {
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-cogintech-orange/20 flex items-center justify-center">
               <span className="text-cogintech-orange font-bold text-sm">30%</span>
             </div>
-            <div className="text-2xl font-bold text-cogintech-orange mb-1">30% экономия</div>
-            <div className="text-sm text-foreground/70">времени на типичных задачах</div>
+            <div className="text-2xl font-bold text-cogintech-orange mb-1">30% time saved</div>
+            <div className="text-sm text-foreground/70">on typical engineering tasks</div>
           </div>
           <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-cogintech-teal/20 flex items-center justify-center">
@@ -98,15 +98,15 @@ const NewHero = () => {
             <button 
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-colors"
-              aria-label="Закрыть видео"
-              title="Закрыть видео"
+              aria-label="Close image"
+              title="Close image"
             >
               <X className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="w-full h-full flex items-center justify-center">
               <img 
                 src="/lovable-uploads/299e0adb-c90d-4709-9fc7-06c04860d778.png" 
-                alt="Процесс извлечения данных: PDF → Entity Extraction → AI Chat Assistant"
+                alt="Data extraction process: PDF → Entity Extraction → AI Chat Assistant"
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}
               />
