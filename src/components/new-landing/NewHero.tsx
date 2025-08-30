@@ -58,8 +58,8 @@ const NewHero = () => {
             }}
           >
             <img 
-              src="/lovable-uploads/299e0adb-c90d-4709-9fc7-06c04860d778.png"
-              alt="Data extraction process: PDF → Entity Extraction → AI Chat Assistant"
+              src="/lovable-uploads/8779f590-9e4c-43b9-abf7-8e951aa8db60.png"
+              alt="Document Chaos → Structured Database → AI Assistant"
               className="w-full h-full object-contain"
             />
           </div>
@@ -105,8 +105,8 @@ const NewHero = () => {
             </button>
             <div className="w-full h-full flex items-center justify-center">
               <img 
-                src="/lovable-uploads/299e0adb-c90d-4709-9fc7-06c04860d778.png" 
-                alt="Data extraction process: PDF → Entity Extraction → AI Chat Assistant"
+                src="/lovable-uploads/8779f590-9e4c-43b9-abf7-8e951aa8db60.png" 
+                alt="Document Chaos → Structured Database → AI Assistant"
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}
               />
