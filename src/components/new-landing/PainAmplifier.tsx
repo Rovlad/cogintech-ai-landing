@@ -24,7 +24,7 @@ const PainAmplifier = () => {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Why Service Companies Lose Time and Margin
+            Why Enineering Teams Lose Time and Efficiency
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             Three critical gaps are eating into your engineering productivity and client satisfaction.
