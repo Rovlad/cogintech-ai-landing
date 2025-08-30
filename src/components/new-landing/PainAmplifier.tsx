@@ -27,7 +27,7 @@ const PainAmplifier = () => {
             Why Enineering Teams Lose Time and Efficiency
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Three critical gaps are eating into your engineering productivity
+            Three critical gaps are eating into your engineering team productivity
           </p>
         </div>
         
