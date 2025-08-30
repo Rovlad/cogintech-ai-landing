@@ -72,21 +72,21 @@ const NewHero = () => {
               <span className="text-cogintech-orange font-bold text-3xl">30%</span>
             </div>
             <div className="text-2xl font-bold text-cogintech-orange mb-1">30% time saved</div>
-            <div className="text-base text-foreground/70">on typical engineering tasks</div>
+            <div className="text-base font-bold text-foreground/70">on typical engineering tasks</div>
           </div>
           <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-cogintech-teal/20 flex items-center justify-center">
               <span className="text-cogintech-teal font-bold text-3xl">10×</span>
             </div>
             <div className="text-2xl font-bold text-cogintech-teal mb-1">10× faster</div>
-            <div className="text-base text-foreground/70">finding nesessary information</div>
+            <div className="text-base font-bold text-foreground/70">finding nesessary information</div>
           </div>
           <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
             <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-cogintech-blue/20 flex items-center justify-center">
               <span className="text-cogintech-blue font-bold text-2xl">95%+</span>
             </div>
             <div className="text-2xl font-bold text-cogintech-blue mb-1">Higher</div>
-            <div className="text-base text-foreground/70">report accuracy</div>
+            <div className="text-base font-bold text-foreground/70">report accuracy</div>
           </div>
         </div>
       </div>
