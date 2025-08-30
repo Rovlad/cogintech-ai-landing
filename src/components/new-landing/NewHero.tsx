@@ -49,7 +49,7 @@ const NewHero = () => {
             onClick={() => setIsModalOpen(true)}
             role="button"
             tabIndex={0}
-            aria-label="Открыть видео демонстрацию загрузки файла в дашборд"
+            aria-label="Открыть демонстрацию процесса извлечения данных"
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -57,14 +57,10 @@ const NewHero = () => {
               }
             }}
           >
-            <video 
-              src="/lovable-uploads/file_to_dashboard.mp4"
-              autoPlay 
-              muted 
-              loop 
-              playsInline
+            <img 
+              src="/lovable-uploads/299e0adb-c90d-4709-9fc7-06c04860d778.png"
+              alt="Процесс извлечения данных: PDF → Entity Extraction → AI Chat Assistant"
               className="w-full h-full object-contain"
-              aria-label="Демонстрация: перетаскивание файла в дашборд"
             />
           </div>
         </div>
@@ -108,12 +104,9 @@ const NewHero = () => {
               <X className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="w-full h-full flex items-center justify-center">
-              <video 
-                src="/lovable-uploads/file_to_dashboard.mp4" 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
+              <img 
+                src="/lovable-uploads/299e0adb-c90d-4709-9fc7-06c04860d778.png" 
+                alt="Процесс извлечения данных: PDF → Entity Extraction → AI Chat Assistant"
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}
               />
