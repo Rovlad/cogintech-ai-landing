@@ -20,7 +20,7 @@ const NewHero = () => {
                 with AI
               </h1>
               <p className="text-xl text-foreground/80">
-                AI Assistant for Engineers - <span className="font-semibold text-cogintech-teal"> instant access to equipment data and automation of routine engineeering tasks</span>
+                AI Assistant for Engineers - <span className="font-semibold text-cogintech-teal"> Automatically create databases from technical documents and deploy AI assistants for search, analysis, and decision support</span>
               </p>
             </div>
             
