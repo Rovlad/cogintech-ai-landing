@@ -16,8 +16,8 @@ const NewHero = () => {
           <div className="space-y-8 max-w-2xl">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight lg:text-5xl">
-                <span className="bg-gradient-to-r from-cogintech-blue to-cogintech-teal bg-clip-text text-transparent">Double Your Engineering Team Productivity with</span><br />
-                Cogintech Integrith AI
+                <span className="bg-gradient-to-r from-cogintech-blue to-cogintech-teal bg-clip-text text-transparent">Cogintech Integrity AI Double Your Engineering Team Productivity</span><br />
+                
               </h1>
               <p className="text-xl text-foreground/80">
                 <span className="font-semibold text-cogintech-teal"> Automatically create databases from technical documents and deploy AI assistants for search, analysis, and decision support</span>
