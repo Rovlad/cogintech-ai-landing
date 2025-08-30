@@ -20,7 +20,7 @@ const NewHero = () => {
                 with AI
               </h1>
               <p className="text-xl text-foreground/80">
-                Cut reporting time from weeks to days. <span className="font-semibold text-cogintech-teal">Free up your engineers and impress your clients.</span>
+                AI-Powered Engineering Workbench for Oil & Gas Engineers - <span className="font-semibold text-cogintech-teal">Boost your engineering team efficiency by 30% with intelligent document and data management and AI assistants and tools</span>
               </p>
             </div>
             
