@@ -71,8 +71,8 @@ const NewHero = () => {
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-cogintech-orange/20 flex items-center justify-center">
               <span className="text-cogintech-orange font-bold text-sm">30%</span>
             </div>
-            <div className="text-2xl font-bold text-cogintech-orange mb-1">Up to 30%</div>
-            <div className="text-sm text-foreground/70">less engineering effort</div>
+            <div className="text-2xl font-bold text-cogintech-orange mb-1">30% экономия</div>
+            <div className="text-sm text-foreground/70">времени на типичных задачах</div>
           </div>
           <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-cogintech-teal/20 flex items-center justify-center">
