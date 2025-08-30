@@ -10,7 +10,7 @@ const ValueMetrics = () => {
     },
     {
       value: "10×",
-      label: "faster access to information",
+      label: "faster finding nessesary information",
       description: "Find critical documents and data in seconds, not hours",
       icon: Zap
     },
