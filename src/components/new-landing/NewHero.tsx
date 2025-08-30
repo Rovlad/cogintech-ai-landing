@@ -20,7 +20,7 @@ const NewHero = () => {
                 with AI
               </h1>
               <p className="text-xl text-foreground/80">
-                AI-Powered Engineering Workbench for Oil & Gas Engineers - <span className="font-semibold text-cogintech-teal">Boost your engineering team efficiency with intelligent document and data management and AI assistants and tools</span>
+                AI Assistant for Engineers - <span className="font-semibold text-cogintech-teal"> instant access to equipment data and automation of routine analyses</span>
               </p>
             </div>
             
