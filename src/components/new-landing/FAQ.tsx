@@ -39,7 +39,7 @@ const FAQ = () => {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Frequently asked questions
+            Frequently Asked Questions
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             Common questions from integrity engineers and IT decision makers.

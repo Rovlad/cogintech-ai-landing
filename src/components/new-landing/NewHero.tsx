@@ -16,11 +16,11 @@ const NewHero = () => {
           <div className="space-y-8 max-w-2xl">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight lg:text-5xl">
-                <span className="text-red-600">Stop losing $40M/yr</span><br />
-                to sudden failures
+                <span className="bg-gradient-to-r from-cogintech-blue to-cogintech-teal bg-clip-text text-transparent">Cogintech Integrity AI Double Your Engineering Team Productivity</span><br />
+                
               </h1>
               <p className="text-xl text-foreground/80">
-                Cut unplanned downtime by <span className="font-semibold text-cogintech-orange">30%</span> and save <span className="font-semibold text-green-600">$10M</span> with AI-powered integrity management.
+                <span className="font-semibold text-cogintech-teal"> Automatically create databases from technical documents and deploy AI assistants for search, analysis, and decision support</span>
               </p>
             </div>
             
@@ -30,7 +30,7 @@ const NewHero = () => {
                 className="bg-cogintech-orange hover:bg-cogintech-orange/90 text-white font-medium px-8 py-6"
                 onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Try Sandbox
+                Get Test Access
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button 
@@ -39,7 +39,7 @@ const NewHero = () => {
                 className="border-cogintech-blue text-cogintech-blue hover:bg-cogintech-blue/5 font-medium px-8 py-6"
                 onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Book 15-min Live Demo
+                Book a 15-min Demo
               </Button>
             </div>
           </div>
@@ -49,7 +49,7 @@ const NewHero = () => {
             onClick={() => setIsModalOpen(true)}
             role="button"
             tabIndex={0}
-            aria-label="Открыть видео демонстрацию загрузки файла в дашборд"
+            aria-label="Open data extraction process demonstration"
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -57,37 +57,36 @@ const NewHero = () => {
               }
             }}
           >
-            <video 
-              src="/lovable-uploads/file_to_dashboard.mp4"
-              autoPlay 
-              muted 
-              loop 
-              playsInline
+            <img 
+              src="/lovable-uploads/8779f590-9e4c-43b9-abf7-8e951aa8db60.png"
+              alt="Document Chaos → Structured Database → AI Assistant"
               className="w-full h-full object-contain"
-              aria-label="Демонстрация: перетаскивание файла в дашборд"
             />
           </div>
         </div>
         
         {/* Statistics row spanning full width */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
-              <span className="text-red-600 font-bold text-lg">-30%</span>
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-cogintech-orange/20 flex items-center justify-center">
+              <span className="text-cogintech-orange font-bold text-3xl">30%</span>
             </div>
-            <span className="text-lg font-medium">Downtime Reduction</span>
+            <div className="text-2xl font-bold text-cogintech-orange mb-1">Time saved</div>
+            <div className="text-base font-bold text-foreground/70">on typical engineering tasks</div>
           </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
-              <span className="text-green-600 font-bold text-lg">$10M</span>
+          <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-cogintech-teal/20 flex items-center justify-center">
+              <span className="text-cogintech-teal font-bold text-3xl">10×</span>
             </div>
-            <span className="text-lg font-medium">Annual Savings</span>
+            <div className="text-2xl font-bold text-cogintech-teal mb-1">Faster</div>
+            <div className="text-base font-bold text-foreground/70">finding nesessary information</div>
           </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-              <span className="text-blue-600 font-bold text-lg">95%+</span>
+          <div className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-cogintech-blue/20 flex items-center justify-center">
+              <span className="text-cogintech-blue font-bold text-2xl">95%+</span>
             </div>
-            <span className="text-lg font-medium">Accuracy Rate</span>
+            <div className="text-2xl font-bold text-cogintech-blue mb-1">Higher</div>
+            <div className="text-base font-bold text-foreground/70">report accuracy</div>
           </div>
         </div>
       </div>
@@ -99,18 +98,15 @@ const NewHero = () => {
             <button 
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-colors"
-              aria-label="Закрыть видео"
-              title="Закрыть видео"
+              aria-label="Close image"
+              title="Close image"
             >
               <X className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="w-full h-full flex items-center justify-center">
-              <video 
-                src="/lovable-uploads/file_to_dashboard.mp4" 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
+              <img 
+                src="/lovable-uploads/8779f590-9e4c-43b9-abf7-8e951aa8db60.png" 
+                alt="Document Chaos → Structured Database → AI Assistant"
                 className="w-auto h-auto max-w-full max-h-full object-contain" 
                 style={{ maxWidth: '95vw', maxHeight: '95vh' }}
               />
